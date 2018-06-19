@@ -1,0 +1,39 @@
+
+
+  SISTEMA PARA BIBLIOTECA
+
+	-> Desarrollo e implementación de un sistema web
+
+ 
+	1)Carencias de la biblioteca
+	
+	-> Catalogo virtual (intranet).
+	-> Control de ingreso y salida (Sala de lectura).
+	-> Mejoramiento de la estructura del carnet.
+	-> Automatización de préstamos de libros (presecial y virtual).
+	-> Implementación de libros virtuales.
+
+	2) Conocimientos 
+	
+	-> Diego: Java, mysql, php, html, css, javascript 
+	-> Luis : mysql, UML, Documentación 
+	-> Yojan: java, UML, html, javascript, Documentación
+	-> Jean Paul : 
+
+	
+	3) Herramientas
+
+	 -> Rational Rose, Vicio (Casos de uso, Diagramas de clases...)
+	 -> Dia, Power SQL (Base de Datos)
+	 -> Netbeans, Brackets, sublime (codigo fuente)
+	 -> Github* (control de versiones)
+ 	 -> Ms Proyect, Trello (delegación de tareas)	
+
+	
+		 
+	Primera reunión  ---> Jueves 24 de Mayo 
+	Lugar biblioteca ---> Hora: 2:30  
+
+
+
+	Tiempo de proyecto 70 días

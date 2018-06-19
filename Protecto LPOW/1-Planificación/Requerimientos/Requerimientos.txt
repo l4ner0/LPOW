@@ -1,0 +1,43 @@
+##########################
+Requerimientos Funcionales
+##########################
+
+	Administrador:
+
+		-> Ingreso de libros al catálogo de libros.
+		-> Listar libros ingresados.
+		-> Actualizar información de libros.
+		-> Eliminar libros del catálogo.
+		-> Visualizar solicitudes pendientes.
+		-> Visualizar solicitudes canceladas.
+		-> Verficar préstamos de libros.
+		-> Verificar devolución de libros.
+
+
+	Alumno:
+
+		-> Solicitar préstamos de libros.
+		-> Registrarse en el sistema.
+		-> Ingresar al sistema.
+		-> Seleccionar libros.
+		-> Filtrar resultados.
+		-> Ver solicitudes de préstamo.
+		-> Cancelar préstamo.
+
+	Sistema
+
+		-> Habilitar carnet universitario.
+		-> Validar registro de usuario.
+
+
+#############################
+Requerimientos No Funcionales
+#############################
+
+	-> Utilización de librerías para ciertas actividades del sistema.
+	-> Utilización de template para agilizar la contrucción del sitio web.
+	-> Normalización de la base de datos para agilizar las transacciones.
+	-> Utilización de los lenguajes de programación JavaScript, Java, Android y mysql.
+	-> Utilización de los lenguajes de etiqueta HTML, CSS.
+	-> Utilización de la metodología de desarrollo MVC.
+	

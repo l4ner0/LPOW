@@ -1,0 +1,190 @@
+
+##################
+Objetivo Principal
+##################
+
+	Automatizar el prestamos de libros
+
+	-> Solicitar prestamos de libro
+
+	-> Mostrar Carnet para biblioteca
+
+	-> Nos muestra catálogo de libro
+
+	-> Encargada nos da tarjeta de prestamo
+
+	-> Entregas tarjeta de prestamo
+
+	-> Encargada revisa almacen de libros
+
+	-> Confirma que halla stock
+
+	-> Si hay stock 
+		
+		-> Regresa con el libro
+
+		-> Apunta en un cuaderno datos del alumno
+
+		-> Comunica la fecha de vencimiento
+
+		-> Entrega el libro
+
+	-> Si no hay stock
+
+		-> Informa al alumno que no hay libro
+
+		-> Sugiere buscar un libro similar
+
+		
+
+##############
+Automatización
+##############
+
+	---------------------------------
+	PRESTAMOS DENTRO DE LA BIBLIOTECA
+	---------------------------------
+
+
+		 BIBLIOTECA:
+
+		 	Elección de libros
+
+				-> El Alumno ingresa a la biblioteca.
+				-> El Alumno utiliza una de las compucatalogos*.
+				-> Para acceder al catálogo el Alumno coloca su Carnet Universitario en el lector de canets.
+				-> El Sistema confirma la autenticidad y muestra el catálogo de libros.
+				-> El Alumno selecciona el libro de su agrado (máximo 2**).
+				-> El Alumno agrega el libro(s).
+				-> El Alumno apreta la opción solicitar libros. 
+				-> El Sistema envía la solicitud a la computadora del Administrador.
+				-> El Sistema vuelve a bloquear el compucatálogo.
+
+
+
+		ADMINISTRADOR:
+
+			Verificación en el prestamos de libros
+
+				-> La computadora del Administrador recibe la solicitud del prestamo.
+				-> La solicitud contiene datos como ISBN del libro, nombre del Alumno, foto,etc.
+				-> El Administrador confirma la identidad del Alumno.
+				-> El Administrador busca el libro en la biblioteca. 
+				-> El Administrador regresa con el libro deseado.
+				-> El Administrador entrega el libro.
+				-> OJO: El Administrador puede cancelar la solicitud del Alumno.
+
+
+			CRUD sobre los libros
+
+				-> Añadir libro:
+					--> El Administrador selecciona la opción añadir libro.
+					--> El Administrador ingresa los datos y la imagen solicitada en el formulario.
+					--> El Administrador graba el libro.
+
+				-> Leer libros:
+					--> El Administrador puede listar los libros añadidos segun ciertos filtros.
+
+				-> Actualizar libros:
+					--> El Administrador elige el libro que desea actualizar.
+					--> El Administrador selecciona la opción actualizar.
+					--> El Administrador modifica los campos deseados.
+					--> El Administrador guarda los cambios hechos.
+
+				-> Eliminar libros:
+					--> El Administrador elige el o los libros a eliminar.
+					--> El Administrador selecciona la opción eliminar.
+					--> El Administrador confirma la eliminación.
+
+
+			Verificación en la devolución de libros
+
+				-> La computadora del Administrador almacena los datos del préstamo al Alumno.
+				-> El Alumno se acerca a devolver el libro.
+				-> El Administrador solicita el carnet para buscar el préstamo o ingresar el código de Alumno.
+				-> El Sistema regresa los datos del préstamo que hizo el Alumno.
+				-> El Administrador procede a confirmar la devolución del libro.
+
+
+			Listar solicitudes de prestamo canceladas
+
+				-> El Administrador seleccionar la opción de solicitudes canceladas.
+				-> El Sistema despliega una lista de solicitudes canceladas con ciertos filtros a disposición.
+				-> El Sistema también devuelve información de la solicitud cancelada.
+
+
+
+
+
+	--------------------------------
+	PRESTAMOS FUERA DE LA BIBLIOTECA
+	--------------------------------
+
+
+		ALUMNO: 
+
+			Registrarse
+
+				-> El Alumno selecciona la opción de registro.
+				-> El Alumno rellena los campos que el Sistema requiere.
+				-> El Alumno envía los datos solicitados.
+				-> El Sistema envía una confirmación al correo institucional del Alumno.
+				-> El Alumno confirma el registro.
+				-> El Sistema habilita el carnet universitario del Alumno.
+
+
+			Loguearse
+
+				-> El Alumno ingresa al login de la página.
+				-> El Alumno ingresa sus credenciales.
+				-> El Sistema despliega la paginal principal.
+
+
+			Solicitar préstamo
+
+				-> El Alumno accede a la sección de catálogo de libros (puede filtrar resultados).
+				-> El Alumno elige el libro que desea y lo añade a su solicitud.
+				-> El Alumno confirma y envía su solicitud.
+				-> El Sistema confirma solicitud.
+				-> El Alumno se acerca a la bilioteca a recoger su libro.
+				-> El Administrador confirma que existe la solicitud de préstamos de libro.
+				-> El Administrador confirma los datos del Alumno.
+				-> El Administrador busca el libro en el almacén.
+				-> El Administrador regresa y entrega el libro.
+				
+
+			Listar solicitud de préstamos
+
+				-> El Alumno ingresa a la opción de solicitud de préstamos.
+				-> El Sistema despliega la lista de préstamos que ha realizado el Alumno.
+
+
+			Cancelar préstamo
+
+				-> El préstamo solo puede ser cancelado 30 min después de ser enviado.
+				-> Pasado 30 min no hay posibilidad de cancelar el pedido.
+				-> El Alumno ingresa a la opción de listar solicitud de préstamos.
+				-> El alumno cancela el préstamo hecho.
+				-> El Sistema confirma la cancelación del préstamo.
+
+
+
+
+########
+Glosario --> *
+########
+
+	->Compucatálogos: Significa un computadora dentro de la biblioteca que muestra sólo el catálogo de libros.
+
+
+
+
+
+#############
+Observaciones --> **
+#############
+
+	-> Preguntar cantidad máxima de libros por préstamo
+	-> Preguntar fecha limite para devolución
+	-> Preguntar por sanciones (entrega fuera de fecha, libro dañando, etc).
+	-> 

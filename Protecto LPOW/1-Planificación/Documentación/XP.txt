@@ -1,0 +1,48 @@
+
+
+################################
+Fases de la programación extrema
+################################
+ 
+ 1era Fase: Planificación del proyecto
+	
+	Hitorias del usuario
+	
+	-> Documento en el cual se encuentran las necesidades del cliente
+ 	   (requerimientos)
+	-> Son recolectadas durante la fase de exploración
+	-> Estas son documentadas por el equipo de desarroll, coach y gestor
+
+	Relase Planing
+	
+	Desarrolladores y clientes establecen tiempos de implemetación
+	ideales para las historias de usuario.
+
+	Plan de Iteración
+	
+	Documento elaborado a partir del plan de entrega, el cual contiene
+	las historias de usuarios a implementar en cada fase de iteración.
+
+
+ 2da Fase: Diseño
+	 
+	 De preferencia no añadir funcionalidades extra al programa aunque se piense que en 
+	 el futuro serán utilizadas debido a que implicaría un mayor consumo 
+	 de tiempo y recursos.
+	
+
+ 3era Fase: Codificación
+	 
+  	 Trabajo en pareja
+
+
+ 4ta Fase:  Prueba
+
+
+
+
+Información:
+
+http://programacionextrema.tripod.com/fases.htm
+https://www.youtube.com/watch?v=Zi9E1aUO_1U
+https://www.emaze.com/@AORITQZWL/Presentation-Name-copy1
