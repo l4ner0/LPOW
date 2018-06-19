@@ -1,0 +1,19 @@
+
+###################################
+FUNCIONES DEL SISTEMA ADMINISTRADOR
+###################################
+
+	LIBROS
+		-> Listar catálogo de libros.
+		-> Ingresar nuevo libro.
+		-> Modifiar datos del libro.
+		-> Eliminar libro.
+
+
+	SOLICITUDES PENDIENTES DE ALUMNOS
+		-> Ver solicitudes pendientes.
+		-> Confirmar solicitud.
+		-> Eliminar solicitud.
+
+	SOLICITUDES CANCELADAS DE ALUMNOS
+		-> Ver solicitudes canceladas.
