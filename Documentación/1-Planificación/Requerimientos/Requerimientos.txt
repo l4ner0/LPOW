@@ -40,4 +40,7 @@ Requerimientos No Funcionales
 	-> Utilización de los lenguajes de programación JavaScript, Java, Android y mysql.
 	-> Utilización de los lenguajes de etiqueta HTML, CSS.
 	-> Utilización de la metodología de desarrollo MVC.
+	-> Utilización de el plugin sweetAlert.
+
+
 	
