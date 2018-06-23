@@ -1,0 +1,52 @@
+body{
+    background-image: url(../img/login.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.contenedor-login{
+     
+     background-image: url(../img/login-difuminado.jpg);
+    background-attachment: fixed;
+     background-size: 100%;
+    border-radius: 0px;
+   /*background: rgba(0,0,0,0.5);*/
+}
+.login-logo{
+    color: white;
+    font-size: 50px; 
+    margin-top: 30px;
+}
+.card-body{
+    padding-top: 1px;
+}
+.login-box-msg{
+    color: white;
+}
+.has-feedback input{
+    border-radius: 0px;
+    padding-left: 40px;
+}
+.has-feedback{
+    position: relative;
+}
+.has-feedback i{
+    position: absolute;
+    left: 0;
+    top:0px;
+    padding: 0px 8px;
+    color: #aaa;
+}
+.fa-envelope{
+    font-size: 23px;
+}
+.fa-lock{
+    font-size: 30px;
+}
+.checkbox{
+    color: white;
+}
+.btn-ingresar{
+    background-color: #1F6095;
+    color: white;
+}
