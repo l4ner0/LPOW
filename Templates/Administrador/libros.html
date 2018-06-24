@@ -182,7 +182,7 @@
                      <div class="card-header">
                          <h2>Catálogos de Libros</h2>
                          <div class="card-tools btn-nuevoLibro">
-                              <button class="btn btn-primary"><i class="fa fa-plus"></i> Libro</button>
+                              <button type="button" class="btn btn-primary" title="Añadir Libro" data-toggle="modal" data-target="#añadirLibro"><i class="fa fa-plus"></i> Libro</button>
                          </div>
                      </div>
                      <div class="card-body">
@@ -218,7 +218,7 @@
                                   </div>
                                   <div class="col-md-2">
                                      <div class="form-group">
-                                          <button class="btn-buscar-libro">Buscar</button>
+                                          <button class="btn-buscar-libro"><i class="fa fa-search"></i> Buscar</button>
                                      </div>
                                   </div>
                             </div>
@@ -231,158 +231,377 @@
                                         <table class="table table-data2" id="tabla-libros">
                                             <thead>
                                                 <tr>
-                                                    <th>
-                                                        <label class="au-checkbox">
-                                                            <input type="checkbox">
-                                                            <span class="au-checkmark"></span>
-                                                        </label>
-                                                    </th>
-                                                    <th>name</th>
-                                                    <th>email</th>
-                                                    <th>description</th>
-                                                    <th>date</th>
-                                                    <th>status</th>
-                                                    <th>price</th>
+                                                    <th>Autor</th>
+                                                    <th>Título</th>
+                                                    <th>ISBN</th>
+                                                    <th>Datos de Publicación</th>
+                                                    <th>Carrera</th>
+                                                    <th>Portada</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr class="tr-shadow">
-                                                    <td>
-                                                        <label class="au-checkbox">
-                                                            <input type="checkbox">
-                                                            <span class="au-checkmark"></span>
-                                                        </label>
-                                                    </td>
                                                     <td>Lori Lynch</td>
                                                     <td>
-                                                        <span class="block-email">lori@example.com</span>
+                                                        Administración de Ingeniería de Sistemas
                                                     </td>
-                                                    <td class="desc">Samsung S8 Black</td>
-                                                    <td>2018-09-27 02:12</td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
                                                     <td>
-                                                        <span class="status--process">Processed</span>
+                                                        <span class="status--process">Sistemas</span>
                                                     </td>
-                                                    <td>$679.00</td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
                                                     <td>
                                                         <div class="table-data-feature">
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                                <i class="zmdi zmdi-mail-send"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
                                                             </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                                <i class="zmdi zmdi-edit"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                                <i class="zmdi zmdi-delete"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                                <i class="zmdi zmdi-more"></i>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
                                                             </button>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
-                                                    <td>
-                                                        <label class="au-checkbox">
-                                                            <input type="checkbox">
-                                                            <span class="au-checkmark"></span>
-                                                        </label>
-                                                    </td>
                                                     <td>Lori Lynch</td>
                                                     <td>
-                                                        <span class="block-email">john@example.com</span>
+                                                        Administración de Ingeniería de Sistemas
                                                     </td>
-                                                    <td class="desc">iPhone X 64Gb Grey</td>
-                                                    <td>2018-09-29 05:57</td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
                                                     <td>
-                                                        <span class="status--process">Processed</span>
+                                                        <span class="status--process">Sistemas</span>
                                                     </td>
-                                                    <td>$999.00</td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
                                                     <td>
                                                         <div class="table-data-feature">
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                                <i class="zmdi zmdi-mail-send"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
                                                             </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                                <i class="zmdi zmdi-edit"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                                <i class="zmdi zmdi-delete"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                                <i class="zmdi zmdi-more"></i>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
                                                             </button>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
-                                                    <td>
-                                                        <label class="au-checkbox">
-                                                            <input type="checkbox">
-                                                            <span class="au-checkmark"></span>
-                                                        </label>
-                                                    </td>
                                                     <td>Lori Lynch</td>
                                                     <td>
-                                                        <span class="block-email">lyn@example.com</span>
+                                                        Administración de Ingeniería de Sistemas
                                                     </td>
-                                                    <td class="desc">iPhone X 256Gb Black</td>
-                                                    <td>2018-09-25 19:03</td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
                                                     <td>
-                                                        <span class="status--denied">Denied</span>
+                                                        <span class="status--process">Sistemas</span>
                                                     </td>
-                                                    <td>$1199.00</td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
                                                     <td>
                                                         <div class="table-data-feature">
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                                <i class="zmdi zmdi-mail-send"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
                                                             </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                                <i class="zmdi zmdi-edit"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                                <i class="zmdi zmdi-delete"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                                <i class="zmdi zmdi-more"></i>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
                                                             </button>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
-                                                    <td>
-                                                        <label class="au-checkbox">
-                                                            <input type="checkbox">
-                                                            <span class="au-checkmark"></span>
-                                                        </label>
-                                                    </td>
                                                     <td>Lori Lynch</td>
                                                     <td>
-                                                        <span class="block-email">doe@example.com</span>
+                                                        Administración de Ingeniería de Sistemas
                                                     </td>
-                                                    <td class="desc">Camera C430W 4k</td>
-                                                    <td>2018-09-24 19:10</td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
                                                     <td>
-                                                        <span class="status--process">Processed</span>
+                                                        <span class="status--process">Sistemas</span>
                                                     </td>
-                                                    <td>$699.00</td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
                                                     <td>
                                                         <div class="table-data-feature">
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                                                <i class="zmdi zmdi-mail-send"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
                                                             </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                                <i class="zmdi zmdi-edit"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                                <i class="zmdi zmdi-delete"></i>
-                                                            </button>
-                                                            <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                                                <i class="zmdi zmdi-more"></i>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
                                                             </button>
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Lori Lynch</td>
+                                                    <td>
+                                                        Administración de Ingeniería de Sistemas
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td>
+                                                        <span class="status--process">Sistemas</span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Lori Lynch</td>
+                                                    <td>
+                                                        Administración de Ingeniería de Sistemas
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td>
+                                                        <span class="status--process">Sistemas</span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Lori Lynch</td>
+                                                    <td>
+                                                        Administración de Ingeniería de Sistemas
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td>
+                                                        <span class="status--process">Sistemas</span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Lori Lynch</td>
+                                                    <td>
+                                                        Administración de Ingeniería de Sistemas
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td>
+                                                        <span class="status--process">Sistemas</span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Lori Lynch</td>
+                                                    <td>
+                                                        Administración de Ingeniería de Sistemas
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td>
+                                                        <span class="status--process">Sistemas</span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Lori Lynch</td>
+                                                    <td>
+                                                        Administración de Ingeniería de Sistemas
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td>
+                                                        <span class="status--process">Sistemas</span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Lori Lynch</td>
+                                                    <td>
+                                                        Administración de Ingeniería de Sistemas
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td>
+                                                        <span class="status--process">Sistemas</span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Lori Lynch</td>
+                                                    <td>
+                                                        Administración de Ingeniería de Sistemas
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td>
+                                                        <span class="status--process">Sistemas</span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Lori Lynch</td>
+                                                    <td>
+                                                        Administración de Ingeniería de Sistemas
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td>
+                                                        <span class="status--process">Sistemas</span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Lori Lynch</td>
+                                                    <td>
+                                                        Administración de Ingeniería de Sistemas
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td>
+                                                        <span class="status--process">Sistemas</span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Lori Lynch</td>
+                                                    <td>
+                                                        Administración de Ingeniería de Sistemas
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td>
+                                                        <span class="status--process">Sistemas</span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="dist/img/portada-libro.png" alt="" width="45">
+                                                    </td>
+                                                    <td>
+                                                        <div class="table-data-feature">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -399,6 +618,159 @@
     </section>
     <!-- /.content -->
   </div>
+  <!-- Modals -->
+   <!-- Modal Añadir Libro -->
+    <div class="modal fade" id="añadirLibro" tabindex="-1" role="dialog" aria-labelledby="añadirLibroLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="añadirLibroLabel">Añadir Libro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Carrera :</label>
+                                <select name="" id="" class="form-control form-control-sm">
+                                    <option value="">......</option>
+                                    <option value="">Ingeniería de Sistemas</option>
+                                    <option value="">Ingeniería Industrial</option>
+                                    <option value="">Ingeniería de Transportes</option>
+                                    <option value="">Ingeniería de Agroindustrial</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">ISBN :</label>
+                                <input class="form-control form-control-sm" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Autor :</label>
+                                <input type="text" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Título :</label>
+                                <input type="text" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Datos de Publicación :</label>
+                                <textarea class="form-control form-control-sm" name="" id="" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="">Tipo Documento : </label>
+                                <select name="" id="" class="form-control form-control-sm">
+                                    <option value="">......</option>
+                                    <option value="">Libro</option>
+                                    <option value="">Monografía</option>
+                                    <option value="">Tesis</option>
+                                    <option value="">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                               <label for="">Portada : </label>
+                                <input type="file" title="Portada del Libro">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-save"></i> Grabar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Editar datos del libro -->
+        <div class="modal fade" id="editarLibro" tabindex="-1" role="dialog" aria-labelledby="editarLibroLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="editarLibroLabel">Editar Libro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Carrera :</label>
+                                <select name="" id="" class="form-control form-control-sm">
+                                    <option value="">......</option>
+                                    <option value="">Ingeniería de Sistemas</option>
+                                    <option value="">Ingeniería Industrial</option>
+                                    <option value="">Ingeniería de Transportes</option>
+                                    <option value="">Ingeniería de Agroindustrial</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">ISBN :</label>
+                                <input class="form-control form-control-sm" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Autor :</label>
+                                <input type="text" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Título :</label>
+                                <input type="text" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Datos de Publicación :</label>
+                                <textarea class="form-control form-control-sm" name="" id="" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="">Tipo Documento : </label>
+                                <select name="" id="" class="form-control form-control-sm">
+                                    <option value="">......</option>
+                                    <option value="">Libro</option>
+                                    <option value="">Monografía</option>
+                                    <option value="">Tesis</option>
+                                    <option value="">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                               <label for="">Portada : </label>
+                                <input type="file" title="Portada del Libro">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2018 <a href="#">AdminLTE.io</a>.</strong>
@@ -459,6 +831,7 @@
     $(document).ready(function() {
             $('#tabla-libros').DataTable( {
                 "searching": false,
+                "lengthMenu":[[5,10,15,-1],[5,10,15,"Todos"]],
                 "language": {
                     "sProcessing":     "Procesando...",
                     "sLengthMenu":     "Mostrar _MENU_ registros",

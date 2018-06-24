@@ -801,19 +801,18 @@
     -webkit-justify-content: flex-end;
     -moz-box-pack: end;
     -ms-flex-pack: end;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .table-data-feature .item {
     display: block;
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     position: relative;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
     background: #e5e5e5;
-    margin-right: 5px;
 }
 
 .table-data-feature .item:last-child {
@@ -1056,3 +1055,9 @@
     box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.03);
 }
 
+.btn-tabla-editar{
+    margin-right: 13px;
+}
+.btn-tabla-eliminar{
+    margin-left: 13px;
+}
