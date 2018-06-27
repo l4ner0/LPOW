@@ -2,13 +2,13 @@ body{
     background-image: url(../img/login.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
 }
 .contenedor-login{
      
      background-image: url(../img/login-difuminado.jpg);
     background-attachment: fixed;
-     background-size: 100%;
+     background-size: cover;
     border-radius: 0px;
    /*background: rgba(0,0,0,0.5);*/
 }
