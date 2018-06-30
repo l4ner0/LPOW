@@ -1061,3 +1061,39 @@
 .btn-tabla-eliminar{
     margin-left: 13px;
 }
+
+.btn-agregar-autor{
+    padding:1px 8px; 
+}
+
+.titulo-pendiente{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.titulo-pendiente h3{
+    font-size: 35px;
+}
+
+.buscar-pendientes{
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-buscar-pendiente{
+   text-align: center;
+}
+
+.herramienta-busqueda-pendiente{
+    margin-bottom: 60px;
+}
+
+.herramientas-filtro button{
+    margin-top:31px;
+}
+
+.icono-bucar-pendiente i{
+    font-size: 25px;
+}
