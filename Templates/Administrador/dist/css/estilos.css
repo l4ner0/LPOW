@@ -1104,6 +1104,21 @@
 
 .modal-entrega-aprobar-libro{
     padding-left: 40px;
+    border: 1px solid #CECFCF;
+    border-top-right-radius: 3px;
+}
+
+.modal-entrega-aprobar-alumno{
+    border: 1px solid #CECFCF;
+    border-top-left-radius: 3px;
+}
+
+.modal-entrega-aprobar-datos{
+    border: 1px solid #CECFCF;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding-top: 6px;
+     
 }
 
 .modal-entrega-aprobar-fotoAlu{
@@ -1128,7 +1143,8 @@
 
 .modal-entrega-aprobar-titulo{
     text-align: center;
-    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 6px;
 }
 
 .modal-entrega-aprobar-titulo h4{

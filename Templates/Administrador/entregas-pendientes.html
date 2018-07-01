@@ -13,7 +13,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="plugins/iCheck/all.css">
   <!-- Morris chart -->
   <link rel="stylesheet" href="plugins/morris/morris.css">
   <!-- jvectormap -->
@@ -201,7 +201,7 @@
                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="">Origen:</label>
-                                         <select name="" id="" class="form-control form-control-sm">
+                                         <select name="" id="filtro-origen" class="form-control form-control-sm">
                                              <option value="">Todos</option>
                                              <option value="">Presencial</option>
                                              <option value="">Virtual</option>
@@ -211,7 +211,7 @@
                                <div class="col-md-2">
                                    <div class="form-group">
                                         <label for="">Fecha:</label>
-                                         <input type="text" class="form-control form-control-sm">
+                                         <input type="text" class="form-control form-control-sm" id="filtro-fecha">
                                     </div>
                                </div>
                                 <div class="col-md-1">
@@ -274,10 +274,10 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -296,10 +296,10 @@
                                                     <td>Presencial</td>
                                                    <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -318,32 +318,10 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-close"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -362,10 +340,32 @@
                                                     <td>Presencial</td>
                                                    <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
+                                                                <i class="fa fa-close"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Giacomo Guilizzaoni</td>
+                                                    <td>
+                                                        2015019685
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>Administración de los SIstemas de Información</td>
+                                                    <td>Laudon Keneth</td>
+                                                    <td>14:45</td>
+                                                    <td>06/06/2018</td>
+                                                    <td>Presencial</td>
+                                                   <td>
+                                                        <div class="table-data-feature btn-entregas-pendientes">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
+                                                            </button>
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -384,10 +384,10 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -406,10 +406,10 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -428,10 +428,10 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -450,10 +450,10 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -472,10 +472,10 @@
                                                     <td>Presencial</td>
                                                    <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -494,10 +494,10 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -516,10 +516,10 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -538,10 +538,10 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -560,10 +560,10 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -645,8 +645,7 @@
                                 </div>
                             </div>  
                        </div>
-                       <div class="col-md-12 modal-entrega-aprovar-datos">
-                          <br>
+                       <div class="col-md-12 modal-entrega-aprobar-datos">
                            <fieldset>
                                <legend>Datos de Entrega</legend>
                                <div class="row">
@@ -670,7 +669,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-save"></i> Grabar</button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Aprobar</button>
                 <button type="button" class="btn btn-light"><i class="fa fa-print"></i> Imprimir</button>
                 </div>
             </div>
@@ -695,21 +694,35 @@
                        <h5>Motivo de la cancelación (Obligatorio)</h5>
                    </div>
                    <div class="form-group">
-                        <label>
-                            <input type="checkbox" class="minimal" checked>
-                        </label>
-                        <label>
-                            <input type="checkbox" class="minimal">
-                        </label>
-                        <label>
-                            <input type="checkbox" class="minimal" disabled>
-                            Minimal skin checkbox
-                        </label>
+                       <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="A">
+                          <label class="form-check-label">Motivo A</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="B">
+                          <label class="form-check-label">Motivo B</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="C">
+                          <label class="form-check-label">Motivo C</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="D">
+                          <label class="form-check-label">Motivo D</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="E">
+                          <label class="form-check-label">Motivo E</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                       <p>Otro Motivo</p>
+                        <textarea name="" id="" rows="4" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-save"></i> Grabar</button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Confirmar</button>
                 </div>
             </div>
         </div>
@@ -802,36 +815,15 @@
                     }
                 }
             } );
-        } );
-</script>
-<script>
-  $(function () {
-    //iCheck for checkbox and radio inputs
-    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-      checkboxClass: 'icheckbox_minimal-blue',
-      radioClass   : 'iradio_minimal-blue'
-    })
-    //Red color scheme for iCheck
-    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-      checkboxClass: 'icheckbox_minimal-red',
-      radioClass   : 'iradio_minimal-red'
-    })
-    //Flat red color scheme for iCheck
-    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-      checkboxClass: 'icheckbox_flat-green',
-      radioClass   : 'iradio_flat-green'
-    })
-
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
-
-    //Timepicker
-    $('.timepicker').timepicker({
-      showInputs: false
-    })
-  })
+        
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+        
+        $( "#filtro-fecha" ).datepicker();
+    } );
 </script>
 </body>
 </html>
