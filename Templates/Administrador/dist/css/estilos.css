@@ -1150,3 +1150,26 @@
 .modal-entrega-aprobar-titulo h4{
     font-size: 30px;
 }
+
+.bloque-alumno{
+    margin-bottom: 30px;
+}
+
+.bloque-libros{
+    margin-bottom: 30px;
+}
+
+.titulo-alumno-cancelacion{
+    margin-left: 110px;
+    margin-bottom: 10px;
+}
+
+.titulo-libro-cancelacion{
+    margin-left: 117px;
+    margin-bottom: 10px;
+}
+
+.titulo-datos-cancelacion{
+    margin-left: 50px; 
+    margin-bottom: 10px;
+}
