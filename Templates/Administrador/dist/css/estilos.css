@@ -1090,10 +1090,47 @@
     margin-bottom: 60px;
 }
 
+.herramientas-filtro{
+    margin-bottom: 30px;
+}
+
 .herramientas-filtro button{
     margin-top:31px;
 }
 
 .icono-bucar-pendiente i{
     font-size: 25px;
+}
+
+.modal-entrega-aprobar-libro{
+    padding-left: 40px;
+}
+
+.modal-entrega-aprobar-fotoAlu{
+    margin-bottom: 30px;    
+}
+
+.modal-entrega-aprobar-fotoAlu img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.modal-entrega-aprobar-fotoLibro{
+    margin-bottom: 30px;    
+}
+
+.modal-entrega-aprobar-fotoLibro img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.modal-entrega-aprobar-titulo{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.modal-entrega-aprobar-titulo h4{
+    font-size: 30px;
 }
