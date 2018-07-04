@@ -101,8 +101,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fa fa-truck"></i>
               <p>
                 ENTREGAS
@@ -117,7 +117,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="entregas-noAprobadas.html" class="nav-link active">
+                <a href="entregas-noAprobadas.html" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>No Aprobadas</p>
                 </a>
@@ -130,8 +130,8 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview  menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fa fa-archive"></i>
               <p>
                 DEVOLUCIONES
@@ -139,8 +139,8 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="devoluciones-pendientes.html" class="nav-link">
+              <li class="nav-item active">
+                <a href="devoluciones-pendientes.html" class="nav-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Pendientes</p>
                 </a>
@@ -167,7 +167,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">No Aprobadas</h1>
+            <h1 class="m-0 text-dark">Pendientes</h1>
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -182,7 +182,7 @@
                     <div class="card-body">
                         <div class="herramienta-busqueda-pendiente">
                              <div class="titulo-pendiente">
-                                <h3>Entregas No Aprobadas</h3>
+                                <h3>Devoluciones Pendientes</h3>
                              </div>
                              <div class="form-group">
                                 <div class="input-group buscar-pendientes">
@@ -252,8 +252,8 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -271,46 +271,8 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                   <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                           <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -328,8 +290,27 @@
                                                     <td>Presencial</td>
                                                    <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Giacomo Guilizzaoni</td>
+                                                    <td>
+                                                        2015019685
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>Administración de los SIstemas de Información</td>
+                                                    <td>Laudon Keneth</td>
+                                                    <td>14:45</td>
+                                                    <td>06/06/2018</td>
+                                                    <td>Presencial</td>
+                                                    <td>
+                                                        <div class="table-data-feature btn-entregas-pendientes">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -347,8 +328,27 @@
                                                     <td>Presencial</td>
                                                    <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr class="tr-shadow">
+                                                    <td>Giacomo Guilizzaoni</td>
+                                                    <td>
+                                                        2015019685
+                                                    </td>
+                                                    <td>968-18-4527-7</td>
+                                                    <td>Administración de los SIstemas de Información</td>
+                                                    <td>Laudon Keneth</td>
+                                                    <td>14:45</td>
+                                                    <td>06/06/2018</td>
+                                                    <td>Presencial</td>
+                                                   <td>
+                                                        <div class="table-data-feature btn-entregas-pendientes">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -366,8 +366,8 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -385,8 +385,8 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -404,8 +404,8 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -423,8 +423,8 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -442,8 +442,8 @@
                                                     <td>Presencial</td>
                                                    <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -461,8 +461,8 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -480,8 +480,8 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -499,8 +499,8 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -518,8 +518,8 @@
                                                     <td>Presencial</td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -540,131 +540,148 @@
     <!-- /.content -->
   </div>
   <!-- Modal -->
-     <!-- Modal Información Entrega Cancelada -->
-    <div class="modal fade" id="infoCancelado" role="dialog" aria-labelledby="infoCanceladoLabel" aria-hidden="true">
+     <!-- Modal Aprobar Devolución -->
+    <div class="modal fade" id="aprobarEntrega" role="dialog" aria-labelledby="aprobarEntregaoLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="infoCanceladoLabel">Entregas No Aprobadas</h5>
+                <h5 class="modal-title" id="aprobarEntregaoLabel">Aprobar Devolución</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
                 </div>
                 <div class="modal-body">
                    <div class="row">
-                       <div class="col-md-12 bloque-alumno">
-                            <div  class="titulo-alumno-cancelacion">
-                                <h5>Alumno</h5>
+                       <div class="col-md-6 modal-entrega-aprobar-alumno">
+                            <div class="modal-entrega-aprobar-titulo">
+                                <h4>Alumno</h4>
+                            </div>
+                            <div class="modal-entrega-aprobar-fotoAlu">
+                                <img src="dist/img/foto-alumno.png" alt="" width="150">
                             </div>
                             <div class="row">
-                               <div class="offset-1 col-md-5">
-                                    <img src="dist/img/foto-alumno.png" alt="" width="150">
+                                <div class="col-md-6">
+                                    <label for="">Apellidos: </label>
+                                    <p>Guilizzaoni Guilizzaoni</p>
                                 </div>
-                                <div class="offset-1 col-md-5  datos-alumno-info-cancelada">
-                                    <div>
-                                        <label for="">Apellidos: </label>
-                                        Guilizzaoni Guilizzaon
-                                    </div>
-                                    <div>
-                                        <label for="">Nombres: </label>
-                                        Giacomo Giacomo
-                                    </div>
-                                    <div>
-                                        <label for="">Código: </label>
-                                         2015019685
-                                    </div>
-                                    <div>
-                                        <label for="">Carrera: </label>
-                                        Ingeniería de Sistemas
-                                    </div>
+                                <div class="col-md-6">
+                                    <label for="">Nombres: </label>
+                                    <p for="">Giacomo Giacomo</p>
                                 </div>
-                            </div>   
-                       </div>
-                       <div class="col-md-12 bloque-libros">
-                            <div class="titulo-libro-cancelacion">
-                                <h5>Libro</h5>
-                            </div>
-                            <div class="row">
-                                <div class="offset-1 col-md-5">
-                                    <img src="dist/img/portada-libro.png" alt="" width="150">
+                                <div class="col-md-6">
+                                    <label for="">Código: </label>
+                                    <p for="">2015019685</p>
                                 </div>
-                                <div class="offset-1 col-md-5">
-                                    <div>
-                                        <label for="">ISBN: </label>
-                                        968-18-4527-7
-                                    </div>
-                                    <div>
-                                        <label for="">Autor: </label>
-                                        Laudon Keneth
-                                    </div>
-                                    <div>
-                                        <label for="">Título: </label>
-                                        Administración de los Sistemas de Información
-                                    </div>
-                                </div>  
+                                <div class="col-md-6">
+                                    <label for="">Carrera: </label>
+                                    <p for="">Ingeniería de Sistemas</p>
+                                </div>
                             </div>
                        </div>
-                       <div class="col-md-12 bloque-alumno">
-                            <div  class="titulo-alumno-cancelacion">
-                                <h5>Encargado</h5>
+                       <div class="col-md-6 modal-entrega-aprobar-libro">
+                            <div class="modal-entrega-aprobar-titulo">
+                                <h4>Libro</h4>
+                            </div>
+                            <div class="modal-entrega-aprobar-fotoLibro">
+                                <img src="dist/img/portada-libro.png" alt="" width="150">
                             </div>
                             <div class="row">
-                               <div class="offset-1 col-md-5">
-                                    <img src="dist/img/user2-160x160.png" alt="" width="150">
+                                <div class="col-md-6">
+                                    <label for="">ISBN: </label>
+                                    <p>968-18-4527-7</p>
                                 </div>
-                                <div class="offset-1 col-md-5  datos-alumno-info-cancelada">
-                                    <div>
-                                        <label for="">Apellidos: </label>
-                                        Guilizzaoni Guilizzaon
-                                    </div>
-                                    <div>
-                                        <label for="">Nombres: </label>
-                                        Giacomo Giacomo
-                                    </div>
-                                    <div>
-                                        <label for="">Motivo: </label>
-                                         Aquí irá el motivo de la cancelación de la solicitud de préstamo.
-                                    </div>
+                                <div class="col-md-6">
+                                    <label for="">Autor: </label>
+                                    <p>Laudon Keneth</p>
                                 </div>
-                            </div>   
+                                <div class="col-md-12">
+                                    <label for="">Título: </label>
+                                    <p>Administración de los Sistemas de Información</p>
+                                </div>
+                            </div>  
                        </div>
-                       <div class="col-md-12 bloque-datos-cancelacion">
-                           <div  class="titulo-datos-cancelacion">
-                                <h5>Datos de Cancelación</h5>
-                           </div>
-                            <div class="row">
-                               <div class="offset-1 col-md-5">
+                       <div class="col-md-12 modal-entrega-aprobar-datos">
+                           <fieldset>
+                               <legend>Datos Devolución</legend>
+                               <div class="row">
+                                   <div class="col-md-4">
+                                       <label for="">Hora: </label>
+                                       14:45
+                                   </div>
                                    <div class="col-md-5">
-                                    <img src="dist/img/img_datos_entrega.png" alt="" width="150">
-                                </div>
+                                       <label for="">Fecha: </label>
+                                       06/06/2018
+                                   </div>
+                                   <div class="col-md-3">
+                                       <label for="">Origen: </label>
+                                       Presencial
+                                   </div>
                                </div>
-                               <div class="offset-1 col-md-5">
-                                   <div>
-                                        <label for="">Hora Cancelación: </label>
-                                        14:45
-                                    </div>
-                                    <div>
-                                        <label for="">Fecha Cancelación: </label>
-                                        06/06/2018
-                                    </div>
-                                    <div>
-                                        <label for="">Origen: </label>
-                                        Presencial
-                                    </div>
-                               </div>
-                            </div>
+                           </fieldset>
                        </div>
                    </div>
                     
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-sign-out"></i> Salir</button>
-                <button type="button" class="btn btn-light"><i class="fa fa-print"></i> Reporte</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Aprobar</button>
+                <button type="button" class="btn btn-light"><i class="fa fa-print"></i> Imprimir</button>
                 </div>
             </div>
         </div>
     </div>
     
+     <!-- Modal Cancelar Entrega -->
+    <div class="modal fade" id="cancelarEntrega" role="dialog" aria-labelledby="cancelarEntregaoLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="cancelarEntregaoLabel">Cancelar Entrega</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                   <div>
+                       <h4>¿Estas seguro de eliminar la solicitud de Giacomo Gulizzoni?</h4>
+                   </div>
+                   <div>
+                       <h5>Motivo de la cancelación (Obligatorio)</h5>
+                   </div>
+                   <div class="form-group">
+                       <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="A">
+                          <label class="form-check-label">Motivo A</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="B">
+                          <label class="form-check-label">Motivo B</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="C">
+                          <label class="form-check-label">Motivo C</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="D">
+                          <label class="form-check-label">Motivo D</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="E">
+                          <label class="form-check-label">Motivo E</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                       <p>Otro Motivo</p>
+                        <textarea name="" id="" rows="4" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+                <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>
   
   <!-- /.content-wrapper -->
   <footer class="main-footer">

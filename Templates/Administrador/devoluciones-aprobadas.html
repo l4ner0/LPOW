@@ -101,8 +101,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fa fa-truck"></i>
               <p>
                 ENTREGAS
@@ -117,21 +117,21 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="entregas-noAprobadas.html" class="nav-link active">
+                <a href="entregas-noAprobadas.html" class="nav-link">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>No Aprobadas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="entregas-aprobadas.html" class="nav-link">
+                <a href="entregas-aprobadas.html" class="nav-link ">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Aprobadas</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fa fa-archive"></i>
               <p>
                 DEVOLUCIONES
@@ -146,7 +146,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="devoluciones-aprobadas.html" class="nav-link">
+                <a href="devoluciones-aprobadas.html" class="nav-link active">
                   <i class="fa fa-circle-o nav-icon"></i>
                   <p>Aprobadas</p>
                 </a>
@@ -167,7 +167,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">No Aprobadas</h1>
+            <h1 class="m-0 text-dark">Aprobadas</h1>
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -180,9 +180,9 @@
               <div class="row">
                  <div class="card card-default col-md-12 card-catalogo">
                     <div class="card-body">
-                        <div class="herramienta-busqueda-pendiente">
+                       <div class="herramienta-busqueda-pendiente">
                              <div class="titulo-pendiente">
-                                <h3>Entregas No Aprobadas</h3>
+                                <h3>Devoluciones Aprobadas</h3>
                              </div>
                              <div class="form-group">
                                 <div class="input-group buscar-pendientes">
@@ -196,29 +196,6 @@
                                 <button class="btn btn-primary "><i class="fa fa-search"></i> Buscar</button> 
                              </div>
                         </div>
-                         <div class="herramientas-filtro">
-                             <div class="row">
-                               <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="">Origen:</label>
-                                         <select name="" id="filtro-origen" class="form-control form-control-sm">
-                                             <option value="">Todos</option>
-                                             <option value="">Presencial</option>
-                                             <option value="">Virtual</option>
-                                         </select>
-                                     </div>    
-                               </div>
-                               <div class="col-md-2">
-                                   <div class="form-group">
-                                        <label for="">Fecha:</label>
-                                         <input type="text" class="form-control form-control-sm" id="filtro-fecha">
-                                    </div>
-                               </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-secondary btn-sm">Filtrar</button>
-                                </div>
-                             </div>
-                         </div>
                         <div class="tabla-entregas-pendientes">
                             <div class="row">
                                 <div class="col-md-12">
@@ -235,7 +212,6 @@
                                                     <th>Hora</th>
                                                     <th>Fecha</th>
                                                     <th>Origen</th>
-                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -250,13 +226,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -269,13 +238,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -288,13 +250,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                   <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                           <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -307,13 +262,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -326,13 +274,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                   <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -345,13 +286,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                   <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -364,13 +298,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -383,13 +310,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -402,13 +322,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -421,13 +334,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -440,13 +346,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                   <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -459,13 +358,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -478,13 +370,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -497,13 +382,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 <tr class="tr-shadow">
                                                     <td>Giacomo Guilizzaoni</td>
@@ -516,13 +394,6 @@
                                                     <td>14:45</td>
                                                     <td>06/06/2018</td>
                                                     <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
-                                                                <i class="fa fa-info"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
                                                 </tr>
                                                 
                                             </tbody>
@@ -539,132 +410,7 @@
     </section>
     <!-- /.content -->
   </div>
-  <!-- Modal -->
-     <!-- Modal Información Entrega Cancelada -->
-    <div class="modal fade" id="infoCancelado" role="dialog" aria-labelledby="infoCanceladoLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="infoCanceladoLabel">Entregas No Aprobadas</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                   <div class="row">
-                       <div class="col-md-12 bloque-alumno">
-                            <div  class="titulo-alumno-cancelacion">
-                                <h5>Alumno</h5>
-                            </div>
-                            <div class="row">
-                               <div class="offset-1 col-md-5">
-                                    <img src="dist/img/foto-alumno.png" alt="" width="150">
-                                </div>
-                                <div class="offset-1 col-md-5  datos-alumno-info-cancelada">
-                                    <div>
-                                        <label for="">Apellidos: </label>
-                                        Guilizzaoni Guilizzaon
-                                    </div>
-                                    <div>
-                                        <label for="">Nombres: </label>
-                                        Giacomo Giacomo
-                                    </div>
-                                    <div>
-                                        <label for="">Código: </label>
-                                         2015019685
-                                    </div>
-                                    <div>
-                                        <label for="">Carrera: </label>
-                                        Ingeniería de Sistemas
-                                    </div>
-                                </div>
-                            </div>   
-                       </div>
-                       <div class="col-md-12 bloque-libros">
-                            <div class="titulo-libro-cancelacion">
-                                <h5>Libro</h5>
-                            </div>
-                            <div class="row">
-                                <div class="offset-1 col-md-5">
-                                    <img src="dist/img/portada-libro.png" alt="" width="150">
-                                </div>
-                                <div class="offset-1 col-md-5">
-                                    <div>
-                                        <label for="">ISBN: </label>
-                                        968-18-4527-7
-                                    </div>
-                                    <div>
-                                        <label for="">Autor: </label>
-                                        Laudon Keneth
-                                    </div>
-                                    <div>
-                                        <label for="">Título: </label>
-                                        Administración de los Sistemas de Información
-                                    </div>
-                                </div>  
-                            </div>
-                       </div>
-                       <div class="col-md-12 bloque-alumno">
-                            <div  class="titulo-alumno-cancelacion">
-                                <h5>Encargado</h5>
-                            </div>
-                            <div class="row">
-                               <div class="offset-1 col-md-5">
-                                    <img src="dist/img/user2-160x160.png" alt="" width="150">
-                                </div>
-                                <div class="offset-1 col-md-5  datos-alumno-info-cancelada">
-                                    <div>
-                                        <label for="">Apellidos: </label>
-                                        Guilizzaoni Guilizzaon
-                                    </div>
-                                    <div>
-                                        <label for="">Nombres: </label>
-                                        Giacomo Giacomo
-                                    </div>
-                                    <div>
-                                        <label for="">Motivo: </label>
-                                         Aquí irá el motivo de la cancelación de la solicitud de préstamo.
-                                    </div>
-                                </div>
-                            </div>   
-                       </div>
-                       <div class="col-md-12 bloque-datos-cancelacion">
-                           <div  class="titulo-datos-cancelacion">
-                                <h5>Datos de Cancelación</h5>
-                           </div>
-                            <div class="row">
-                               <div class="offset-1 col-md-5">
-                                   <div class="col-md-5">
-                                    <img src="dist/img/img_datos_entrega.png" alt="" width="150">
-                                </div>
-                               </div>
-                               <div class="offset-1 col-md-5">
-                                   <div>
-                                        <label for="">Hora Cancelación: </label>
-                                        14:45
-                                    </div>
-                                    <div>
-                                        <label for="">Fecha Cancelación: </label>
-                                        06/06/2018
-                                    </div>
-                                    <div>
-                                        <label for="">Origen: </label>
-                                        Presencial
-                                    </div>
-                               </div>
-                            </div>
-                       </div>
-                   </div>
-                    
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-sign-out"></i> Salir</button>
-                <button type="button" class="btn btn-light"><i class="fa fa-print"></i> Reporte</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
+
   
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -726,7 +472,6 @@
 <script>
     $(document).ready(function() {
             $('#tabla-entregas-pendientes').DataTable( {
-                "searching": false,
                 "lengthMenu":[[5,10,15,-1],[5,10,15,"Todos"]],
                 "language": {
                     "sProcessing":     "Procesando...",
