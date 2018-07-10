@@ -1,1 +1,1 @@
-<%@include file="Vistas/Seguridad/loginAdministrador.jsp" %> %>
+<%@include file="Vistas/Seguridad/loginAdministrador.jsp" %>

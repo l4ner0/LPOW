@@ -30,13 +30,16 @@ public class AdministradorServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int op=0;
+        int op=Integer.parseInt(request.getParameter("op"));
+        String pagina="";
         switch(op){
             case 1:{
+                pagina="/Vistas/Administrador/Inicio/inicio.jsp";
                 break;
             }
             
             case 2:{
+                pagina="/Vistas/Administrador/Libros/libros.jsp";
                 break;
             }
             
@@ -48,6 +51,7 @@ public class AdministradorServlet extends HttpServlet {
                 break;
             }
         }
+         getServletContext().getRequestDispatcher(pagina).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/LCI2-07/Documents/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/inicio.jsp</file>
-            <file>file:/C:/Users/LCI2-07/Documents/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/libros.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/Libros/libros.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/Controlador/AdministradorServlet.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/Inicio/inicio.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/index.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/Principal.jsp</file>
         </group>
     </open-files>
 </project-private>
