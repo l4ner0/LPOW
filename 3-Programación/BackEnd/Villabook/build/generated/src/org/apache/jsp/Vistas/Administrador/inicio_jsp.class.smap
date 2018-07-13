@@ -5,70 +5,20 @@ JSP
 *F
 + 0 inicio.jsp
 Vistas/Administrador/inicio.jsp
-+ 1 head.jsp
-Vistas/Administrador/Estructura/head.jsp
-+ 2 header.jsp
-Vistas/Administrador/Estructura/header.jsp
-+ 3 sidebar.jsp
-Vistas/Administrador/Estructura/sidebar.jsp
-+ 4 footer.jsp
-Vistas/Administrador/Estructura/footer.jsp
++ 1 Head.jsp
+Vistas/Administrador/General/Head.jsp
++ 2 Header.jsp
+Vistas/Administrador/General/Header.jsp
++ 3 Sidebar.jsp
+Vistas/Administrador/General/Sidebar.jsp
 *L
-1,4:52
-1#1,7:55
-8:62,3
-9,3:65
-12:68,3
-13:71
-14:72,3
-15:75
-16:76,3
-17:79
-18:80,3
-19:83
-20:84,3
-21:87
-22:88,3
-23:91
-24:92,3
-25,2:95
-27:97,3
-28,2:100
-4#0,5:101
-1#2,28:106
-8#0,4:134
-1#3,11:138
-12:149,3
-13,86:152
-11#0,152:238
-1#4,7:390
-162#0,10:397
-172:407,3
-173,7:410
-180:417,3
-181,2:420
-183:422,3
-184:425
-185:426,3
-186:429
-187,2:430,3
-189:436
-190:437,3
-191,2:440
-193:442,3
-194:445
-195:446,3
-196:449
-197:450,3
-198:453
-199:454,3
-200:457
-201:458,3
-202:461
-203:462,3
-204:465
-205:466,3
-206:469
-207:470,3
-208,10:473
+1,3:51
+1#1,29:53
+3#0,5:81
+1#2,29:86
+7#0,3:114
+1#3,99:117
+9#0,151:216
+1#3,99:367
+159#0,51:466
 *E
