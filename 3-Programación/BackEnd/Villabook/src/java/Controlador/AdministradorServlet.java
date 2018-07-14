@@ -34,20 +34,37 @@ public class AdministradorServlet extends HttpServlet {
         String pagina="";
         switch(op){
             case 1:{
-                pagina="/Vistas/Administrador/Inicio/inicio.jsp";
+                pagina="/Vistas/Administrador/inicio.jsp";
                 break;
             }
             
             case 2:{
-                pagina="/Vistas/Administrador/Libros/libros.jsp";
+                pagina="/Vistas/Administrador/libros.jsp";
                 break;
             }
             
             case 3:{
+                 pagina="/Vistas/Administrador/entregas-pendientes.jsp";
                 break;
             }
             
             case 4:{
+                 pagina="/Vistas/Administrador/entregas-noAprobadas.jsp";
+                break;
+            }
+            
+            case 5:{
+                 pagina="/Vistas/Administrador/entregas-aprobadas.jsp";
+                break;
+            }
+            
+            case 6:{
+                 pagina="/Vistas/Administrador/devoluciones-pendientes.jsp";
+                break;
+            }
+            
+            case 7:{
+                 pagina="/Vistas/Administrador/devoluciones-aprobadas.jsp";
                 break;
             }
         }

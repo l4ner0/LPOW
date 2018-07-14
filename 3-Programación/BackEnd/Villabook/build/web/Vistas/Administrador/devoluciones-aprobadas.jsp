@@ -259,7 +259,7 @@
 
   
   <!-- /.content-wrapper -->
-  <%@include file="General/Sidebar.jsp" %>
+  <%@include file="General/Footer.jsp" %>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -270,7 +270,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<%=request.getContextPath()%>/Complementos/plugins/jquery/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

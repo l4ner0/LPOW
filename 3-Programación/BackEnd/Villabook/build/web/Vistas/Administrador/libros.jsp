@@ -29,46 +29,12 @@
                      <div class="card-header">
                          <h2>Catálogos de Libros</h2>
                          <div class="card-tools btn-nuevoLibro">
-                              <button type="button" class="btn btn-primary" title="Añadir Libro" data-toggle="modal" data-target="#añadirLibro"><i class="fa fa-plus"></i> Libro</button>
+                           <button type="button" class="btn btn-primary btn-sm" title="Añadir Autor" data-toggle="modal" data-target="#añadirAutor"><i class="fa fa-plus"></i> Autor</button>
+                              <button type="button" class="btn btn-primary btn-sm" title="Añadir Libro" data-toggle="modal" data-target="#añadirLibro" id="bnt-libro"><i class="fa fa-plus"></i> Libro</button>
                          </div>
                      </div>
                      <div class="card-body">
                          <div class="filtros-libros">
-                            <div class="row">
-                                 <div class="col-md-3">
-                                    <div class="form-group">
-                                      <label>Carrera</label>
-                                      <select class="form-control form-control-sm">
-                                        <option selected="selected">....</option>
-                                        <option>Ingeniería de Sistemas</option>
-                                        <option>Ingeniería Industrial</option>
-                                        <option>Ingeniería de Transportes</option>
-                                        <option>Ingeniería Agroindustrial</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-3">
-                                    <div class="form-group">
-                                      <label>Buscar por:</label>
-                                      <select class="form-control form-control-sm" style="width: 100%;">
-                                        <option selected="selected">....</option>
-                                        <option>Autor</option>
-                                        <option>Título</option>
-                                      </select>
-                                    </div>
-                                  </div>
-                                  <div class="col-md-4">
-                                      <div class="form-group">
-                                          <label>Palabras de búsqueda</label>
-                                          <input type="text" class="form-control form-control-sm">
-                                      </div>
-                                  </div>
-                                  <div class="col-md-2">
-                                     <div class="form-group">
-                                          <button class="btn-buscar-libro"><i class="fa fa-search"></i> Buscar</button>
-                                     </div>
-                                  </div>
-                            </div>
                         </div>
                         <div class="tabla-libro">
                             <div class="row">
@@ -499,16 +465,9 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Autor :</label>
-                                <button class="btn btn-primary btn-agregar-autor" data-toggle="modal" data-target="#añadirAutor"><li class="fa fa-plus"></li> </button>
-                                <br>
-                                <select class="form-control form-control-sm" style="width:200px; ">  
+                                <select class="form-control form-control-sm" style="width:200px;" id="selectorAutores">  
                                     <option>......</option>
-                                    <option>Autor 1</option>
-                                    <option>Autor 2</option>
-                                    <option>Autor 3</option>
-                                    <option>Autor 4</option>
-                                    <option>Autor 5</option>
-                                    <option>Autor 6</option>
+                                    
                                 </select>
                             </div>
                         </div>
@@ -584,10 +543,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Autor :</label>
-                                <button class="btn btn-primary btn-agregar-autor" data-toggle="modal" data-target="#añadirAutor"><li class="fa fa-plus"></li> </button>
+                                <label for="">Autor :</label>                           
                                 <br>
-                                <select class="form-control form-control-sm" style="width:200px; ">  
+                                <select class="form-control form-control-sm" style="width:200px;">  
                                     <option>......</option>
                                     <option>Autor 1</option>
                                     <option>Autor 2</option>
@@ -652,34 +610,34 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Apellidos :</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input type="text" class="form-control form-control-sm" id="txtApellidos">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Nombres :</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input type="text" class="form-control form-control-sm" id="txtNombres">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Datos de Publicación :</label>
-                                <textarea class="form-control form-control-sm" name="" id="" rows="4"></textarea>
+                                <textarea class="form-control form-control-sm" name="" id="textDetalle" rows="4"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-save"></i> Guardar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-guardarAutor"><i class="fa fa-save"></i> Guardar</button>
                 </div>
             </div>
         </div>
     </div>
     
-  
+     
   <!-- /.content-wrapper -->
-  <%@include file="General/Sidebar.jsp" %>
+  <%@include file="General/Footer.jsp" %>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -690,7 +648,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<%=request.getContextPath()%>/Complementos/plugins/jquery/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -700,7 +658,7 @@
 <!-- Bootstrap 4 -->
 <script src="<%=request.getContextPath()%>/Complementos/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Morris.js charts -->
-<script src="<%=request.getContextPath()%>/Complementos/https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="<%=request.getContextPath()%>/Complementos/plugins/sparkline/jquery.sparkline.min.js"></script>
@@ -739,7 +697,6 @@
 <script>
     $(document).ready(function() {
             $('#tabla-libros').DataTable( {
-                "searching": false,
                 "lengthMenu":[[5,10,15,-1],[5,10,15,"Todos"]],
                 "language": {
                     "sProcessing":     "Procesando...",
@@ -766,6 +723,32 @@
                     }
                 }
             } );
+            
+            $('#btn-guardarAutor').click(function(){
+                funcionGrabaAutor('<%=request.getContextPath()%>','AutorServlet','2');
+            });
+            
+            $('#bnt-libro').click(function() {
+                funcionListarAutor('<%=request.getContextPath()%>','AutorServlet','1');
+            });
+            $('#selectorAutores').append($('<option>', {
+                value: 1,
+                text: 'My option'
+                }));
+                $('#selectorAutores').append($('<option>', {
+                value: 1,
+                text: 'My option'
+                }));
+                $('#selectorAutores').append($('<option>', {
+                value: 1,
+                text: 'My option'
+                }));
+                $('#selectorAutores').append($('<option>', {
+                value: 1,
+                text: 'My option'
+                }));
+            
+            
         } );
 </script>
 </body>

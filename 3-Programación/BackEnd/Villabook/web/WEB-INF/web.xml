@@ -4,9 +4,25 @@
         <servlet-name>AdministradorServlet</servlet-name>
         <servlet-class>Controlador.AdministradorServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LibrosServlet</servlet-name>
+        <servlet-class>Controlador.LibrosServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AutorServlet</servlet-name>
+        <servlet-class>Controlador.AutorServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdministradorServlet</servlet-name>
         <url-pattern>/AdministradorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LibrosServlet</servlet-name>
+        <url-pattern>/LibrosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AutorServlet</servlet-name>
+        <url-pattern>/AutorServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
