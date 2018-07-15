@@ -21,7 +21,6 @@ Autor.prototype.grabarAutor=function(apellidos,nombres,detalle){
 }
 
 Autor.prototype.listarAutor=function(){
-    var respuesta;
     $.ajax({
         type: 'POST',
         url:this.ruta+"/"+this.controlador,
@@ -29,10 +28,18 @@ Autor.prototype.listarAutor=function(){
             op:this.op
         },
         success:function(response){
-            respuesta=response;
-              alert(respuesta);
+            var listAutores=$.parseJSON(response);
+            $('#selectorAutores option').remove();
+            $('#selectorAutores').append($('<option>', {
+                    value: -1,
+                    text: "........."
+                }));
+            for(var i=0; i<listAutores.length; i++){
+                $('#selectorAutores').append($('<option>', {
+                    value: listAutores[i].id_autor,
+                    text: listAutores[i].apellidos+" "+listAutores[i].nombres
+                }));
+            }
         }
     });
-
-    return respuesta;
 }

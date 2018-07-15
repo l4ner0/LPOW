@@ -7,6 +7,7 @@ package Controlador;
 
 import Bean.AutorBean;
 import DAO.AutorDAO;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class AutorServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         AutorDAO objAutorDAO=null;
         PrintWriter out = response.getWriter();
+        Gson gson = new Gson();
         int op=Integer.parseInt(request.getParameter("op"));
         String apellidos = request.getParameter("apellidos");
         String nombres= request.getParameter("nombres");
@@ -46,13 +48,9 @@ public class AutorServlet extends HttpServlet {
                 objAutorDAO=new AutorDAO();
                 ArrayList<AutorBean> lista = new ArrayList<AutorBean>();
                 lista=objAutorDAO.getAutores();
-                String respuesta="";
-                for(AutorBean obj:lista){
-                    respuesta+="<option value'"+obj.getId_autor()+"'>"+obj.getApellidos()+" "+obj.getNombres()+"</option>";
-                    respuesta+="\n";
-                }
-                out.print(respuesta);
-                System.out.println(respuesta);
+                out.print(gson.toJson(lista));
+                out.flush();
+                out.close();  
                 break;
             }
             case 2:{

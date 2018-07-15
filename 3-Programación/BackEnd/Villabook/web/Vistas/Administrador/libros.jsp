@@ -465,9 +465,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Autor :</label>
-                                <select class="form-control form-control-sm" style="width:200px;" id="selectorAutores">  
-                                    <option>......</option>
-                                    
+                                <select class="form-control form-control-sm" style="width:200px;" id="selectorAutores"> 
+                                    <option>.......</option>
                                 </select>
                             </div>
                         </div>
@@ -687,6 +686,7 @@
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/select2/select2.full.min.js"></script>
+<script src="<%=request.getContextPath()%>/Complementos/js/Autor.js"  type="text/javascript" defer></script>
 <!--
 <script>
     $(document).ready(function(){
@@ -727,28 +727,11 @@
             $('#btn-guardarAutor').click(function(){
                 funcionGrabaAutor('<%=request.getContextPath()%>','AutorServlet','2');
             });
-            
-            $('#bnt-libro').click(function() {
-                funcionListarAutor('<%=request.getContextPath()%>','AutorServlet','1');
+
+            $('#bnt-libro').click(function (){
+                var autores= new Autor('<%=request.getContextPath()%>','AutorServlet','1');
+                autores.listarAutor();
             });
-            $('#selectorAutores').append($('<option>', {
-                value: 1,
-                text: 'My option'
-                }));
-                $('#selectorAutores').append($('<option>', {
-                value: 1,
-                text: 'My option'
-                }));
-                $('#selectorAutores').append($('<option>', {
-                value: 1,
-                text: 'My option'
-                }));
-                $('#selectorAutores').append($('<option>', {
-                value: 1,
-                text: 'My option'
-                }));
-            
-            
         } );
 </script>
 </body>

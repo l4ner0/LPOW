@@ -14,9 +14,3 @@ var funcionGrabaAutor=function(ruta,controlador,op){
     document.getElementById("txtNombres").value="";
     document.getElementById("textDetalle").value="";
 }
-
-var funcionListarAutor=function(ruta,controlador,op){
-    var autor= new Autor(ruta,controlador,op);
-     var respuesta=autor.listarAutor();
-     alert(respuesta);
-}
