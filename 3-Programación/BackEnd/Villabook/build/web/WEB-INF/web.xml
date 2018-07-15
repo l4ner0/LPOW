@@ -12,6 +12,14 @@
         <servlet-name>AutorServlet</servlet-name>
         <servlet-class>Controlador.AutorServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Tipo_DocumentoServlet</servlet-name>
+        <servlet-class>Controlador.Tipo_DocumentoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EscuelaServlet</servlet-name>
+        <servlet-class>Controlador.EscuelaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdministradorServlet</servlet-name>
         <url-pattern>/AdministradorServlet</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>AutorServlet</servlet-name>
         <url-pattern>/AutorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Tipo_DocumentoServlet</servlet-name>
+        <url-pattern>/Tipo_DocumentoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EscuelaServlet</servlet-name>
+        <url-pattern>/EscuelaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

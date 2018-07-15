@@ -5,8 +5,12 @@
  */
 package Controlador;
 
+import Bean.escuelaBean;
+import DAO.escuelaDAO;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Usuario
  */
-public class LibrosServlet extends HttpServlet {
+public class EscuelaServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,7 +34,22 @@ public class LibrosServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
+        escuelaDAO objEscuelaDAO=null;
+        PrintWriter out=response.getWriter();
+        Gson gson = new Gson();
+        int op=Integer.parseInt(request.getParameter("op"));
+        
+        switch(op){
+            case 1:{
+                objEscuelaDAO=new escuelaDAO();
+                ArrayList<escuelaBean> lista = new ArrayList<escuelaBean>();
+                lista=objEscuelaDAO.getEscuela();
+                out.print(gson.toJson(lista));
+                out.flush();
+                out.close();
+                break;
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

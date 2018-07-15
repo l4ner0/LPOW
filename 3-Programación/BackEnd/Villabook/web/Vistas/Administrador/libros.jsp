@@ -446,65 +446,60 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Carrera :</label>
-                                <select name="" id="" class="form-control form-control-sm">
-                                    <option value="">......</option>
-                                    <option value="">Ingeniería de Sistemas</option>
-                                    <option value="">Ingeniería Industrial</option>
-                                    <option value="">Ingeniería de Transportes</option>
-                                    <option value="">Ingeniería de Agroindustrial</option>
-                                </select>
+                                <label for="">Tipo de Documento :</label>
+                                <select name="" id="cbTipoDocumentoAddLibro" class="form-control form-control-sm"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Escuela :</label>
+                                <select name="" id="cbEscuelaAddLibro" class="form-control form-control-sm"></select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">ISBN :</label>
-                                <input class="form-control form-control-sm" type="text">
+                                <input class="form-control form-control-sm" type="text" id="txtIsbnAddLibro">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Autor :</label>
-                                <select class="form-control form-control-sm" style="width:200px;" id="selectorAutores"> 
-                                    <option>.......</option>
+                                <select class="form-control form-control-sm"  id="cbAutorAddLibro"> 
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Título :</label>
-                                <input type="text" class="form-control form-control-sm">
+                                <input type="text" class="form-control form-control-sm" id="txtTituloAddLibro">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Stock :</label>
+                                <input type="text" class="form-control form-control-sm" id="txtStockAddLibro">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Datos de Publicación :</label>
-                                <textarea class="form-control form-control-sm" name="" id="" rows="4"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">Tipo Documento : </label>
-                                <select name="" id="" class="form-control form-control-sm">
-                                    <option value="">......</option>
-                                    <option value="">Libro</option>
-                                    <option value="">Monografía</option>
-                                    <option value="">Tesis</option>
-                                    <option value="">Otro</option>
-                                </select>
+                                <textarea class="form-control form-control-sm" name="" id="txtDatosPubliAddLibro" rows="4"></textarea>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
                                <label for="">Portada : </label>
-                                <input type="file" title="Portada del Libro">
+                               <br>
+                               <img width="80" alt="Imagen" id="imgPortadaAddLibro" />
+                               <input type="file" title="Portada del Libro" id="filePortadaAddLibro">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-save"></i> Grabar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-noGrabarLibro"><i class="fa fa-times"></i> Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-grabarLibro"><i class="fa fa-save"></i> Grabar</button>
                 </div>
             </div>
         </div>
@@ -609,25 +604,25 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Apellidos :</label>
-                                <input type="text" class="form-control form-control-sm" id="txtApellidos">
+                                <input type="text" class="form-control form-control-sm" id="txtApellidosAutor">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Nombres :</label>
-                                <input type="text" class="form-control form-control-sm" id="txtNombres">
+                                <input type="text" class="form-control form-control-sm" id="txtNombresAutor">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Datos de Publicación :</label>
-                                <textarea class="form-control form-control-sm" name="" id="textDetalle" rows="4"></textarea>
+                                <textarea class="form-control form-control-sm" name="" id="textDetalleAutor" rows="4"></textarea>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-cancelarAutor"><i class="fa fa-times"></i> Cancelar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-guardarAutor"><i class="fa fa-save"></i> Guardar</button>
                 </div>
             </div>
@@ -687,6 +682,8 @@
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/select2/select2.full.min.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/js/Autor.js"  type="text/javascript" defer></script>
+<script src="<%=request.getContextPath()%>/Complementos/js/Tipo_Documento.js"  type="text/javascript" defer></script>
+<script src="<%=request.getContextPath()%>/Complementos/js/Escuela.js"  type="text/javascript" defer></script>
 <!--
 <script>
     $(document).ready(function(){
@@ -724,14 +721,35 @@
                 }
             } );
             
+            $('#btn-cancelarAutor').click(function (){
+                funcionCancelarAutor();
+            });
             $('#btn-guardarAutor').click(function(){
                 funcionGrabaAutor('<%=request.getContextPath()%>','AutorServlet','2');
             });
 
             $('#bnt-libro').click(function (){
                 var autores= new Autor('<%=request.getContextPath()%>','AutorServlet','1');
+                var tipoDocumento=new Tipo_Documento('<%=request.getContextPath()%>','Tipo_DocumentoServlet','1');
+                var escuela=new Escuela('<%=request.getContextPath()%>','EscuelaServlet','1');
                 autores.listarAutor();
+                tipoDocumento.listarTipoDocumento();
+                escuela.listarEscuelas();
             });
+            
+            $('#btn-grabarLibro').click(function(){
+                funcionGrabarLibro('<%=request.getContextPath()%>','AutorServlet','1');
+            });
+            
+            $('#btn-noGrabarLibro').click(function(){
+                funcionNoGrabarLibro('<%=request.getContextPath()%>','AutorServlet','1');
+            });
+             $(document).on('change', '#filePortadaAddLibro', function(e) {
+                // Obtenemos la ruta temporal mediante el evento
+                var TmpPath = URL.createObjectURL(e.target.files[0]);
+                // Mostramos la ruta temporal
+                $('#imgPortadaAddLibro').attr('src', TmpPath);
+              });
         } );
 </script>
 </body>

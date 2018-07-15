@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `prestamo`(
 
 CREATE TABLE IF NOT EXISTS `libro`(
 	`id_libro` int(11) NOT NULL,
-	`id_tipo_libro` int(11) NOT NULL,
+	`id_tipo_documento` int(11) NOT NULL,
 	`id_escuela` int(11) NOT NULL,
 	`id_autor` int(11) NOT NULL,
 	`ISBN` varchar(50) NOT NULL,
@@ -64,8 +64,8 @@ CREATE TABLE IF NOT EXISTS `escuela`(
 	`detalle` text(200)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
-CREATE TABLE IF NOT EXISTS `tipo_libro`(
-	`id_tipo_libro` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tipo_documento`(
+	`id_tipo_documento` int(11) NOT NULL,
 	`tipo` varchar(40) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
@@ -130,7 +130,7 @@ ADD PRIMARY KEY (`id_prestamo`), ADD KEY `id_libro` (`id_libro`),
 ADD KEY `id_empleado` (`id_empleado`);
 
 ALTER TABLE `libro`
-ADD PRIMARY KEY (`id_libro`), ADD KEY `id_tipo_libro` (`id_tipo_libro`),
+ADD PRIMARY KEY (`id_libro`), ADD KEY `id_tipo_documento` (`id_tipo_documento`),
 ADD KEY `id_escuela` (`id_escuela`),
 ADD KEY `id_autor` (`id_autor`);
 
@@ -143,8 +143,8 @@ ADD PRIMARY KEY (`id_autor`);
 ALTER TABLE `escuela`
 ADD PRIMARY KEY (`id_escuela`);
 
-ALTER TABLE `tipo_libro`
-ADD PRIMARY KEY (`id_tipo_libro`);
+ALTER TABLE `tipo_documento`
+ADD PRIMARY KEY (`id_tipo_documento`);
 
 ALTER TABLE `solicitud_prestamo`
 ADD KEY  `id_alumno` (`id_alumno`), ADD KEY `id_prestamo` (`id_prestamo`);
@@ -189,8 +189,8 @@ MODIFY `id_autor` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `escuela`
 MODIFY `id_escuela` int(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE `tipo_libro`
-MODIFY `id_tipo_libro` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tipo_documento`
+MODIFY `id_tipo_documento` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `alumno`
 MODIFY `id_alumno` int(11) NOT NULL AUTO_INCREMENT;
@@ -245,8 +245,8 @@ ADD CONSTRAINT `prestamoFk_id_empleado`
 FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`);
 
 ALTER TABLE `libro`
-ADD CONSTRAINT `libroFk_id_tipo_libro`
-FOREIGN KEY  (`id_tipo_libro`) REFERENCES `tipo_libro` (`id_tipo_libro`),
+ADD CONSTRAINT `libroFk_id_tipo_documento`
+FOREIGN KEY  (`id_tipo_documento`) REFERENCES `tipo_documento` (`id_tipo_documento`),
 ADD CONSTRAINT `libroFk_id_escuela`
 FOREIGN KEY (`id_escuela`) REFERENCES `escuela` (`id_escuela`),
 ADD CONSTRAINT `libroFk_id_autor`

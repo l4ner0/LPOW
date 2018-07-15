@@ -28,16 +28,16 @@ Autor.prototype.listarAutor=function(){
             op:this.op
         },
         success:function(response){
-            var listAutores=$.parseJSON(response);
-            $('#selectorAutores option').remove();
-            $('#selectorAutores').append($('<option>', {
+            var listaAutores=$.parseJSON(response);
+            $('#cbAutorAddLibro option').remove();
+            $('#cbAutorAddLibro').append($('<option>', {
                     value: -1,
                     text: "........."
-                }));
-            for(var i=0; i<listAutores.length; i++){
-                $('#selectorAutores').append($('<option>', {
-                    value: listAutores[i].id_autor,
-                    text: listAutores[i].apellidos+" "+listAutores[i].nombres
+            }));
+            for(var i=0; i<listaAutores.length; i++){
+                $('#cbAutorAddLibro').append($('<option>', {
+                    value: listaAutores[i].id_autor,
+                    text: listaAutores[i].apellidos+" "+listaAutores[i].nombres
                 }));
             }
         }
