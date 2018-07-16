@@ -1,3 +1,12 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Bean.libroBean"%>
+<%@page import="DAO.escuelaDAO"%>
+<%!
+    ArrayList<libroBean> listaLibros;
+%>
+<%
+    listaLibros=(ArrayList<libroBean>)request.getAttribute("listasLibros");
+%>
 <!DOCTYPE html>
 <html>
 <%@ include file="General/Head.jsp" %>
@@ -54,15 +63,16 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <%for(libroBean obj:listaLibros){%>
                                                 <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
+                                                    <td><%=obj.getId_autor()%></td>
                                                     <td>
-                                                        Administración de Ingeniería de Sistemas
+                                                        <%=obj.getTitulo()%>
                                                     </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
+                                                    <td><%=obj.getISBN()%></td>
+                                                    <td><%=obj.getDatos_publi()%></td>
                                                     <td>
-                                                        <span class="status--process">Sistemas</span>
+                                                        <span class="status--process"><%=obj.getId_escuela()%></span>
                                                     </td>
                                                     <td>
                                                         <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
@@ -78,343 +88,8 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Lori Lynch</td>
-                                                    <td>
-                                                        Administración de Ingeniería de Sistemas
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>México D.F Megabyte 1993</td>
-                                                    <td>
-                                                        <span class="status--process">Sistemas</span>
-                                                    </td>
-                                                    <td>
-                                                        <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
-                                                                <i class="fa fa-trash"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                
+                                               
+                                                <%}%>
                                             </tbody>
                                         </table>
                                     </div>
@@ -684,14 +359,8 @@
 <script src="<%=request.getContextPath()%>/Complementos/js/Autor.js"  type="text/javascript" ></script>
 <script src="<%=request.getContextPath()%>/Complementos/js/Tipo_Documento.js"  type="text/javascript" ></script>
 <script src="<%=request.getContextPath()%>/Complementos/js/Escuela.js"  type="text/javascript" ></script>
-<script src="<%=request.getContextPath()%>/Complementos/js/Libro.js"  type="text/javascript"></script
-<!--
-<script>
-    $(document).ready(function(){
-       $('.select2').select2(); 
-    });
-</script>
--->
+<script src="<%=request.getContextPath()%>/Complementos/js/Libro.js"  type="text/javascript"></script>
+    
 <script>
     $(document).ready(function() {
             $('#tabla-libros').DataTable( {

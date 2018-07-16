@@ -9,6 +9,7 @@ import Bean.libroBean;
 import DAO.libroDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +39,10 @@ public class LibroServlet extends HttpServlet {
         
         switch(op){
             case 1:{
-                
+                objLibroDAO=new libroDAO();
+                ArrayList<libroBean> lista=new ArrayList<libroBean>();
+                lista = objLibroDAO.getLibros();
+                request.setAttribute("listasLibros", lista);
                 break;
             }
             

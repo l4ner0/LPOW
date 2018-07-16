@@ -8,6 +8,7 @@ package DAO;
 import Bean.libroBean;
 import Util.Conexion;
 import java.sql.*;
+import java.util.ArrayList;
 
 
 /**
@@ -45,8 +46,42 @@ public class libroDAO {
         }
         return resultado;
     }
+    
+    public ArrayList<libroBean> getLibros(){
+        ArrayList<libroBean> lista=new ArrayList<libroBean>();
+        libroBean objLibroBean=null;
+        try {
+            Conexion conexion=new Conexion();
+            cn=conexion.getConexion();
+            String sql="SELECT * FROM libro";
+            ps=cn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            
+            while(rs.next()){
+                objLibroBean=new libroBean();
+                objLibroBean.setId_libro(rs.getInt(1));
+                objLibroBean.setId_tipo_documento(rs.getInt(2));
+                objLibroBean.setId_escuela(rs.getInt(3));
+                objLibroBean.setId_autor(rs.getInt(4));
+                objLibroBean.setISBN(rs.getString(5));
+                objLibroBean.setPortada(rs.getString(6));
+                objLibroBean.setTitulo(rs.getString(7));
+                objLibroBean.setDatos_publi(rs.getString(8));
+                objLibroBean.setStock_inicial(rs.getInt(9));
+                objLibroBean.setStock_final(rs.getInt(10));
+                lista.add(objLibroBean);
+            }
+            
+            rs.close();
+            ps.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        return lista;
+    }
     /*
     public static void main(String [] args){
+        
        libroBean libro=new libroBean();
         libro.setId_tipo_documento(1);
         libro.setId_escuela(1);
@@ -60,6 +95,25 @@ public class libroDAO {
         libroDAO objLibroDao=new libroDAO();
         int resultado=objLibroDao.addLibro(libro);
         System.out.println("El resultado es: "+resultado);
+ 
+        ArrayList<libroBean> lista=new ArrayList<libroBean>();
+        libroDAO libro = new libroDAO();
+        lista=libro.getLibros();
+        
+        for(libroBean obj:lista){
+            System.out.println(obj.getId_libro());
+            System.out.println(obj.getId_tipo_documento());
+            System.out.println(obj.getId_escuela());
+            System.out.println(obj.getId_autor());
+            System.out.println(obj.getISBN());
+            System.out.println(obj.getPortada());
+            System.out.println(obj.getTitulo());
+            System.out.println(obj.getDatos_publi());
+            System.out.println(obj.getStock_inicial());
+            System.out.println(obj.getStock_final());
+            System.out.println("");
+        }
+        
     }
-     */  
+     */ 
 }

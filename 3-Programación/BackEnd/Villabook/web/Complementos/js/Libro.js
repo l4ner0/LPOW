@@ -24,3 +24,16 @@ Libro.prototype.addLibro=function(tipoDocumento,escuela,autor,isbn,portada,titul
         }
     });
 }
+
+Libro.prototype.listarLibros=function(){
+    $.ajax({
+        type: 'POST',
+        url: this.ruta+"/"+this.controlador,
+        data:{
+            op:this.op
+        },
+        success:function(response){
+            var listaLibros=$.parseJSON(response);
+        }
+    });
+}

@@ -5,8 +5,11 @@
  */
 package Controlador;
 
+import Bean.libroBean;
+import DAO.libroDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +33,7 @@ public class AdministradorServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        libroDAO objLibroDAO=null;
         int op=Integer.parseInt(request.getParameter("op"));
         String pagina="";
         switch(op){
@@ -39,6 +43,10 @@ public class AdministradorServlet extends HttpServlet {
             }
             
             case 2:{
+                objLibroDAO=new libroDAO();
+                ArrayList<libroBean> lista=new ArrayList<libroBean>();
+                lista = objLibroDAO.getLibros();
+                request.setAttribute("listasLibros", lista);
                 pagina="/Vistas/Administrador/libros.jsp";
                 break;
             }

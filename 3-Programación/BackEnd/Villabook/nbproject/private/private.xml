@@ -4,12 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/libros.jsp</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/DAO/libroDAO.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Complementos/js/Escuela.js</file>
             <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/Controlador/LibroServlet.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/Controlador/AutorServlet.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/Controlador/AdministradorServlet.java</file>
             <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Complementos/js/Libro.js</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/DAO/AutorDAO.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Complementos/js/funciones.js</file>
             <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/Bean/libroBean.java</file>
         </group>
     </open-files>
