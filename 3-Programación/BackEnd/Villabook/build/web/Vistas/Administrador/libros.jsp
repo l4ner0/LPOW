@@ -681,9 +681,10 @@
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/select2/select2.full.min.js"></script>
-<script src="<%=request.getContextPath()%>/Complementos/js/Autor.js"  type="text/javascript" defer></script>
-<script src="<%=request.getContextPath()%>/Complementos/js/Tipo_Documento.js"  type="text/javascript" defer></script>
-<script src="<%=request.getContextPath()%>/Complementos/js/Escuela.js"  type="text/javascript" defer></script>
+<script src="<%=request.getContextPath()%>/Complementos/js/Autor.js"  type="text/javascript" ></script>
+<script src="<%=request.getContextPath()%>/Complementos/js/Tipo_Documento.js"  type="text/javascript" ></script>
+<script src="<%=request.getContextPath()%>/Complementos/js/Escuela.js"  type="text/javascript" ></script>
+<script src="<%=request.getContextPath()%>/Complementos/js/Libro.js"  type="text/javascript"></script
 <!--
 <script>
     $(document).ready(function(){
@@ -738,11 +739,12 @@
             });
             
             $('#btn-grabarLibro').click(function(){
-                funcionGrabarLibro('<%=request.getContextPath()%>','AutorServlet','1');
+                funcionGrabarLibro('<%=request.getContextPath()%>','LibroServlet','2');
             });
             
             $('#btn-noGrabarLibro').click(function(){
-                funcionNoGrabarLibro('<%=request.getContextPath()%>','AutorServlet','1');
+                
+                funcionNoGrabarLibro();
             });
              $(document).on('change', '#filePortadaAddLibro', function(e) {
                 // Obtenemos la ruta temporal mediante el evento

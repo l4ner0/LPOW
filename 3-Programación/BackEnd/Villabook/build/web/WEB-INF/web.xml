@@ -20,6 +20,10 @@
         <servlet-name>EscuelaServlet</servlet-name>
         <servlet-class>Controlador.EscuelaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LibroServlet</servlet-name>
+        <servlet-class>Controlador.LibroServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdministradorServlet</servlet-name>
         <url-pattern>/AdministradorServlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>EscuelaServlet</servlet-name>
         <url-pattern>/EscuelaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LibroServlet</servlet-name>
+        <url-pattern>/LibroServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

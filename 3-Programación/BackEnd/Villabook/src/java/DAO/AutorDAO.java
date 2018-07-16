@@ -30,7 +30,6 @@ public class AutorDAO {
             ps.setString(2, objAutor.getNombres());
             ps.setString(3, objAutor.getDetalle());
             resultado= ps.executeUpdate();
-            System.out.println("El contenido de resultado es: "+resultado);
             ps.close();
             cn.close();
             

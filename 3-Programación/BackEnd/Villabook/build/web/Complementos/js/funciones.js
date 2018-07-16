@@ -30,6 +30,8 @@ var funcionGrabarLibro=function(ruta,controlador,op){
     var stock=$("#txtStockAddLibro").val();
     var datosPubli=$("#txtDatosPubliAddLibro").val();
     var portada=$("#filePortadaAddLibro").val();
+    var libro=new Libro(ruta,controlador,op);
+    libro.addLibro(tipoDocumento,escuela,autor,isbn,portada,titulo,datosPubli,stock);
     alert("Tipo de Documento: "+tipoDocumento+"\n"+
             "Escuela: "+escuela+"\n"+
             "ISBN: "+isbn+"\n"+

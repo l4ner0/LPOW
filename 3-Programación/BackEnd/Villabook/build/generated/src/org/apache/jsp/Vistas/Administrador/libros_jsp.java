@@ -761,7 +761,8 @@ public final class libros_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <div class=\"col-md-8\">\n");
       out.write("                            <div class=\"form-group\">\n");
       out.write("                               <label for=\"\">Portada : </label>\n");
-      out.write("                               <img width=\"50\" alt=\"Imagen\" id=\"imgPortadaAddLibro\" />\n");
+      out.write("                               <br>\n");
+      out.write("                               <img width=\"80\" alt=\"Imagen\" id=\"imgPortadaAddLibro\" />\n");
       out.write("                               <input type=\"file\" title=\"Portada del Libro\" id=\"filePortadaAddLibro\">\n");
       out.write("                            </div>\n");
       out.write("                        </div>\n");
@@ -1105,13 +1106,12 @@ public final class libros_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            $('#btn-grabarLibro').click(function(){\n");
       out.write("                funcionGrabarLibro('");
       out.print(request.getContextPath());
-      out.write("','AutorServlet','1');\n");
+      out.write("','LibroServlet','2');\n");
       out.write("            });\n");
       out.write("            \n");
       out.write("            $('#btn-noGrabarLibro').click(function(){\n");
-      out.write("                funcionNoGrabarLibro('");
-      out.print(request.getContextPath());
-      out.write("','AutorServlet','1');\n");
+      out.write("                \n");
+      out.write("                funcionNoGrabarLibro();\n");
       out.write("            });\n");
       out.write("             $(document).on('change', '#filePortadaAddLibro', function(e) {\n");
       out.write("                // Obtenemos la ruta temporal mediante el evento\n");
