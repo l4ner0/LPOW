@@ -32,14 +32,7 @@ var funcionGrabarLibro=function(ruta,controlador,op){
     var portada=$("#filePortadaAddLibro").val();
     var libro=new Libro(ruta,controlador,op);
     libro.addLibro(tipoDocumento,escuela,autor,isbn,portada,titulo,datosPubli,stock);
-    alert("Tipo de Documento: "+tipoDocumento+"\n"+
-            "Escuela: "+escuela+"\n"+
-            "ISBN: "+isbn+"\n"+
-            "Autor: "+autor+"\n"+
-            "Titulo: "+titulo+"\n"+
-            "Stock :"+stock+"\n"+
-            "Datos de Publicación: "+datosPubli+"\n"+
-            "Portada: "+portada);
+    
     
     $("#cbTipoDocumentoAddLibro").val("");
     $("#cbEscuelaAddLibro").val("");

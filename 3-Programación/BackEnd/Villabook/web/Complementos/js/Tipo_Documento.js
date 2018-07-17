@@ -24,6 +24,17 @@ Tipo_Documento.prototype.listarTipoDocumento=function(){
                     text: listaTipoDocumento[i].tipo
                 }));
             }
+            $('#cbTipoDocumentoEditLibro option').remove();
+            $('#cbTipoDocumentoEditLibro').append($('<option>',{
+                value:-1,
+                text: "........."
+            }));
+            for(var i=0; i<listaTipoDocumento.length; i++){
+                $('#cbTipoDocumentoEditLibro').append($('<option>', {
+                    value: listaTipoDocumento[i].id_tipo_documento,
+                    text: listaTipoDocumento[i].tipo
+                }));
+            }
         }
     });
 }

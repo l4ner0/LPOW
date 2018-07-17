@@ -40,6 +40,18 @@ Autor.prototype.listarAutor=function(){
                     text: listaAutores[i].apellidos+" "+listaAutores[i].nombres
                 }));
             }
+            
+            $('#cbAutorEditLibro option').remove();
+            $('#cbAutorEditLibro').append($('<option>', {
+                    value: -1,
+                    text: "........."
+            }));
+            for(var i=0; i<listaAutores.length; i++){
+                $('#cbAutorEditLibro').append($('<option>', {
+                    value: listaAutores[i].id_autor,
+                    text: listaAutores[i].apellidos+" "+listaAutores[i].nombres
+                }));
+            }
         }
     });
 }

@@ -24,6 +24,18 @@ Escuela.prototype.listarEscuelas=function(){
                     text: listaEscuelas[i].nombre
                 }));
             }
+            
+            $('#cbEscuelaEditLibro option').remove();
+            $('#cbEscuelaEditLibro').append($('<option>',{
+                value:-1,
+                text: "........."
+            }));
+            for(var i=0; i<listaEscuelas.length; i++){
+                $('#cbEscuelaEditLibro').append($('<option>', {
+                    value: listaEscuelas[i].id_escuela,
+                    text: listaEscuelas[i].nombre
+                }));
+            }
         }
     });
 }

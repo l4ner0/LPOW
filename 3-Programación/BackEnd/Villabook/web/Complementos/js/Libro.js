@@ -21,6 +21,7 @@ Libro.prototype.addLibro=function(tipoDocumento,escuela,autor,isbn,portada,titul
         },
         success:function(response){
             alert(response);
+            location.reload();
         }
     });
 }
