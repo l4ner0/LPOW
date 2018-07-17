@@ -65,14 +65,14 @@
                                             <tbody>
                                                 <%for(libroBean obj:listaLibros){%>
                                                 <tr class="tr-shadow">
-                                                    <td><%=obj.getId_autor()%></td>
+                                                    <td><%=obj.getAutor()%></td>
                                                     <td>
                                                         <%=obj.getTitulo()%>
                                                     </td>
                                                     <td><%=obj.getISBN()%></td>
                                                     <td><%=obj.getDatos_publi()%></td>
                                                     <td>
-                                                        <span class="status--process"><%=obj.getId_escuela()%></span>
+                                                        <span class="status--process"><%=obj.getEscuela()%></span>
                                                     </td>
                                                     <td>
                                                         <img src="<%=request.getContextPath()%>/Complementos/dist/img/portada-libro.png" alt="" width="45">
@@ -409,6 +409,7 @@
             
             $('#btn-grabarLibro').click(function(){
                 funcionGrabarLibro('<%=request.getContextPath()%>','LibroServlet','2');
+                location.reload();
             });
             
             $('#btn-noGrabarLibro').click(function(){

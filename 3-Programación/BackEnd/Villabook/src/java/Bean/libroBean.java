@@ -12,8 +12,11 @@ package Bean;
 public class libroBean {
     int id_libro;
     int id_tipo_documento;
+    String tipo_documento;
     int id_escuela;
+    String escuela;
     int id_autor;
+    String autor;
     String ISBN;
     String portada;
     String titulo;
@@ -37,6 +40,14 @@ public class libroBean {
         this.id_tipo_documento = id_tipo_documento;
     }
 
+    public String getTipo_documento() {
+        return tipo_documento;
+    }
+
+    public void setTipo_documento(String tipo_documento) {
+        this.tipo_documento = tipo_documento;
+    }
+
     public int getId_escuela() {
         return id_escuela;
     }
@@ -45,12 +56,28 @@ public class libroBean {
         this.id_escuela = id_escuela;
     }
 
+    public String getEscuela() {
+        return escuela;
+    }
+
+    public void setEscuela(String escuela) {
+        this.escuela = escuela;
+    }
+
     public int getId_autor() {
         return id_autor;
     }
 
     public void setId_autor(int id_autor) {
         this.id_autor = id_autor;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
     public String getISBN() {
@@ -100,6 +127,6 @@ public class libroBean {
     public void setStock_final(int stock_final) {
         this.stock_final = stock_final;
     }
-    
+
     
 }

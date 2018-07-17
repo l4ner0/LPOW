@@ -45,7 +45,7 @@ public class AdministradorServlet extends HttpServlet {
             case 2:{
                 objLibroDAO=new libroDAO();
                 ArrayList<libroBean> lista=new ArrayList<libroBean>();
-                lista = objLibroDAO.getLibros();
+                lista = objLibroDAO.getLibrosTabla();
                 request.setAttribute("listasLibros", lista);
                 pagina="/Vistas/Administrador/libros.jsp";
                 break;

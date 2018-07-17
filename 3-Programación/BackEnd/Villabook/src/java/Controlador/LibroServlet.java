@@ -41,7 +41,7 @@ public class LibroServlet extends HttpServlet {
             case 1:{
                 objLibroDAO=new libroDAO();
                 ArrayList<libroBean> lista=new ArrayList<libroBean>();
-                lista = objLibroDAO.getLibros();
+                lista = objLibroDAO.getLibrosTabla();
                 request.setAttribute("listasLibros", lista);
                 break;
             }

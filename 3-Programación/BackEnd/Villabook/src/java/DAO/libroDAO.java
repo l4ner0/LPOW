@@ -79,6 +79,46 @@ public class libroDAO {
         }
         return lista;
     }
+    
+    public ArrayList<libroBean> getLibrosTabla(){
+        ArrayList<libroBean> lista=new ArrayList<libroBean>();
+        libroBean objLibroBean=null;
+        try {
+            Conexion conexion=new Conexion();
+            cn=conexion.getConexion();
+            String sql="SELECT id_libro,tipo, nombre, apellidos,nombres,ISBN,portada,titulo,datos_publi,stock_inicial,stock_final \n" +
+                        "FROM libro as l\n" +
+                        "INNER JOIN tipo_documento as tp\n" +
+                        "ON l.id_tipo_documento=tp.id_tipo_documento\n" +
+                        "INNER JOIN escuela as e\n" +
+                        "ON l.id_escuela=e.id_escuela\n" +
+                        "INNER JOIN autor as a\n" +
+                        "ON l.id_autor=a.id_autor;";
+            ps=cn.prepareStatement(sql);
+            rs=ps.executeQuery();
+            
+            while(rs.next()){
+                objLibroBean=new libroBean();
+                objLibroBean.setId_libro(rs.getInt(1));
+                objLibroBean.setTipo_documento(rs.getString(2));
+                objLibroBean.setEscuela(rs.getString(3));
+                objLibroBean.setAutor(rs.getString(4)+" "+rs.getString(5));
+                objLibroBean.setISBN(rs.getString(6));
+                objLibroBean.setPortada(rs.getString(7));
+                objLibroBean.setTitulo(rs.getString(8));
+                objLibroBean.setDatos_publi(rs.getString(9));
+                objLibroBean.setStock_inicial(rs.getInt(10));
+                objLibroBean.setStock_final(rs.getInt(11));
+                lista.add(objLibroBean);
+            }
+            
+            rs.close();
+            ps.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        return lista;
+    }
     /*
     public static void main(String [] args){
         
