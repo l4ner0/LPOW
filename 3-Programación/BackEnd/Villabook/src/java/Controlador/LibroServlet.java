@@ -7,6 +7,7 @@ package Controlador;
 
 import Bean.libroBean;
 import DAO.libroDAO;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class LibroServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         libroDAO objLibroDAO=null;
+        Gson gson = new Gson();
         PrintWriter out = response.getWriter();
         int op=Integer.parseInt(request.getParameter("op"));
         
@@ -74,6 +76,59 @@ public class LibroServlet extends HttpServlet {
                     out.print("Se añadio el libro correctamente");
                 }else{
                      out.print("Error, no se pudo añadir el libro");
+                }
+                break;
+            }
+            
+            case 3:{
+                objLibroDAO=new libroDAO();
+                String isbn=request.getParameter("isbn");
+                System.out.println("Este es el ISBN: "+isbn);
+                ArrayList<libroBean> libros=new ArrayList<libroBean>();
+                libros = objLibroDAO.getLibro(isbn);
+                out.print(gson.toJson(libros));
+                out.flush();
+                out.close();
+                break;
+            }
+            
+            case 4:{
+                objLibroDAO=new libroDAO();
+                libroBean objLibroBean=new libroBean();
+                
+                int tipoDocumento=Integer.parseInt(request.getParameter("tipoDocumento"));
+                int escuela=Integer.parseInt(request.getParameter("escuela"));
+                int autor=Integer.parseInt(request.getParameter("autor"));
+                String isbn=request.getParameter("isbn");
+                String portada=request.getParameter("portada");
+                String titulo=request.getParameter("titulo");
+                String datosPubli=request.getParameter("datosPubli");
+                
+                objLibroBean.setId_tipo_documento(tipoDocumento);
+                objLibroBean.setId_escuela(escuela);
+                objLibroBean.setId_autor(autor);
+                objLibroBean.setISBN(isbn);
+                objLibroBean.setPortada(portada);
+                objLibroBean.setTitulo(titulo);
+                objLibroBean.setDatos_publi(datosPubli);
+                
+                int resultado=objLibroDAO.updateLibro(objLibroBean);
+                
+                if(resultado==1){
+                    out.print("Se modificó el libro correctamente");
+                }else{
+                     out.print("Error, no se pudo modificar el libro");
+                }
+            }
+            
+            case 5:{
+                objLibroDAO=new libroDAO();
+                String isbn=request.getParameter("isbn");
+                int resultado=objLibroDAO.deleteLibro(isbn);
+                if(resultado==1){
+                    out.print("Se eliminó el libro correctamente");
+                }else{
+                     out.print("Error, no se pudo eliminó el libro");
                 }
                 break;
             }

@@ -39,7 +39,8 @@ CREATE TABLE IF NOT EXISTS `libro`(
 	`titulo` varchar(50) NOT NULL,
 	`datos_publi` text(200),
 	`stock_inicial` int(4) NOT NULL,
-	`stock_final` int(4) NOT NULL  
+	`stock_final` int(4) NOT NULL,
+	`estado` int(4) NOT NULL DEFAULT '1'  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1; 
 
 CREATE TABLE IF NOT EXISTS `devolucion`(

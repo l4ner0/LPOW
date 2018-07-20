@@ -56,3 +56,29 @@ var funcionNoGrabarLibro=function(){
     $("#filePortadaAddLibro").val("");
     $('#imgPortadaAddLibro').attr('src', "");
 }
+
+var funcionActualizarLibro=function(ruta,controlador,op){
+    var tipoDocumento=$("#cbTipoDocumentoEditLibro").val();
+    var escuela=$("#cbEscuelaEditLibro").val();
+    var isbn=$("#txtIsbnEditLibro").val();
+    var autor=$("#cbAutorEditLibro").val();
+    var titulo=$("#txtTituloEditLibro").val();
+    var datosPubli=$("#txtDatosPubliEditLibro").val();
+    var portada=$("#filePortadaEditLibro").val();
+    
+    var libro= new Libro(ruta,controlador,op);
+    libro.editarLibro(tipoDocumento,escuela,autor,isbn,portada,titulo,datosPubli);
+}
+
+var funcionListarLibros=function(ruta,controlador,op,isbn){
+    var libro= new Libro(ruta,controlador,op);
+    libro.listarLibros(isbn);
+}
+
+var funcionEliminarLibro=function(ruta,controlador,op,isbn){
+    if (confirm("Estas segura de eliminar el libro")) {
+        var libro= new Libro(ruta,controlador,op);
+        libro.eliminarLibro(isbn);
+    } 
+    
+}

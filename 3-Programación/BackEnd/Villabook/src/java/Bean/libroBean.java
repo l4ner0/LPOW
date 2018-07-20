@@ -23,6 +23,15 @@ public class libroBean {
     String datos_publi;
     int stock_inicial;
     int stock_final;
+    int estado;
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 
     public int getId_libro() {
         return id_libro;

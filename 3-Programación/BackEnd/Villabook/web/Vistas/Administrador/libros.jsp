@@ -79,10 +79,10 @@
                                                     </td>
                                                     <td>
                                                         <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar" id="btn-editarLibro" data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar" onclick="funcionListarLibros('<%=request.getContextPath()%>','LibroServlet','3','<%=obj.getISBN()%>')" data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
                                                                 <i class="fa fa-edit"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                                                <button class="item  btn-tabla-eliminar" onclick="funcionEliminarLibro('<%=request.getContextPath()%>','LibroServlet','5','<%=obj.getISBN()%>')" data-toggle="tooltip" data-placement="top" title="Eliminar">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
                                                         </div>
@@ -207,7 +207,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">ISBN :</label>
-                                <input class="form-control form-control-sm" type="text" id="txtIsbnAddLibro">
+                                <input class="form-control form-control-sm" type="text" id="txtIsbnEditLibro" disabled>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -220,34 +220,34 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Título :</label>
-                                <input type="text" class="form-control form-control-sm" id="txtTituloAddLibro">
+                                <input type="text" class="form-control form-control-sm" id="txtTituloEditLibro">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Stock :</label>
-                                <input type="text" class="form-control form-control-sm" id="txtStockAddLibro">
+                                <input type="text" class="form-control form-control-sm" id="txtStockEditLibro" disabled>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Datos de Publicación :</label>
-                                <textarea class="form-control form-control-sm" name="" id="txtDatosPubliAddLibro" rows="4"></textarea>
+                                <textarea class="form-control form-control-sm" name="" id="txtDatosPubliEditLibro" rows="4"></textarea>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="form-group">
                                <label for="">Portada : </label>
                                <br>
-                               <img width="80" alt="Imagen" id="imgPortadaAddLibro" />
-                               <input type="file" title="Portada del Libro" id="filePortadaAddLibro">
+                               <img width="80" alt="Imagen" id="imgPortadaEditLibro" />
+                               <input type="file" title="Portada del Libro" id="filePortadaEditLibro">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-primary" ><i class="fa fa-save"></i> Grabar</button>
+                <button type="button" class="btn btn-primary" id="btn-garbarEditarLiro"><i class="fa fa-save"></i> Grabar</button>
                 </div>
             </div>
         </div>
@@ -405,14 +405,21 @@
                 
                 funcionNoGrabarLibro();
             });
+            
+            $('#btn-garbarEditarLiro').click(function(){
+                funcionActualizarLibro('<%=request.getContextPath()%>','LibroServlet','4');
+            });
             $(document).on('change', '#filePortadaAddLibro', function(e) {
                 // Obtenemos la ruta temporal mediante el evento
                 var TmpPath = URL.createObjectURL(e.target.files[0]);
                 // Mostramos la ruta temporal
                 $('#imgPortadaAddLibro').attr('src', TmpPath);
             });
-            $('#btn-editarLibro').click(function(){
-                
+             $(document).on('change', '#filePortadaEditLibro', function(e) {
+                // Obtenemos la ruta temporal mediante el evento
+                var TmpPath = URL.createObjectURL(e.target.files[0]);
+                // Mostramos la ruta temporal
+                $('#imgPortadaEditLibro').attr('src', TmpPath);
             });
         } );
 </script>
