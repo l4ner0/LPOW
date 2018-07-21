@@ -1,3 +1,8 @@
+<%@page import="javax.servlet.http.HttpSession" %>
+<%@page import="javax.servlet.http.HttpServletRequest" %>
+<%
+    HttpSession sessionH = (HttpSession)request.getSession();
+%>
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -14,7 +19,7 @@
             <img src="<%=request.getContextPath()%>/Complementos/dist/img/user2-160x160.png" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Administrador</a>
+            <a href="#" class="d-block"><%=sessionH.getAttribute("nombreEmpleado")%></a>
           </div>
         </div>
         

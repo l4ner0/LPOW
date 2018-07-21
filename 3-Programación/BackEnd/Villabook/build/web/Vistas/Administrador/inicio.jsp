@@ -77,7 +77,7 @@
               <div class="inner">
                 <h3>65</h3>
 
-                <p>Unique Visitors</p>
+                <p>Devoluciones Pendientes</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>

@@ -1,3 +1,17 @@
+function funcionLogin(ruta,controlador,parametro){
+    document.form.action=ruta+"/"+controlador+parametro;
+    document.form.loginEmail.value=document.getElementById("loginEmail").value;
+    document.form.loginPassword.value=document.getElementById("loginPassword").value;
+    document.form.method="POST";
+    document.form.submit();
+}
+
+function funcionLogout(ruta,controlador,parametro){
+    document.form.action=ruta+"/"+controlador+parametro;
+    document.form.method="POST";
+    document.form.submit();
+}
+
 function cambiarPagina(ruta,controlador,parametro){
     document.form.action=ruta+"/"+controlador+parametro;
     document.form.method="POST";
@@ -55,6 +69,7 @@ var funcionNoGrabarLibro=function(){
     $("#txtDatosPubliAddLibro").val("");
     $("#filePortadaAddLibro").val("");
     $('#imgPortadaAddLibro').attr('src', "");
+    
 }
 
 var funcionActualizarLibro=function(ruta,controlador,op){
@@ -76,9 +91,16 @@ var funcionListarLibro=function(ruta,controlador,op,isbn){
 }
 
 var funcionEliminarLibro=function(ruta,controlador,op,isbn){
-    if (confirm("Estas segura de eliminar el libro")) {
-        var libro= new Libro(ruta,controlador,op);
-        libro.eliminarLibro(isbn);
-    } 
-    
+    swal({
+        title: "Estas seguro de eliminar el libro?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            var libro= new Libro(ruta,controlador,op);
+            libro.eliminarLibro(isbn);
+        }
+    });
 }

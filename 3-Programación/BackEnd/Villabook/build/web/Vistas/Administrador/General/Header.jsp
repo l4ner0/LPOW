@@ -19,7 +19,7 @@
         </div>
       </li>
       <li class="nav-item" >
-          <a href="login.html" class="nav-link">
+          <a href="#" class="nav-link" id="btn-logout">
               <i class="fa fa-sign-out fa-lg"></i>
           </a>
       </li>

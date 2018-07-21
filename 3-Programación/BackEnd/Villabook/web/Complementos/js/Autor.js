@@ -15,7 +15,11 @@ Autor.prototype.grabarAutor=function(apellidos,nombres,detalle){
             detalle:detalle
         },
         success:function(response){
-            swal("Listo",response, "success");
+            if(response==="1"){
+                swal("Listo","Se agrego un autor", "success");
+            }else{
+                swal("Error","No se pudo agregar el autor", "error");
+            }
         }
     });
 }

@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `prestamo`(
 	`fecha_prestamo` varchar(10) NOT NULL,
 	`hora_prestamo` varchar(8) NOT NULL,
 	`tipo_prestamo` varchar(20) NOT NULL,
+	`estado_prestamo` int(20) NOT NULL DEFAULT '0',
 	`observa_prestamo` text(200) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci  AUTO_INCREMENT=1;
 
@@ -49,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `devolucion`(
 	`fecha_devolucion` varchar(10) NOT NULL,
 	`hora_devolucion` varchar(8) NOT NULL,
 	`observa_devolucion` text(200) ,
-	`estado_devolucion` varchar(20) NOT NULL 
+	`estado_devolucion` varchar(20) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 CREATE TABLE IF NOT EXISTS `autor`(
@@ -274,4 +275,97 @@ ADD CONSTRAINT `usuario_alumnoFk_id_alumno`
 FOREIGN KEY (`id_alumno`) REFERENCES `alumno` (`id_alumno`);
 
 
+--
+-- Volcado de datos para la tabla `autor`
+--
 
+INSERT INTO `autor` (`id_autor`, `apellidos`, `nombres`, `detalle`) VALUES
+(1, 'Lopez Ayala', 'Julio Cesar', ''),
+(2, 'Perez', 'Jaime', ''),
+(3, 'Santos ', 'German', ''),
+(4, 'Feliciano', 'Luis', ''),
+(5, 'Guillermo', 'Fernando', ''),
+(6, 'Lopez', 'Gabriel', '');
+
+-- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `base`
+--
+
+INSERT INTO `base` (`id_base`, `anio_base`) VALUES
+(1, '2015');
+
+-- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `empleado`
+--
+
+INSERT INTO `empleado` (`id_empleado`, `foto`, `ap_paterno`, `ap_materno`, `nombres`, `sexo`, `telefono`) VALUES
+(1, '', 'Urbina', 'Sante', 'Rodrigo Alonso', 'M', '5638324');
+
+-- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `escuela`
+--
+
+INSERT INTO `escuela` (`id_escuela`, `nombre`, `detalle`) VALUES
+(1, 'Ingeniería de Sistemas', NULL),
+(2, 'Ingeniería Agroindustrial', NULL),
+(3, 'Ingeniería de Transportes', NULL),
+(4, 'Ingeniería Industrial', NULL);
+
+-- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `tipo_documento`
+--
+
+INSERT INTO `tipo_documento` (`id_tipo_documento`, `tipo`) VALUES
+(1, 'Libro');
+
+-- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `libro`
+--
+
+INSERT INTO `libro` (`id_libro`, `id_tipo_documento`, `id_escuela`, `id_autor`, `ISBN`, `portada`, `titulo`, `datos_publi`, `stock_inicial`, `stock_final`, `estado`) VALUES
+(1, 1, 1, 1, '454-MP0', '', 'Fisica III', 'Libros prestados por el gobierno del Perú', 4, 4, 1),
+(2, 1, 1, 1, '4444-PM', '', 'Dibujo Técnico III', 'Nada xD', 2, 2, 1),
+(3, 1, 1, 2, '532PP-0', '', 'Mate I', '', 3, 3, 1),
+(4, 1, 1, 1, '000-3333', '', 'Quimica I', '', 3, 3, 1),
+(5, 1, 1, 1, '233333', '', 'Quimica II', '', 4, 4, 1),
+(6, 1, 1, 2, '56667-099N', '', 'Administración III', 'Libro prestado', 3, 3, 1),
+(7, 1, 1, 6, '333333-999', '', 'Inteligencia Artificial 2', '', 4, 4, 1);
+
+-- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `alumno`
+--
+
+INSERT INTO `alumno` (`id_alumno`, `id_escuela`, `id_base`, `foto`, `cod_alumno`, `ap_paterno`, `ap_materno`, `nombres`, `sexo`, `DNI`, `telefono`, `direccion`, `fecha_registro`, `estado`, `key_reg`) VALUES
+(1, 1, 1, NULL, '2015019637', 'Urbina', 'Sante', 'Diego Alejandro', 'M', '77344583', '941885678', 'Av. Santa Gertrudis 393', '2018-07-20', 1, '');
+
+-- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `devolucion`
+--
+--
+-- Volcado de datos para la tabla `prestamo`
+--
+
+INSERT INTO `prestamo` (`id_prestamo`, `id_libro`, `id_empleado`, `fecha_prestamo`, `hora_prestamo`, `tipo_prestamo`, `estado_prestamo`, `observa_prestamo`) VALUES
+(1, 4, 1, '2018-07-20', '11:33', 'Presencial', 0, NULL);
+
+-- --------------------------------------------------------
+
+INSERT INTO `devolucion` (`id_devolucion`, `id_prestamo`, `fecha_devolucion`, `hora_devolucion`, `observa_devolucion`, `estado_devolucion`) VALUES
+(1, 1, '2018-07-21', '11:35', NULL, '0');
+
+-- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `solicitud_prestamo`
+--
+
+INSERT INTO `solicitud_prestamo` (`id_alumno`, `id_prestamo`) VALUES
+(1, 1);
+
+-- --------------------------------------------------------

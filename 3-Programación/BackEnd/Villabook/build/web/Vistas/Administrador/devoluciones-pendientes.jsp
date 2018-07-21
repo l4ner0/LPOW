@@ -43,29 +43,6 @@
                                 <button class="btn btn-primary "><i class="fa fa-search"></i> Buscar</button> 
                              </div>
                         </div>
-                         <div class="herramientas-filtro">
-                             <div class="row">
-                               <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="">Origen:</label>
-                                         <select name="" id="filtro-origen" class="form-control form-control-sm">
-                                             <option value="">Todos</option>
-                                             <option value="">Presencial</option>
-                                             <option value="">Virtual</option>
-                                         </select>
-                                     </div>    
-                               </div>
-                               <div class="col-md-2">
-                                   <div class="form-group">
-                                        <label for="">Fecha:</label>
-                                         <input type="text" class="form-control form-control-sm" id="filtro-fecha">
-                                    </div>
-                               </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-secondary btn-sm">Filtrar</button>
-                                </div>
-                             </div>
-                         </div>
                         <div class="tabla-entregas-pendientes">
                             <div class="row">
                                 <div class="col-md-12">
@@ -584,7 +561,6 @@
 <script>
     $(document).ready(function() {
             $('#tabla-entregas-pendientes').DataTable( {
-                "searching": false,
                 "lengthMenu":[[5,10,15,-1],[5,10,15,"Todos"]],
                 "language": {
                     "sProcessing":     "Procesando...",

@@ -35,14 +35,14 @@
   </div>
     <div class="card-body login-card-body">
       <p class="login-box-msg">Ingresa  tus credenciales</p>
-      <form action="<%=request.getContextPath()%>/Vistas/Administrador/inicio.jsp" method="">
+      <form name="form">
         <div class="form-group has-feedback">
-          <input type="email" class="form-control" placeholder="Correo Institucional">
+            <input type="email" class="form-control" placeholder="Correo Institucional" id="loginEmail" name="loginEmail">
           <i class="fa fa-envelope form-control-feedback"></i>
         </div>
         <br>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Contraseña">
+            <input type="password" class="form-control" placeholder="Contraseña" id="loginPassword" name="loginPassword">
           <i class="fa fa-lock form-control-feedback"></i>
         </div>
         <br>
@@ -56,7 +56,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-block btn-flat btn-ingresar">Ingresar</button>
+              <button class="btn btn-block btn-flat btn-ingresar" id="btn-ingresar">Ingresar</button>
           </div>
           <br>
           <!-- /.col -->
@@ -82,6 +82,14 @@
       increaseArea : '20%' // optional
     })
   })
+</script>
+<script src="<%=request.getContextPath()%>/Complementos/js/funciones.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#btn-ingresar').click(function(){
+            funcionLogin('<%=request.getContextPath()%>','AdministradorServlet','?op=8');
+        });
+    });
 </script>
 </body>
 </html>

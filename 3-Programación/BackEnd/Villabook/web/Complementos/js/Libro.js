@@ -20,8 +20,19 @@ Libro.prototype.addLibro=function(tipoDocumento,escuela,autor,isbn,portada,titul
             stockInicial:stockInicial
         },
         success:function(response){
-            alert(response);
-            location.reload();
+            if(response==="1"){
+                swal({title: "Listo", text: "Se agrego correctamente el libro", icon: 
+                    "success"}).then(function(){ 
+                       location.reload();
+                    }
+                );
+            }else{
+                swal({title: "Error", text: "No se  agrego el libro", icon: 
+                    "error"}).then(function(){ 
+                       location.reload();
+                    }
+                );
+            }
         }
     });
 }
@@ -35,22 +46,25 @@ Libro.prototype.listarLibros=function(){
         },
         success:function(response){
             var listarLibros=$.parseJSON(response);
-            var tabla= $('#tabla-libros').DataTable();
-            
-            var fila= tabla.row.add([
-                '<td>'+listarLibros.ISBN+'</td>',
-                '<td>'+listarLibros.titulo+'</td>',
-                '<td>'+listarLibros.autor+'</td>',
-                '<td>'+listarLibros.datos_publi+'</td>',
-                '<td><span class="status--process">'+listarLibros.escuela+'</span></td>',
-                '<td><img src="/Villabook/Complementos/dist/img/portada-libro.png" width="45"></td>',
-                '<td><div class="table-data-feature">'+
-                        '<button class="item btn-tabla-editar" onclick="funcionListarLibro()" data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro" ><i class="fa fa-edit"></i></button>'+
-                        '<button class="item btn-tabla-eliminar" onclick="funcionEliminarLibro()" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button>'
-                +'</div></td>'
-            ]).draw().node();
+            $('#tabla-libros').remove();
+            for(var i=0; i<listarLibros.length; i++){
+                var tabla= $('#tabla-libros').DataTable();
 
-            $(fila).addClass('tr-shadow');
+                var fila= tabla.row.add([
+                    '<td>'+listarLibros[i].ISBN+'</td>',
+                    '<td>'+listarLibros[i].titulo+'</td>',
+                    '<td>'+listarLibros[i].autor+'</td>',
+                    '<td>'+listarLibros[i].datos_publi+'</td>',
+                    '<td><span class="status--process">'+listarLibros[i].escuela+'</span></td>',
+                    '<td><img src="/Villabook/Complementos/dist/img/portada-libro.png" width="45"></td>',
+                    '<td><div class="table-data-feature">'+
+                            '<button class="item btn-tabla-editar" onclick="funcionListarLibro()" data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro" ><i class="fa fa-edit"></i></button>'+
+                            '<button class="item btn-tabla-eliminar" onclick="funcionEliminarLibro()" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button>'
+                    +'</div></td>'
+                ]).draw().node();
+
+                $(fila).addClass('tr-shadow');
+            }
         }
     });
 }
@@ -97,8 +111,19 @@ Libro.prototype.editarLibro=function(tipoDocumento,escuela,autor,isbn,portada,ti
             datosPubli:datosPubli
         },
         success:function(response){
-            swal("Listo",response, "success");
-            location.reload();
+            if(response === "1"){
+                swal({title: "Listo", text: "Se edito el libro", icon: 
+                    "success"}).then(function(){ 
+                       location.reload();
+                    }
+                );
+            }else{
+                swal({title: "Error", text: "No se edito el libro", icon: 
+                    "error"}).then(function(){ 
+                       location.reload();
+                    }
+                );
+            }
         }
     });
 }
@@ -112,7 +137,19 @@ Libro.prototype.eliminarLibro=function(isbn){
             isbn:isbn
         },
         success:function(response){
-            location.reload();
+            if(response==="1"){
+                swal({title: "Listo", text: "Se elimino el libro", icon: 
+                    "success"}).then(function(){ 
+                       location.reload();
+                    }
+                );
+            }else{
+                swal({title: "Error", text: "No se pudo eliminar el libro", icon: 
+                    "error"}).then(function(){ 
+                       location.reload();
+                    }
+                );
+            }
         }
     });
 }

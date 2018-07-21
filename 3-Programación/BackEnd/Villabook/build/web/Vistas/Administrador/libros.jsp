@@ -401,11 +401,8 @@
                 funcionGrabarLibro('<%=request.getContextPath()%>','LibroServlet','2');
             });
             
-            $('#btn-noGrabarLibro').click(function(){
-                
+            $('#btn-noGrabarLibro').click(function(){ 
                 funcionNoGrabarLibro();
-                var libro= new Libro('<%=request.getContextPath()%>','LibroServlet','1');
-                libro.listarLibros();
             });
             
             $('#btn-garbarEditarLiro').click(function(){

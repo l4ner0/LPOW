@@ -76,9 +76,9 @@ public class LibroServlet extends HttpServlet {
                 int resultado=objLibroDAO.addLibro(objLibroBean);
                 
                 if(resultado==1){
-                    out.print("Se añadio el libro correctamente");
+                    out.print("1");
                 }else{
-                     out.print("Error, no se pudo añadir el libro");
+                     out.print("-1");
                 }
                 break;
             }
@@ -118,9 +118,9 @@ public class LibroServlet extends HttpServlet {
                 int resultado=objLibroDAO.updateLibro(objLibroBean);
                 
                 if(resultado==1){
-                    out.print("Se modificó el libro correctamente");
+                    out.print("1");
                 }else{
-                     out.print("Error, no se pudo modificar el libro");
+                     out.print("-1");
                 }
                 
                 break;
@@ -131,9 +131,9 @@ public class LibroServlet extends HttpServlet {
                 String isbn=request.getParameter("isbn");
                 int resultado=objLibroDAO.deleteLibro(isbn);
                 if(resultado==1){
-                    out.print("Se eliminó el libro correctamente");
+                    out.print("1");
                 }else{
-                     out.print("Error, no se pudo eliminó el libro");
+                     out.print("-1");
                 }
                 break;
             }

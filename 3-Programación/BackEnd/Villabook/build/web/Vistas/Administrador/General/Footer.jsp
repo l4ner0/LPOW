@@ -28,5 +28,8 @@
         $('#btn-devolucionesAprobadas').click(function(){
             cambiarPagina("<%=request.getContextPath()%>","AdministradorServlet","?op=7");
         });
+        $('#btn-logout').click(function(){
+            funcionLogout("<%=request.getContextPath()%>","AdministradorServlet","?op=9");
+        });
     });
 </script>

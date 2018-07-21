@@ -61,9 +61,9 @@ public class AutorServlet extends HttpServlet {
                 objAutorBean.setDetalle(detalle);
                 int resultado=objAutorDAO.addAutor(objAutorBean);
                 if(resultado==1){
-                    out.print("Se añadio el autor correctamente");
+                    out.print("1");
                 }else{
-                     out.print("Error, no se pudo añadir al autor");
+                     out.print("-1");
                 }
                 break;
             }

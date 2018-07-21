@@ -53,8 +53,9 @@ public class libroDAO {
         try {
             Conexion conexion=new Conexion();
             cn=conexion.getConexion();
-            String sql="SELECT * FROM libro WHERE ISBN='"+isbn+"'";
+            String sql="SELECT * FROM libro WHERE ISBN=?";
             ps=cn.prepareStatement(sql);
+            ps.setString(1, isbn);
             rs=ps.executeQuery();
             
             rs.next();
