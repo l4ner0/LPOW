@@ -15,7 +15,7 @@ Autor.prototype.grabarAutor=function(apellidos,nombres,detalle){
             detalle:detalle
         },
         success:function(response){
-            alert(response);
+            swal("Listo",response, "success");
         }
     });
 }

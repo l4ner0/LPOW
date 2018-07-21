@@ -33,7 +33,6 @@ var funcionGrabarLibro=function(ruta,controlador,op){
     var libro=new Libro(ruta,controlador,op);
     libro.addLibro(tipoDocumento,escuela,autor,isbn,portada,titulo,datosPubli,stock);
     
-    
     $("#cbTipoDocumentoAddLibro").val("");
     $("#cbEscuelaAddLibro").val("");
     $("#txtIsbnAddLibro").val("");
@@ -43,6 +42,7 @@ var funcionGrabarLibro=function(ruta,controlador,op){
     $("#txtDatosPubliAddLibro").val("");
     $("#filePortadaAddLibro").val("");
     $('#imgPortadaAddLibro').attr('src', "");
+    
 }
 
 var funcionNoGrabarLibro=function(){
@@ -70,9 +70,9 @@ var funcionActualizarLibro=function(ruta,controlador,op){
     libro.editarLibro(tipoDocumento,escuela,autor,isbn,portada,titulo,datosPubli);
 }
 
-var funcionListarLibros=function(ruta,controlador,op,isbn){
+var funcionListarLibro=function(ruta,controlador,op,isbn){
     var libro= new Libro(ruta,controlador,op);
-    libro.listarLibros(isbn);
+    libro.listarLibro(isbn);
 }
 
 var funcionEliminarLibro=function(ruta,controlador,op,isbn){

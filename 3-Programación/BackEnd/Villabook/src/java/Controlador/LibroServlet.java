@@ -45,6 +45,9 @@ public class LibroServlet extends HttpServlet {
                 ArrayList<libroBean> lista=new ArrayList<libroBean>();
                 lista = objLibroDAO.getLibrosTabla();
                 request.setAttribute("listasLibros", lista);
+                out.print(gson.toJson(lista));
+                out.flush();
+                out.close();
                 break;
             }
             
@@ -119,6 +122,8 @@ public class LibroServlet extends HttpServlet {
                 }else{
                      out.print("Error, no se pudo modificar el libro");
                 }
+                
+                break;
             }
             
             case 5:{

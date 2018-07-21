@@ -79,7 +79,7 @@
                                                     </td>
                                                     <td>
                                                         <div class="table-data-feature">
-                                                            <button class="item btn-tabla-editar" onclick="funcionListarLibros('<%=request.getContextPath()%>','LibroServlet','3','<%=obj.getISBN()%>')" data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
+                                                            <button class="item btn-tabla-editar" onclick="funcionListarLibro('<%=request.getContextPath()%>','LibroServlet','3','<%=obj.getISBN()%>')" data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro">
                                                                 <i class="fa fa-edit"></i>
                                                             </button>
                                                                 <button class="item  btn-tabla-eliminar" onclick="funcionEliminarLibro('<%=request.getContextPath()%>','LibroServlet','5','<%=obj.getISBN()%>')" data-toggle="tooltip" data-placement="top" title="Eliminar">
@@ -247,7 +247,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-primary" id="btn-garbarEditarLiro"><i class="fa fa-save"></i> Grabar</button>
+                <button type="button" class="btn btn-primary" id="btn-garbarEditarLiro"  data-dismiss="modal"><i class="fa fa-save"></i> Grabar</button>
                 </div>
             </div>
         </div>
@@ -404,6 +404,8 @@
             $('#btn-noGrabarLibro').click(function(){
                 
                 funcionNoGrabarLibro();
+                var libro= new Libro('<%=request.getContextPath()%>','LibroServlet','1');
+                libro.listarLibros();
             });
             
             $('#btn-garbarEditarLiro').click(function(){
