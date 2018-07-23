@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `prestamo`(
 	`fecha_prestamo` varchar(10) NOT NULL,
 	`hora_prestamo` varchar(8) NOT NULL,
 	`tipo_prestamo` varchar(20) NOT NULL,
-	`estado_prestamo` int(20) NOT NULL DEFAULT '0',
+	`estado_prestamo` int(20) NOT NULL DEFAULT '1',
 	`observa_prestamo` text(200) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci  AUTO_INCREMENT=1;
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `devolucion`(
 	`fecha_devolucion` varchar(10) NOT NULL,
 	`hora_devolucion` varchar(8) NOT NULL,
 	`observa_devolucion` text(200) ,
-	`estado_devolucion` varchar(20) NOT NULL DEFAULT '0'
+	`estado_devolucion` int(20) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 CREATE TABLE IF NOT EXISTS `autor`(
@@ -346,19 +346,19 @@ INSERT INTO `alumno` (`id_alumno`, `id_escuela`, `id_base`, `foto`, `cod_alumno`
 
 -- --------------------------------------------------------
 --
--- Volcado de datos para la tabla `devolucion`
---
---
 -- Volcado de datos para la tabla `prestamo`
 --
 
-INSERT INTO `prestamo` (`id_prestamo`, `id_libro`, `id_empleado`, `fecha_prestamo`, `hora_prestamo`, `tipo_prestamo`, `estado_prestamo`, `observa_prestamo`) VALUES
-(1, 4, 1, '2018-07-20', '11:33', 'Presencial', 0, NULL);
+INSERT INTO `prestamo` (`id_prestamo`, `id_libro`, `id_empleado`, `fecha_prestamo`, `hora_prestamo`, `tipo_prestamo`, `observa_prestamo`) VALUES
+(1, 4, 1, '2018-07-20', '11:33', 'Presencial', NULL);
 
 -- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `devolucion`
+--
 
-INSERT INTO `devolucion` (`id_devolucion`, `id_prestamo`, `fecha_devolucion`, `hora_devolucion`, `observa_devolucion`, `estado_devolucion`) VALUES
-(1, 1, '2018-07-21', '11:35', NULL, '0');
+INSERT INTO `devolucion` (`id_devolucion`, `id_prestamo`, `fecha_devolucion`, `hora_devolucion`, `observa_devolucion`) VALUES
+(1, 1, '2018-07-21', '11:35', NULL);
 
 -- --------------------------------------------------------
 --
@@ -369,3 +369,221 @@ INSERT INTO `solicitud_prestamo` (`id_alumno`, `id_prestamo`) VALUES
 (1, 1);
 
 -- --------------------------------------------------------
+--
+-- Procedimientos Almacenados
+--
+--
+
+DELIMITER $$
+
+-- Procedimiento para insertar autor
+
+CREATE PROCEDURE insertarAutor(_apellidos varchar(50), _nombres varchar(60), _detalle text)
+INSERT INTO autor (apellidos,nombres,detalle) VALUES (_apellidos,_nombres,_detalle)
+$$
+
+-- Procedimiento para listar todos los autores
+
+CREATE PROCEDURE listarAutores()
+SELECT * FROM autor
+$$
+
+-- Procedimiento para obtener un empleado
+
+CREATE PROCEDURE obtenerEmpleado( _id_empleado int(11) )
+SELECT * FROM empleado WHERE id_empleado=_id_empleado
+$$
+
+-- Procedimiento para validar logueo de un empleado
+
+CREATE PROCEDURE validarIngresoEmpleado( _correo varchar(30), _clave varchar(100) )
+SELECT id_empleado FROM usuario_empleado WHERE correo = _correo AND clave = _clave
+$$
+
+-- Procedimiento para listar todas las escuelas
+
+CREATE PROCEDURE listarEscuelas()
+SELECT * FROM escuela
+$$
+
+-- Procedimiento para agregar un libro
+
+CREATE PROCEDURE agregarLibro(
+	_id_tipo_documento int(11), 
+	_id_escuela int(11), 
+	_id_autor int(11), 
+	_ISBN varchar(50), 
+	_portada varchar(150), 
+	_titulo varchar(50), 
+	_datos_publi text, 
+	_stock_inicial int(4), 
+	_stock_final int(4) 
+	)
+INSERT INTO libro (id_tipo_documento,id_escuela,id_autor,
+                   ISBN,portada,titulo,datos_publi,stock_inicial,stock_final) 
+        VALUES (_id_tipo_documento,_id_escuela,_id_autor,_ISBN,_portada,_titulo,_datos_publi,_stock_inicial,_stock_final) 
+$$
+
+-- Procedimiento para contar los estudiantes registrados
+
+CREATE PROCEDURE contarEstudiantes()
+SELECT COUNT(*) AS num_alumnos FROM alumno
+$$
+
+
+-- Procedimiento para contar entregas pendientes
+
+CREATE PROCEDURE contarEntregasPendientes()
+SELECT COUNT(*) AS num_entregasPendientes FROM prestamo WHERE estado_prestamo = 1
+$$
+
+
+-- Procedimiento para contar los estudiantes registrados
+
+CREATE PROCEDURE contarLibros()
+SELECT COUNT(*) AS num_libros FROM libro WHERE estado=1
+$$
+
+
+-- Procedimiento para contar los estudiantes registrados
+
+CREATE PROCEDURE contarDevolucionesPendientes()
+SELECT COUNT(*) AS num_devolucionesPendientes FROM devolucion WHERE estado_devolucion=1
+$$
+
+
+-- Procedimiento para pintar tabla de entregas pendientes
+
+CREATE PROCEDURE verEntregasPendientes()
+SELECT 
+	p.id_prestamo,
+	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.cod_alumno,
+	l.isbn,l.titulo,
+	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
+	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
+FROM prestamo as p
+INNER JOIN libro as l
+ON p.id_libro = l.id_libro
+INNER JOIN autor as a 
+ON l.id_autor = a.id_autor
+INNER JOIN solicitud_prestamo as sp 
+ON p.id_prestamo=sp.id_prestamo
+INNER JOIN alumno as al 
+ON sp.id_alumno = al.id_alumno
+WHERE p.estado_prestamo = 1
+$$
+
+
+-- Procedimiento ver datos de aprobar entrega
+
+CREATE PROCEDURE verAprobarEntrega( _id_prestamo int )
+SELECT 
+	p.id_prestamo,
+	al.foto AS fotoAlumno,al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.nombres AS nombAlumno,al.cod_alumno,e.nombre AS escuela,
+	l.portada,l.isbn,l.titulo,
+	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
+	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
+FROM prestamo as p
+INNER JOIN libro as l
+ON p.id_libro = l.id_libro
+INNER JOIN autor as a 
+ON l.id_autor = a.id_autor
+INNER JOIN solicitud_prestamo as sp 
+ON p.id_prestamo=sp.id_prestamo
+INNER JOIN alumno as al 
+ON sp.id_alumno = al.id_alumno
+INNER JOIN escuela as e
+ON al.id_escuela = e.id_escuela
+WHERE p.id_prestamo = _id_prestamo
+$$
+
+
+-- Procedimiento para aprobar una entrega
+
+CREATE PROCEDURE aprobarEntrega( _id_prestamo int )
+UPDATE prestamo p 
+INNER JOIN devolucion d 
+ON (d.id_prestamo = p.id_prestamo)
+SET p.estado_prestamo = 2, d.estado_devolucion=1  WHERE p.id_prestamo = _id_prestamo
+$$
+
+
+-- Procedimiento para cancelar una entrega
+
+CREATE PROCEDURE noAprobarEntrega( _id_prestamo int, _motivo text )
+UPDATE prestamo SET estado_prestamo = 0, observa_prestamo = _motivo WHERE id_prestamo = _id_prestamo
+$$
+
+
+-- Procedimiento para ver entregas no aprobadas
+
+CREATE PROCEDURE verEntregasNoAprobadas()
+SELECT 
+	p.id_prestamo,
+	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.nombres AS nombAlumno,al.cod_alumno,
+	l.isbn,l.titulo,
+	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
+	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
+FROM prestamo as p
+INNER JOIN libro as l
+ON p.id_libro = l.id_libro
+INNER JOIN autor as a 
+ON l.id_autor = a.id_autor
+INNER JOIN solicitud_prestamo as sp 
+ON p.id_prestamo=sp.id_prestamo
+INNER JOIN alumno as al 
+ON sp.id_alumno = al.id_alumno
+WHERE p.estado_prestamo = 0
+$$
+
+
+-- Procedimiento ver datos de una entrega no aprobada
+
+CREATE PROCEDURE verNoAprobarEntrega( _id_prestamo int )
+SELECT 
+	p.id_prestamo,
+	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.nombres AS nombAlumno,al.cod_alumno,e.nombre AS escuela,
+	l.isbn,l.titulo,
+	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
+	emp.foto,emp.ap_paterno AS apEmpleado,emp.ap_materno AS amEmpleado,emp.nombres AS nombEmpleado,p.observa_prestamo,
+	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
+FROM prestamo as p
+INNER JOIN libro as l
+ON l.id_libro = p.id_libro
+INNER JOIN autor as a 
+ON a.id_autor = l.id_autor
+INNER JOIN solicitud_prestamo as sp 
+ON sp.id_prestamo=p.id_prestamo
+INNER JOIN alumno as al 
+ON al.id_alumno = sp.id_alumno
+INNER JOIN escuela as e
+ON e.id_escuela = al.id_escuela
+INNER JOIN empleado as emp
+ON emp.id_empleado=p.id_empleado
+WHERE p.id_prestamo = _id_prestamo
+$$
+
+
+
+-- Procedimiento para ver datos de una entrega aprobada
+
+CREATE PROCEDURE verEntregasAprobadas()
+SELECT 
+	p.id_prestamo,
+	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.nombres AS nombAlumno,al.cod_alumno,
+	l.isbn,l.titulo,
+	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
+	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
+FROM prestamo as p
+INNER JOIN libro as l
+ON p.id_libro = l.id_libro
+INNER JOIN autor as a 
+ON l.id_autor = a.id_autor
+INNER JOIN solicitud_prestamo as sp 
+ON p.id_prestamo=sp.id_prestamo
+INNER JOIN alumno as al 
+ON sp.id_alumno = al.id_alumno
+WHERE p.estado_prestamo = 2
+$$
+
+DELIMITER ;
