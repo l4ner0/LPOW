@@ -1,3 +1,12 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Bean.prestamoBean"%>
+<%@page import="DAO.prestamoDAO"%>
+<%!
+    ArrayList<prestamoBean> listaPrestamos;
+%>
+<%
+    listaPrestamos=(ArrayList<prestamoBean>)request.getAttribute("listaEntregasAprobadas");
+%>
 <!DOCTYPE html>
 <html>
 <%@ include file="General/Head.jsp" %>
@@ -46,187 +55,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                <% for(prestamoBean objPrestamoBean:listaPrestamos){ %>
                                                 <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
+                                                    <td><%=objPrestamoBean.getApAlumno()+" "+objPrestamoBean.getAmAlumno()%></td>
                                                     <td>
-                                                        2015019685
+                                                         <%=objPrestamoBean.getCodAlumno()%>
                                                     </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
+                                                    <td><%=objPrestamoBean.getIsbn()%></td>
+                                                    <td><%=objPrestamoBean.getTitulo()%></td>
+                                                    <td><%=objPrestamoBean.getApellidosAutor()+" "+objPrestamoBean.getNombresAutor()%></td>
+                                                    <td><%=objPrestamoBean.getHora_prestamo()%></td>
+                                                    <td><%=objPrestamoBean.getFecha_prestamo()%></td>
+                                                    <td><%=objPrestamoBean.getTipo_prestamo()%></td>
                                                 </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                               <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                               <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                </tr>
-                                                
+                                                <%}%>
                                             </tbody>
                                         </table>
                                     </div>

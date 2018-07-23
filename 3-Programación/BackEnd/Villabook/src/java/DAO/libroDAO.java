@@ -169,6 +169,22 @@ public class libroDAO {
         return resultado;
     }
     
+    public int contarLibros(){
+        int resultado=0;
+        
+        try {
+            Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call contarLibros}");
+            ResultSet rs = cst.executeQuery();
+            rs.next();
+            resultado = rs.getInt(1);
+        } catch (Exception e) {
+        }
+        
+        return resultado;
+    }
+    
     /*
     public static void main(String [] args){
         

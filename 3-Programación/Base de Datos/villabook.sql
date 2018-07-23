@@ -382,11 +382,13 @@ CREATE PROCEDURE insertarAutor(_apellidos varchar(50), _nombres varchar(60), _de
 INSERT INTO autor (apellidos,nombres,detalle) VALUES (_apellidos,_nombres,_detalle)
 $$
 
+
 -- Procedimiento para listar todos los autores
 
 CREATE PROCEDURE listarAutores()
 SELECT * FROM autor
 $$
+
 
 -- Procedimiento para obtener un empleado
 
@@ -394,17 +396,20 @@ CREATE PROCEDURE obtenerEmpleado( _id_empleado int(11) )
 SELECT * FROM empleado WHERE id_empleado=_id_empleado
 $$
 
+
 -- Procedimiento para validar logueo de un empleado
 
 CREATE PROCEDURE validarIngresoEmpleado( _correo varchar(30), _clave varchar(100) )
 SELECT id_empleado FROM usuario_empleado WHERE correo = _correo AND clave = _clave
 $$
 
+
 -- Procedimiento para listar todas las escuelas
 
 CREATE PROCEDURE listarEscuelas()
 SELECT * FROM escuela
 $$
+
 
 -- Procedimiento para agregar un libro
 
@@ -424,10 +429,69 @@ INSERT INTO libro (id_tipo_documento,id_escuela,id_autor,
         VALUES (_id_tipo_documento,_id_escuela,_id_autor,_ISBN,_portada,_titulo,_datos_publi,_stock_inicial,_stock_final) 
 $$
 
+
+-- Procedimiento para buscar un libro 
+
+CREATE PROCEDURE buscarLibro( _ISBN varchar(50) )
+SELECT * FROM libro WHERE ISBN = _ISBN
+$$
+
+
+-- Procedimiento para mostrar libros en la tabla libros
+
+CREATE PROCEDURE listarLibrosTabla()
+SELECT 
+	id_libro,tipo, nombre, apellidos,nombres,ISBN,portada,titulo,datos_publi,stock_inicial,stock_final
+FROM libro as l
+INNER JOIN tipo_documento as tp
+ON l.id_tipo_documento=tp.id_tipo_documento
+INNER JOIN escuela as e
+ON l.id_escuela=e.id_escuela
+INNER JOIN autor as a
+ON l.id_autor=a.id_autor
+WHERE estado=1
+$$
+
+
+-- Procedimiento para actualizar datos de un libro
+
+CREATE PROCEDURE editarLibro(
+	_id_tipo_documento int(11), 
+	_id_escuela int(11), 
+	_id_autor int(11), 
+	_ISBN varchar(50), 
+	_portada varchar(150), 
+	_titulo varchar(50), 
+	_datos_publi text )
+UPDATE libro SET 
+    id_tipo_documento = _id_tipo_documento,
+    id_escuela = _id_escuela,
+    id_autor = _id_autor,
+    portada = _portada,
+    titulo = _titulo,
+    datos_publi = _datos_publi
+    WHERE ISBN = _ISBN
+$$
+
+
+-- Procedimiento para eliminar un libro
+
+CREATE PROCEDURE eliminarLibro( _ISBN varchar(50) )
+UPDATE libro SET estado=0 WHERE ISBN=_ISBN
+$$
+
+
+-- Procedimiento para listar los tipos de documentos
+
+CREATE PROCEDURE listarTipoDocumentos()
+SELECT * FROM tipo_documento
+$$
+
+
 -- Procedimiento para contar los estudiantes registrados
 
 CREATE PROCEDURE contarEstudiantes()
-SELECT COUNT(*) AS num_alumnos FROM alumno
+SELECT COUNT(*) AS num_alumnos FROM alumno;
 $$
 
 
@@ -459,7 +523,7 @@ SELECT
 	p.id_prestamo,
 	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.cod_alumno,
 	l.isbn,l.titulo,
-	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
+	a.apellidos AS apellidosAutor,a.nombres AS nombresAutor,
 	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
 FROM prestamo as p
 INNER JOIN libro as l
@@ -520,7 +584,7 @@ $$
 CREATE PROCEDURE verEntregasNoAprobadas()
 SELECT 
 	p.id_prestamo,
-	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.nombres AS nombAlumno,al.cod_alumno,
+	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.cod_alumno,
 	l.isbn,l.titulo,
 	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
 	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
@@ -564,13 +628,12 @@ WHERE p.id_prestamo = _id_prestamo
 $$
 
 
-
 -- Procedimiento para ver datos de una entrega aprobada
 
 CREATE PROCEDURE verEntregasAprobadas()
 SELECT 
 	p.id_prestamo,
-	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.nombres AS nombAlumno,al.cod_alumno,
+	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.cod_alumno,
 	l.isbn,l.titulo,
 	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
 	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 

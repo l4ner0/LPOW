@@ -31,5 +31,14 @@
         $('#btn-logout').click(function(){
             funcionLogout("<%=request.getContextPath()%>","AdministradorServlet","?op=9");
         });
+        $('#a-entregasPendientes').click(function(){
+            cambiarPagina("<%=request.getContextPath()%>","AdministradorServlet","?op=3");
+        });
+        $('#a-libros').click(function(){
+            cambiarPagina("<%=request.getContextPath()%>","AdministradorServlet","?op=2");
+        });
+        $('#a-devolucionesPendientes').click(function(){
+            cambiarPagina("<%=request.getContextPath()%>","AdministradorServlet","?op=6");
+        });
     });
 </script>

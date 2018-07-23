@@ -7,8 +7,12 @@ package Controlador;
 
 import Bean.empleadoBean;
 import Bean.libroBean;
+import Bean.prestamoBean;
+import DAO.alumnoDAO;
+import DAO.devolucionDAO;
 import DAO.empleadoDAO;
 import DAO.libroDAO;
+import DAO.prestamoDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -38,11 +42,27 @@ public class AdministradorServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession sesion = request.getSession(false);
         libroDAO objLibroDAO=null;
+        prestamoDAO objPrestamoDAO = null;
         int op=Integer.parseInt(request.getParameter("op"));
         String pagina="";
         switch(op){
             case 1:{
                 if(sesion.getAttribute("idEmpleado")!=null){
+                    
+                    alumnoDAO objAlumnoDAO = new alumnoDAO();
+                    objLibroDAO = new libroDAO();
+                    objPrestamoDAO = new prestamoDAO();
+                    devolucionDAO objDevolucionDAO = new devolucionDAO();
+                    
+                    int numEstudiantes=objAlumnoDAO.contarEstudiantes();
+                    int numLibros = objLibroDAO.contarLibros();
+                    int numPrestamosPendientes = objPrestamoDAO.contarPrestamosPendientes();
+                    int numDevolucionesPendientes = objDevolucionDAO.contarDevolucionesPendientes();
+                    
+                    request.setAttribute("numEstudiantes", numEstudiantes);
+                    request.setAttribute("numLibros", numLibros);
+                    request.setAttribute("numPrestamosPendientes", numPrestamosPendientes);
+                    request.setAttribute("numDevolucionesPendientes", numDevolucionesPendientes);
                      pagina="/Vistas/Administrador/inicio.jsp";
                      break;
                 }else{
@@ -67,6 +87,11 @@ public class AdministradorServlet extends HttpServlet {
             
             case 3:{
                 if(sesion.getAttribute("idEmpleado")!=null){
+                    
+                    objPrestamoDAO = new prestamoDAO();
+                    ArrayList<prestamoBean> lista = new ArrayList<prestamoBean>();
+                    lista = objPrestamoDAO.listarEntregasPendientes();
+                    request.setAttribute("listaEntregasPendientes", lista);
                     pagina="/Vistas/Administrador/entregas-pendientes.jsp";
                     break;
                 }else{
@@ -77,6 +102,11 @@ public class AdministradorServlet extends HttpServlet {
             
             case 4:{
                 if(sesion.getAttribute("idEmpleado")!=null){
+                    
+                    objPrestamoDAO = new prestamoDAO();
+                    ArrayList<prestamoBean> lista = new ArrayList<>();
+                    lista = objPrestamoDAO.listarEntregasNoAprobadas();
+                    request.setAttribute("listaEntregasNoAprobadas", lista);
                     pagina="/Vistas/Administrador/entregas-noAprobadas.jsp";
                     break;
                 }else{
@@ -87,6 +117,11 @@ public class AdministradorServlet extends HttpServlet {
             
             case 5:{
                 if(sesion.getAttribute("idEmpleado")!=null){
+                    
+                    objPrestamoDAO = new prestamoDAO();
+                    ArrayList<prestamoBean> lista = new ArrayList<>();
+                    lista = objPrestamoDAO.listarEntregasAprobadas();
+                    request.setAttribute("listaEntregasAprobadas", lista);
                     pagina="/Vistas/Administrador/entregas-aprobadas.jsp";
                     break;
                 }else{
@@ -119,6 +154,10 @@ public class AdministradorServlet extends HttpServlet {
                 String email=request.getParameter("loginEmail");
                 String clave=request.getParameter("loginPassword");
                 empleadoDAO objEmpleadoDAO= new empleadoDAO();
+                alumnoDAO objAlumnoDAO = new alumnoDAO();
+                objLibroDAO = new libroDAO();
+                objPrestamoDAO = new prestamoDAO();
+                devolucionDAO objDevolucionDAO = new devolucionDAO();
                 ArrayList<empleadoBean> objEmpleadoBean =null;
                 String md5=DigestUtils.md5Hex(clave);
                 int idEmpleado=objEmpleadoDAO.validarIngresoEmpleado(email, md5);
@@ -128,6 +167,17 @@ public class AdministradorServlet extends HttpServlet {
                         sesion.setAttribute("idEmpleado", obj.getId_empleado());
                         sesion.setAttribute("nombreEmpleado", obj.getNombres());
                     }
+                    
+                    int numEstudiantes=objAlumnoDAO.contarEstudiantes();
+                    int numLibros = objLibroDAO.contarLibros();
+                    int numPrestamosPendientes = objPrestamoDAO.contarPrestamosPendientes();
+                    int numDevolucionesPendientes = objDevolucionDAO.contarDevolucionesPendientes();
+                    
+                    request.setAttribute("numEstudiantes", numEstudiantes);
+                    request.setAttribute("numLibros", numLibros);
+                    request.setAttribute("numPrestamosPendientes", numPrestamosPendientes);
+                    request.setAttribute("numDevolucionesPendientes", numDevolucionesPendientes);
+                    
                     pagina="/Vistas/Administrador/inicio.jsp";
                 }else{
                     pagina="/Vistas/Seguridad/loginAdministrador.jsp";

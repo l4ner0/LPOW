@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/DAO/empleadoDAO.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/General/Header.jsp</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/DAO/libroDAO.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/General/Sidebar.jsp</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/DAO/escuelaDAO.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/DAO/AutorDAO.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/General/Head.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/devoluciones-pendientes.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/DAO/devolucionDAO.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/DAO/prestamoDAO.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/entregas-pendientes.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/Controlador/AdministradorServlet.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/entregas-aprobadas.jsp</file>
         </group>
     </open-files>
 </project-private>

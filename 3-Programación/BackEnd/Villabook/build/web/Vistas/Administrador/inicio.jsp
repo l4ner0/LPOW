@@ -30,14 +30,14 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                  <h3><%= request.getAttribute("numEstudiantes") %></h3>
 
                 <p>Estudiantes Registrados</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">UNFV <i class="fa fa-arrow-circle-right"></i></a>
+              <a class="small-box-footer">UNFV <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -45,14 +45,14 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>15</h3>
+                <h3><%= request.getAttribute("numPrestamosPendientes") %></h3>
 
                 <p>Entregas Pendientes</p>
               </div>
               <div class="icon">
                 <i class="fa fa-clock-o"></i>
               </div>
-              <a href="#" class="small-box-footer">UNFV <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer" id="a-entregasPendientes">UNFV <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -60,14 +60,14 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53</h3>
+                <h3><%= request.getAttribute("numLibros") %></h3>
 
                 <p>Libros</p>
               </div>
               <div class="icon">
                 <i class="fa fa-book"></i>
               </div>
-              <a href="#" class="small-box-footer">UNFV <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="#" id="a-libros" class="small-box-footer">UNFV <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -75,14 +75,14 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3><%= request.getAttribute("numDevolucionesPendientes") %></h3>
 
                 <p>Devoluciones Pendientes</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">UNFV <i class="fa fa-arrow-circle-right"></i></a>
+              <a href="#" id="a-devolucionesPendientes" class="small-box-footer">UNFV <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
