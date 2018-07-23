@@ -12,10 +12,10 @@
        <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="fa fa-bell-o"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
+          <%if(request.getAttribute("numPrestamosPendientes") != null && (Integer)request.getAttribute("numPrestamosPendientes") > 0){%><span class="badge badge-warning navbar-badge"><%= request.getAttribute("numPrestamosPendientes") %></span><%}%>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <span class="dropdown-item dropdown-header">Notificaciones <%= request.getAttribute("numPrestamosPendientes") %></span>
         </div>
       </li>
       <li class="nav-item" >
