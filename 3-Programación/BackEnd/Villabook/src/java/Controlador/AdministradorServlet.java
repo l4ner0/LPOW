@@ -40,7 +40,7 @@ public class AdministradorServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession sesion = request.getSession(false);
+        HttpSession sesion = request.getSession(true);
         libroDAO objLibroDAO=null;
         prestamoDAO objPrestamoDAO = null;
         int op=Integer.parseInt(request.getParameter("op"));

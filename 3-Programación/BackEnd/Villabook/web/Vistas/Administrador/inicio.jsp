@@ -1,3 +1,15 @@
+<%@page session="true" %>
+<% 
+
+    
+if(  session.getAttribute("idEmpleado") ==null)
+  {
+      response.sendRedirect(request.getContextPath()+"/Vistas/Seguridad/loginAdministrador.jsp");
+
+
+   }
+
+%>
 <!DOCTYPE html>
 <html>
 <%@ include file="General/Head.jsp" %>
