@@ -104,3 +104,8 @@ var funcionEliminarLibro=function(ruta,controlador,op,isbn){
         }
     });
 }
+
+var funcionVerAprobarPrestamo=function(ruta,controlador,op,idPrestamo){
+    var prestamo = new Prestamo(ruta,controlador,op);
+    prestamo.verAprobarPrestamo(idPrestamo);
+}

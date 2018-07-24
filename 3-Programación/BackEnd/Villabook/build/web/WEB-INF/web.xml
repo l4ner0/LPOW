@@ -24,6 +24,10 @@
         <servlet-name>LibroServlet</servlet-name>
         <servlet-class>Controlador.LibroServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PrestamoServlet</servlet-name>
+        <servlet-class>Controlador.PrestamoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdministradorServlet</servlet-name>
         <url-pattern>/AdministradorServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>LibroServlet</servlet-name>
         <url-pattern>/LibroServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PrestamoServlet</servlet-name>
+        <url-pattern>/PrestamoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

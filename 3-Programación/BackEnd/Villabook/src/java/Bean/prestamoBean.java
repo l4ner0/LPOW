@@ -26,6 +26,44 @@ public class prestamoBean {
     String titulo;
     String apellidosAutor;
     String nombresAutor;
+    
+    String fotoAlumno;
+    String nombAlumno;
+    String escuelaAlumno;
+    String portada;
+
+    public String getFotoAlumno() {
+        return fotoAlumno;
+    }
+
+    public void setFotoAlumno(String fotoAlumno) {
+        this.fotoAlumno = fotoAlumno;
+    }
+
+    public String getNombAlumno() {
+        return nombAlumno;
+    }
+
+    public void setNombAlumno(String nombAlumno) {
+        this.nombAlumno = nombAlumno;
+    }
+
+    public String getEscuelaAlumno() {
+        return escuelaAlumno;
+    }
+
+    public void setEscuelaAlumno(String escuelaAlumno) {
+        this.escuelaAlumno = escuelaAlumno;
+    }
+
+    public String getPortada() {
+        return portada;
+    }
+
+    public void setPortada(String portada) {
+        this.portada = portada;
+    }
+    
 
     public String getApAlumno() {
         return apAlumno;

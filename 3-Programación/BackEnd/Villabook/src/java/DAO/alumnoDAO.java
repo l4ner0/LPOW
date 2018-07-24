@@ -37,13 +37,7 @@ public class alumnoDAO {
             System.out.println(e);
         }
     return resultado;
-    }
-
-    public static void main(String[] args){
-        alumnoDAO alumno = new alumnoDAO();
-        System.out.println(alumno.contarEstudiantes());
-    }
-    
+    } 
 }
 
 

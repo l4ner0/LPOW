@@ -87,7 +87,7 @@
                                                     <td><%=objPrestamoBean.getTipo_prestamo()%></td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                            <button class="item btn-tabla-editar" onclick="funcionVerAprobarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','1','<%=objPrestamoBean.getId_prestamo()%>')" data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
                                                             <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
@@ -134,19 +134,19 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">Apellidos: </label>
-                                    <p>Guilizzaoni Guilizzaoni</p>
+                                    <p id="aprobarEntregaApellidos" ></p>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Nombres: </label>
-                                    <p for="">Giacomo Giacomo</p>
+                                    <p id="aprobarEntregaNombres"></p>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Código: </label>
-                                    <p for="">2015019685</p>
+                                    <p id="aprobarEntregaCodigo" ></p>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Carrera: </label>
-                                    <p for="">Ingeniería de Sistemas</p>
+                                    <p id="aprobarEntregaCarrera"></p>
                                 </div>
                             </div>
                        </div>
@@ -160,15 +160,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">ISBN: </label>
-                                    <p>968-18-4527-7</p>
+                                    <p id="aprobarEntregaISBN" ></p>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Autor: </label>
-                                    <p>Laudon Keneth</p>
+                                    <p id="aprobarEntregaAutor" ></p>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="">Título: </label>
-                                    <p>Administración de los Sistemas de Información</p>
+                                    <p id="aprobarEntregaTitulo" ></p>
                                 </div>
                             </div>  
                        </div>
@@ -177,16 +177,16 @@
                                <legend>Datos de Entrega</legend>
                                <div class="row">
                                    <div class="col-md-4">
-                                       <label for="">Hora: </label>
-                                       14:45
+                                       <p id="aprobarEntregaHora" ></p>
+                                       
                                    </div>
                                    <div class="col-md-5">
-                                       <label for="">Fecha: </label>
-                                       06/06/2018
+                                       <p id="aprobarEntregaFecha"></p>
+                                       
                                    </div>
                                    <div class="col-md-3">
-                                       <label for="">Origen: </label>
-                                       Presencial
+                                       <p id="aprobarEntregaOrigen"></p>
+                                       
                                    </div>
                                </div>
                            </fieldset>
@@ -306,6 +306,7 @@
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/iCheck/icheck.min.js"></script>
+<script src="<%=request.getContextPath()%>/Complementos/js/Prestamo.js"  type="text/javascript"></script>
 <script>
     $(document).ready(function() {
             $('#tabla-entregas-pendientes').DataTable( {
@@ -342,7 +343,7 @@
             increaseArea: '20%' // optional
         });
         
-        $( "#filtro-fecha" ).datepicker();
+        
     } );
 </script>
 </body>

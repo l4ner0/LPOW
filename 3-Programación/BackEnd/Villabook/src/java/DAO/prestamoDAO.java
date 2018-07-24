@@ -153,4 +153,59 @@ public class prestamoDAO {
        return lista;
     }
     
+    public ArrayList<prestamoBean> verAprobarEntrega(int id_prestamo){
+        ArrayList<prestamoBean> lista = new ArrayList<prestamoBean>();
+        prestamoBean objPrestamoBean = null;
+        
+        try {
+            Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call verAprobarEntrega(?)}");
+            cst.setInt(1, id_prestamo);
+            rs = cst.executeQuery();
+            rs.next();
+            
+            objPrestamoBean = new prestamoBean();
+            objPrestamoBean.setId_prestamo(rs.getInt(1));
+            objPrestamoBean.setFotoAlumno(rs.getString(2));
+            objPrestamoBean.setApAlumno(rs.getString(3));
+            objPrestamoBean.setAmAlumno(rs.getString(4));
+            objPrestamoBean.setNombAlumno(rs.getString(5));
+            objPrestamoBean.setCodAlumno(rs.getString(6));
+            objPrestamoBean.setEscuelaAlumno(rs.getString(7));
+            objPrestamoBean.setPortada(rs.getString(8));
+            objPrestamoBean.setIsbn(rs.getString(9));
+            objPrestamoBean.setTitulo(rs.getString(10));
+            objPrestamoBean.setApellidosAutor(rs.getString(11));
+            objPrestamoBean.setNombresAutor(rs.getString(12));
+            objPrestamoBean.setHora_prestamo(rs.getString(13));
+            objPrestamoBean.setFecha_prestamo(rs.getString(14));
+            objPrestamoBean.setTipo_prestamo(rs.getString(15));
+            objPrestamoBean.setEstado_prestamo(rs.getInt(16));
+            
+            lista.add(objPrestamoBean);
+            
+            rs.close();
+            cst.close();
+            cn.close();
+            
+        } catch (Exception e) {
+        }
+        
+        return lista;
+    }
+    
+    /*
+    public static void main(String[] args){
+        ArrayList<prestamoBean> lista = new ArrayList<>();
+        prestamoDAO prestamo = new prestamoDAO();
+        
+        lista= prestamo.verAprobarEntrega(1);
+        
+        for(prestamoBean obj:lista){
+            System.out.println("Datos Alumno: "+obj.getApAlumno()+" "+obj.getAmAlumno()+" "+obj.getNombAlumno());
+            System.out.println("Datos libro: "+obj.getIsbn()+" "+obj.getTitulo());
+        }
+    }
+    */
 }
