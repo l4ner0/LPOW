@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `devolucion`(
 	`fecha_devolucion` varchar(10) NOT NULL,
 	`hora_devolucion` varchar(8) NOT NULL,
 	`observa_devolucion` text(200) ,
-	`estado_devolucion` int(20) NOT NULL DEFAULT '0'
+	`estado_devolucion` int(20) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
 CREATE TABLE IF NOT EXISTS `autor`(
@@ -565,10 +565,8 @@ $$
 -- Procedimiento para aprobar una entrega
 
 CREATE PROCEDURE aprobarEntrega( _id_prestamo int )
-UPDATE prestamo p 
-INNER JOIN devolucion d 
-ON (d.id_prestamo = p.id_prestamo)
-SET p.estado_prestamo = 2, d.estado_devolucion=1  WHERE p.id_prestamo = _id_prestamo
+UPDATE prestamo 
+SET estado_prestamo = 2 WHERE id_prestamo = _id_prestamo
 $$
 
 

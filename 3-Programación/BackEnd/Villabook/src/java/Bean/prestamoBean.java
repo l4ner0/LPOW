@@ -31,6 +31,45 @@ public class prestamoBean {
     String nombAlumno;
     String escuelaAlumno;
     String portada;
+    
+    String fotoEmpleado;
+    String apEmpleado;
+    String amEmpleado;
+    String nombEmpleado;
+
+    public String getFotoEmpleado() {
+        return fotoEmpleado;
+    }
+
+    public void setFotoEmpleado(String fotoEmpleado) {
+        this.fotoEmpleado = fotoEmpleado;
+    }
+
+    public String getApEmpleado() {
+        return apEmpleado;
+    }
+
+    public void setApEmpleado(String apEmpleado) {
+        this.apEmpleado = apEmpleado;
+    }
+
+    public String getAmEmpleado() {
+        return amEmpleado;
+    }
+
+    public void setAmEmpleado(String amEmpleado) {
+        this.amEmpleado = amEmpleado;
+    }
+
+    public String getNombEmpleado() {
+        return nombEmpleado;
+    }
+
+    public void setNombEmpleado(String nombEmpleado) {
+        this.nombEmpleado = nombEmpleado;
+    }
+    
+    
 
     public String getFotoAlumno() {
         return fotoAlumno;

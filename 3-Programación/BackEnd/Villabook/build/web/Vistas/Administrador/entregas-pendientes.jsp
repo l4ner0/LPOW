@@ -90,7 +90,7 @@
                                                             <button class="item btn-tabla-editar" onclick="funcionVerAprobarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','1','<%=objPrestamoBean.getId_prestamo()%>')" data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
+                                                                <button class="item  btn-tabla-eliminar" onclick="funcionVerNoAprobarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','1','<%=objPrestamoBean.getId_prestamo()%>')" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
                                                                 <i class="fa fa-close"></i>
                                                             </button>
                                                         </div>
@@ -117,7 +117,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="aprobarEntregaoLabel">Aprobar Entrega</h5>
+                    <h5 class="modal-title" id="aprobarEntregaoLabel">Aprobar Entrega 000-<p style="display:inline-block;" id="aprobarEntregaId"></p></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -196,7 +196,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Aprobar</button>
+                <button type="button" class="btn btn-primary" id="btn-aprobarEntrega"><i class="fa fa-check"></i> Aprobar</button>
                 <button type="button" class="btn btn-light"><i class="fa fa-print"></i> Imprimir</button>
                 </div>
             </div>
@@ -208,7 +208,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="cancelarEntregaoLabel">Cancelar Entrega</h5>
+                    <h5 class="modal-title" id="cancelarEntregaoLabel">Cancelar Entrega 000-<p style="display: inline-block;" id="noAprobarEntregaId"></p></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -222,34 +222,34 @@
                    </div>
                    <div class="form-group">
                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="A">
+                           <input class="form-check-input" type="checkbox" value="A" name="checkMotivo">
                           <label class="form-check-label">Motivo A</label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="B">
+                          <input class="form-check-input" type="checkbox" value="B" name="checkMotivo">
                           <label class="form-check-label">Motivo B</label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="C">
+                          <input class="form-check-input" type="checkbox" value="C" name="checkMotivo">
                           <label class="form-check-label">Motivo C</label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="D">
+                          <input class="form-check-input" type="checkbox" value="D" name="checkMotivo">
                           <label class="form-check-label">Motivo D</label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="E">
+                          <input class="form-check-input" type="checkbox" value="E" name="checkMotivo">
                           <label class="form-check-label">Motivo E</label>
                         </div>
                     </div>
                     <div class="form-group">
                        <p>Otro Motivo</p>
-                        <textarea name="" id="" rows="4" class="form-control"></textarea>
+                        <textarea name="" id="txtMotivo" rows="4" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Confirmar</button>
+                <button type="button" class="btn btn-primary" id="btn-noAprobarPrestamo"><i class="fa fa-check"></i> Confirmar</button>
                 </div>
             </div>
         </div>
@@ -343,7 +343,14 @@
             increaseArea: '20%' // optional
         });
         
+        $("#btn-aprobarEntrega").click(function(){
+            funcionAprobarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','2');
+        });
         
+        $("#btn-noAprobarPrestamo").click(function(){
+            funcionNoAprobarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','3');
+        });
+
     } );
 </script>
 </body>

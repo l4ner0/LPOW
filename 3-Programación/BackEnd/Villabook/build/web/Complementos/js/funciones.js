@@ -109,3 +109,29 @@ var funcionVerAprobarPrestamo=function(ruta,controlador,op,idPrestamo){
     var prestamo = new Prestamo(ruta,controlador,op);
     prestamo.verAprobarPrestamo(idPrestamo);
 }
+
+var funcionAprobarPrestamo=function(ruta,controlador,op){
+    var prestamo = new Prestamo(ruta,controlador,op);
+    prestamo.aprobarPrestamo();
+}
+
+var funcionNoAprobarPrestamo=function(ruta,controlador,op){
+    var idPrestamo = $('#noAprobarEntregaId').text();
+    var motivo="";
+    $("input:checkbox[name=checkMotivo]:checked").each(function() {
+        motivo += $(this).val()+" ,";
+    });
+    motivo += " "+$('#txtMotivo').val();
+    var prestamo = new Prestamo(ruta,controlador,op);
+    prestamo.noAprobarPrestamo(idPrestamo,motivo);
+}
+
+var funcionVerNoAprobarPrestamo=function(ruta,controlador,op,idPrestamo){
+    var prestamo = new Prestamo(ruta,controlador,op);
+    prestamo.verNoAprobarPrestamo(idPrestamo);
+}
+
+var funcionInfoNoAprobarEntrega=function(ruta,controlador,op,idPrestamo){
+    var prestamo = new Prestamo(ruta,controlador,op);
+     prestamo.infoNoAprobarEntrega(idPrestamo);
+}

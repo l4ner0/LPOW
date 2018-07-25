@@ -84,7 +84,7 @@
                                                     <td><%=objPrestamoBean.getTipo_prestamo()%></td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#infoCancelado">
+                                                            <button class="item  btn-tabla-eliminar" onclick="funcionInfoNoAprobarEntrega('<%=request.getContextPath()%>','PrestamoServlet','4','<%=objPrestamoBean.getId_prestamo()%>')" data-toggle="modal" data-placement="top" title="Información" data-target="#infoCancelado">
                                                                 <i class="fa fa-info"></i>
                                                             </button>
                                                         </div>
@@ -129,19 +129,19 @@
                                 <div class="offset-1 col-md-5  datos-alumno-info-cancelada">
                                     <div>
                                         <label for="">Apellidos: </label>
-                                        Guilizzaoni Guilizzaon
+                                        <p id="noAprobadaApAlumno" style="display: inline-block;"></p>
                                     </div>
                                     <div>
                                         <label for="">Nombres: </label>
-                                        Giacomo Giacomo
+                                        <p id="noAprobadaNombAl" style="display: inline-block;"></p>
                                     </div>
                                     <div>
                                         <label for="">Código: </label>
-                                         2015019685
+                                        <p id="noAprobadaCod" style="display: inline-block;"></p>
                                     </div>
                                     <div>
                                         <label for="">Carrera: </label>
-                                        Ingeniería de Sistemas
+                                        <p id="noAprobadaEscuela" style="display: inline-block;"></p>
                                     </div>
                                 </div>
                             </div>   
@@ -157,15 +157,15 @@
                                 <div class="offset-1 col-md-5">
                                     <div>
                                         <label for="">ISBN: </label>
-                                        968-18-4527-7
+                                        <p id="noAprobarISBN" style="display: inline-block;"></p>
                                     </div>
                                     <div>
                                         <label for="">Autor: </label>
-                                        Laudon Keneth
+                                        <p id="noAprobarAutor" style="display: inline-block;"></p>
                                     </div>
                                     <div>
                                         <label for="">Título: </label>
-                                        Administración de los Sistemas de Información
+                                        <p id="noAprobarTitulo" style="display: inline-block;"></p>
                                     </div>
                                 </div>  
                             </div>
@@ -181,22 +181,22 @@
                                 <div class="offset-1 col-md-5  datos-alumno-info-cancelada">
                                     <div>
                                         <label for="">Apellidos: </label>
-                                        Guilizzaoni Guilizzaon
+                                        <p id="noAprobarApEmp" style="display: inline-block;"></p>
                                     </div>
                                     <div>
                                         <label for="">Nombres: </label>
-                                        Giacomo Giacomo
+                                        <p id="noAprobarNombEmp" style="display: inline-block;"></p>
                                     </div>
                                     <div>
                                         <label for="">Motivo: </label>
-                                         Aquí irá el motivo de la cancelación de la solicitud de préstamo.
+                                        <p id="noAprobarMotivoEmp" style="display: inline-block;"></p>
                                     </div>
                                 </div>
                             </div>   
                        </div>
                        <div class="col-md-12 bloque-datos-cancelacion">
                            <div  class="titulo-datos-cancelacion">
-                                <h5>Datos de Cancelación</h5>
+                                <h5>Datos Entrega</h5>
                            </div>
                             <div class="row">
                                <div class="offset-1 col-md-5">
@@ -206,16 +206,16 @@
                                </div>
                                <div class="offset-1 col-md-5">
                                    <div>
-                                        <label for="">Hora Cancelación: </label>
-                                        14:45
+                                        <label for="">Hora: </label>
+                                        <p id="noAprobarHora" style="display: inline-block;"></p>
                                     </div>
                                     <div>
-                                        <label for="">Fecha Cancelación: </label>
-                                        06/06/2018
+                                        <label for="">Fecha: </label>
+                                        <p id="noAprobarFecha" style="display: inline-block;"></p>
                                     </div>
                                     <div>
                                         <label for="">Origen: </label>
-                                        Presencial
+                                        <p id="noAprobarOrigen" style="display: inline-block;"></p>
                                     </div>
                                </div>
                             </div>
@@ -283,6 +283,7 @@
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/iCheck/icheck.min.js"></script>
+<script src="<%=request.getContextPath()%>/Complementos/js/Prestamo.js"  type="text/javascript"></script>
 <script>
     $(document).ready(function() {
             $('#tabla-entregas-pendientes').DataTable( {

@@ -195,17 +195,97 @@ public class prestamoDAO {
         return lista;
     }
     
+    public int aprobarEntrega(int idEntregaPendiente){
+        int respuesta = -1;
+        
+        try {
+            Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call aprobarEntrega(?)}");
+            cst.setInt(1, idEntregaPendiente);
+            respuesta = cst.executeUpdate();
+            cst.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        
+        return respuesta;
+    }
+    
+    public int noAprobarEnrega(int idEntregaPendiente, String motivo){
+        int respuesta = -1;
+        
+        try {
+            Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call noAprobarEntrega(?,?)}");
+            cst.setInt(1, idEntregaPendiente);
+            cst.setString(2, motivo);
+            respuesta = cst.executeUpdate();
+            cst.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        
+        return respuesta;
+    }
+    
+    public ArrayList<prestamoBean> verNoAprobarEntrega(int idPrestamo){
+        ArrayList<prestamoBean> lista = new ArrayList<>();
+        prestamoBean prestamo = null;
+        
+        try {
+            Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call verNoAprobarEntrega(?)}");
+            cst.setInt(1, idPrestamo);
+            rs=cst.executeQuery();
+            rs.next();
+            prestamo = new prestamoBean();
+            prestamo.setId_prestamo(rs.getInt(1));
+            prestamo.setApAlumno(rs.getString(2));
+            prestamo.setAmAlumno(rs.getString(3));
+            prestamo.setNombAlumno(rs.getString(4));
+            prestamo.setCodAlumno(rs.getString(5));
+            prestamo.setEscuelaAlumno(rs.getString(6));
+            prestamo.setIsbn(rs.getString(7));
+            prestamo.setTitulo(rs.getString(8));
+            prestamo.setApellidosAutor(rs.getString(9));
+            prestamo.setNombresAutor(rs.getString(10));
+            prestamo.setFotoEmpleado(rs.getString(11));
+            prestamo.setApEmpleado(rs.getString(12));
+            prestamo.setAmEmpleado(rs.getString(13));
+            prestamo.setNombEmpleado(rs.getString(14));
+            prestamo.setObserva_prestamo(rs.getString(15));
+            prestamo.setHora_prestamo(rs.getString(16));
+            prestamo.setFecha_prestamo(rs.getString(17));
+            prestamo.setTipo_prestamo(rs.getString(18));
+            prestamo.setEstado_prestamo(rs.getInt(19));
+            lista.add(prestamo);
+            rs.close();
+            cst.close();
+            cn.close();
+
+            
+           
+        } catch (Exception e) {
+        }
+        return lista;
+    }
+    
     /*
     public static void main(String[] args){
-        ArrayList<prestamoBean> lista = new ArrayList<>();
+        int respuesta;
         prestamoDAO prestamo = new prestamoDAO();
         
-        lista= prestamo.verAprobarEntrega(1);
-        
+        ArrayList<prestamoBean> lista = new ArrayList<>();
+        lista = prestamo.verNoAprobarEntrega(1);
         for(prestamoBean obj:lista){
-            System.out.println("Datos Alumno: "+obj.getApAlumno()+" "+obj.getAmAlumno()+" "+obj.getNombAlumno());
-            System.out.println("Datos libro: "+obj.getIsbn()+" "+obj.getTitulo());
+            System.out.println("Aepllido del alumno: "+obj.getApAlumno()+" "+obj.getAmAlumno());
+            System.out.println("Nombres del empleado: "+obj.getApEmpleado()+" "+obj.getAmEmpleado()+" "+obj.getNombEmpleado());
         }
+        
+       
     }
-    */
+ */
 }

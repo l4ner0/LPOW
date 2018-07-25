@@ -46,8 +46,44 @@ public class PrestamoServlet extends HttpServlet {
                 ArrayList<prestamoBean> lista = new ArrayList<>();
                 prestamo = new prestamoDAO();
                 int idPrestamo = Integer.parseInt(request.getParameter("id_prestamo"));
-                System.out.println("El idPrestamo es: "+idPrestamo);
                 lista = prestamo.verAprobarEntrega(idPrestamo);
+                out.print(gson.toJson(lista));
+                out.flush();
+                out.close();
+                break;
+            }
+            
+            case 2:{
+                prestamo = new prestamoDAO();
+                int idPrestamoPendiente = Integer.parseInt(request.getParameter("idPrestamoPendiente"));
+                int resultado=prestamo.aprobarEntrega(idPrestamoPendiente);
+                
+                if(resultado==1){
+                    out.print("1");
+                }else{
+                     out.print("-1");
+                }
+                break;
+            }
+            
+            case 3:{
+                prestamo = new prestamoDAO();
+                int idPrestamoPendiente = Integer.parseInt(request.getParameter("id_prestamo"));
+                String motivo = request.getParameter("motivo");
+                int resultado=prestamo.noAprobarEnrega(idPrestamoPendiente,motivo);
+                if(resultado==1){
+                    out.print("1");
+                }else{
+                     out.print("-1");
+                }
+                break;
+            }
+            
+            case 4:{
+                prestamo = new prestamoDAO();
+                ArrayList<prestamoBean> lista = new ArrayList<>();
+                int idPrestamoCancelado = Integer.parseInt(request.getParameter("id_prestamo"));
+                lista = prestamo.verNoAprobarEntrega(idPrestamoCancelado);
                 out.print(gson.toJson(lista));
                 out.flush();
                 out.close();
