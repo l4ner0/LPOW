@@ -6,11 +6,14 @@
 package Controlador;
 
 import Bean.prestamoBean;
+import Controlador.Funciones.Fecha;
 import DAO.prestamoDAO;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,8 +58,14 @@ public class PrestamoServlet extends HttpServlet {
             
             case 2:{
                 prestamo = new prestamoDAO();
+                Fecha sumaFecha = new Fecha();
+                SimpleDateFormat formatoDeFecha = new SimpleDateFormat("yyyy/MM/dd");
                 int idPrestamoPendiente = Integer.parseInt(request.getParameter("idPrestamoPendiente"));
-                int resultado=prestamo.aprobarEntrega(idPrestamoPendiente);
+                String fechaPrestamo = request.getParameter("fechaPrestamo");
+                String horaPrestamo = request.getParameter("horaPrestamo");
+                Date fecha = sumaFecha.sumarRestarDiasFecha(fechaPrestamo, 1);
+                String fechaDevolucion=formatoDeFecha.format(fecha);
+                int resultado=prestamo.aprobarEntrega(idPrestamoPendiente,fechaDevolucion,horaPrestamo);
                 
                 if(resultado==1){
                     out.print("1");

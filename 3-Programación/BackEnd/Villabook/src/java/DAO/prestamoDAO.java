@@ -195,14 +195,16 @@ public class prestamoDAO {
         return lista;
     }
     
-    public int aprobarEntrega(int idEntregaPendiente){
+    public int aprobarEntrega(int idEntregaPendiente, String fechaDevolucion, String horaDevolucion){
         int respuesta = -1;
         
         try {
             Conexion conexion = new Conexion();
             cn=conexion.getConexion();
-            CallableStatement cst = cn.prepareCall("{call aprobarEntrega(?)}");
+            CallableStatement cst = cn.prepareCall("{call aprobarEntrega(?,?,?)}");
             cst.setInt(1, idEntregaPendiente);
+            cst.setString(2, fechaDevolucion);
+            cst.setString(3, horaDevolucion);
             respuesta = cst.executeUpdate();
             cst.close();
             cn.close();

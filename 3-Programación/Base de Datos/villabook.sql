@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `prestamo`(
 	`id_prestamo` int(11) NOT NULL,
 	`id_libro` int(11) NOT NULL,
 	`id_empleado` int(11) NOT NULL,
-	`fecha_prestamo` varchar(10) NOT NULL,
+	`fecha_prestamo` varchar(10) NOT NULL ,
 	`hora_prestamo` varchar(8) NOT NULL,
 	`tipo_prestamo` varchar(20) NOT NULL,
 	`estado_prestamo` int(20) NOT NULL DEFAULT '1',
@@ -564,10 +564,12 @@ $$
 
 -- Procedimiento para aprobar una entrega
 
-CREATE PROCEDURE aprobarEntrega( _id_prestamo int )
+CREATE PROCEDURE aprobarEntrega( _id_prestamo int, _fecha_devolucion varchar(10), _hora_devolucion varchar(8))
+BEGIN
 UPDATE prestamo 
-SET estado_prestamo = 2 WHERE id_prestamo = _id_prestamo
-$$
+SET estado_prestamo = 2 WHERE id_prestamo = _id_prestamo;
+CALL agregarDevolucion(_id_prestamo,_fecha_devolucion,_hora_devolucion);
+END$$
 
 
 -- Procedimiento para cancelar una entrega
@@ -646,5 +648,11 @@ INNER JOIN alumno as al
 ON sp.id_alumno = al.id_alumno
 WHERE p.estado_prestamo = 2
 $$
+
+-- Procedimiento para generar una devolución
+
+CREATE PROCEDURE agregarDevolucion(_id_prestamo int, _fecha_devolucion varchar(10), _hora_devolucion varchar(8))
+INSERT INTO devolucion(id_prestamo,fecha_devolucion,hora_devolucion) 
+VALUES (_id_prestamo, _fecha_devolucion, _hora_devolucion)
 
 DELIMITER ;

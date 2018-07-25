@@ -177,15 +177,18 @@
                                <legend>Datos de Entrega</legend>
                                <div class="row">
                                    <div class="col-md-4">
-                                       <p id="aprobarEntregaHora" ></p>
+                                       <label>Hora: </label>
+                                       <p style="display: inline-block;" id="aprobarEntregaHora" ></p>
                                        
                                    </div>
                                    <div class="col-md-5">
-                                       <p id="aprobarEntregaFecha"></p>
+                                       <label>Fecha: </label>
+                                       <p style="display: inline-block;" id="aprobarEntregaFecha"></p>
                                        
                                    </div>
                                    <div class="col-md-3">
-                                       <p id="aprobarEntregaOrigen"></p>
+                                        <label>Origen: </label>
+                                       <p style="display: inline-block;" id="aprobarEntregaOrigen"></p>
                                        
                                    </div>
                                </div>

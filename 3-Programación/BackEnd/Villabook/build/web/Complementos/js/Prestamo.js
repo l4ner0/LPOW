@@ -22,21 +22,25 @@ Prestamo.prototype.verAprobarPrestamo = function(idPrestamo){
             $("p#aprobarEntregaISBN").text(listaPrestamo[0].isbn);
             $("p#aprobarEntregaAutor").text(listaPrestamo[0].apellidosAutor + " "+ listaPrestamo[0].nombresAutor);
             $("p#aprobarEntregaTitulo").text(listaPrestamo[0].titulo);
-            $("p#aprobarEntregaHora").text("Hora: "+listaPrestamo[0].hora_prestamo);
-            $("p#aprobarEntregaFecha").text("Fecha: "+listaPrestamo[0].fecha_prestamo);
-            $("p#aprobarEntregaOrigen").text("Origen: "+listaPrestamo[0].tipo_prestamo);
+            $("p#aprobarEntregaHora").text(listaPrestamo[0].hora_prestamo);
+            $("p#aprobarEntregaFecha").text(listaPrestamo[0].fecha_prestamo);
+            $("p#aprobarEntregaOrigen").text(listaPrestamo[0].tipo_prestamo);
         }
     });
 }
 
 Prestamo.prototype.aprobarPrestamo = function(){
     var idPrestamo= $("p#aprobarEntregaId").text();
+    var fechaPrestamo =$("p#aprobarEntregaFecha").text();
+    var horaPrestamo=$("p#aprobarEntregaHora").text();
     $.ajax({
         type: 'POST',
         url: this.ruta+"/"+this.controlador,
         data:{
             op:this.op,
-            idPrestamoPendiente:idPrestamo
+            idPrestamoPendiente:idPrestamo,
+            fechaPrestamo:fechaPrestamo,
+            horaPrestamo:horaPrestamo
         },
         success: function (response) {
             if(response==="1"){
