@@ -27,7 +27,8 @@ CREATE TABLE IF NOT EXISTS `prestamo`(
 	`hora_prestamo` varchar(8) NOT NULL,
 	`tipo_prestamo` varchar(20) NOT NULL,
 	`estado_prestamo` int(20) NOT NULL DEFAULT '1',
-	`observa_prestamo` text(200) 
+	`observa_prestamo` text(200),
+	`condicion_entrega` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci  AUTO_INCREMENT=1;
 
 CREATE TABLE IF NOT EXISTS `libro`(
@@ -350,15 +351,7 @@ INSERT INTO `alumno` (`id_alumno`, `id_escuela`, `id_base`, `foto`, `cod_alumno`
 --
 
 INSERT INTO `prestamo` (`id_prestamo`, `id_libro`, `id_empleado`, `fecha_prestamo`, `hora_prestamo`, `tipo_prestamo`, `observa_prestamo`) VALUES
-(1, 4, 1, '2018-07-20', '11:33', 'Presencial', NULL);
-
--- --------------------------------------------------------
---
--- Volcado de datos para la tabla `devolucion`
---
-
-INSERT INTO `devolucion` (`id_devolucion`, `id_prestamo`, `fecha_devolucion`, `hora_devolucion`, `observa_devolucion`) VALUES
-(1, 1, '2018-07-21', '11:35', NULL);
+(1, 4, 1, '2018/07/20', '11:33', 'Presencial', NULL);
 
 -- --------------------------------------------------------
 --
@@ -654,5 +647,54 @@ $$
 CREATE PROCEDURE agregarDevolucion(_id_prestamo int, _fecha_devolucion varchar(10), _hora_devolucion varchar(8))
 INSERT INTO devolucion(id_prestamo,fecha_devolucion,hora_devolucion) 
 VALUES (_id_prestamo, _fecha_devolucion, _hora_devolucion)
+$$
+
+-- Procedimiento para confirmar una entrega
+
+CREATE PROCEDURE entregado(_id_prestamo int)
+UPDATE prestamo SET condicion_entrega = 1 WHERE id_prestamo=_id_prestamo
+$$
+
+-- Procedimiento para filtrar las entregas a mostrar
+
+CREATE PROCEDURE filtrarEntregas(_condicion_entrega int)
+SELECT 
+	p.id_prestamo,
+	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.cod_alumno,
+	l.isbn,l.titulo,
+	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
+	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
+FROM prestamo as p
+INNER JOIN libro as l
+ON p.id_libro = l.id_libro
+INNER JOIN autor as a 
+ON l.id_autor = a.id_autor
+INNER JOIN solicitud_prestamo as sp 
+ON p.id_prestamo=sp.id_prestamo
+INNER JOIN alumno as al 
+ON sp.id_alumno = al.id_alumno
+WHERE p.estado_prestamo = 2 AND p.condicion_entrega = _condicion_entrega
+$$
+
+-- Procedimiento para filtrar los prestamos aprobados segun el alumno y el estado del prestamo
+
+CREATE PROCEDURE filtrarPrestamoAlumno(_cod_alumno varchar(10), _estado_prestamo int)
+SELECT 
+	p.id_prestamo,
+	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.cod_alumno,
+	l.isbn,l.titulo,
+	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
+	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
+FROM prestamo as p
+INNER JOIN libro as l
+ON p.id_libro = l.id_libro
+INNER JOIN autor as a 
+ON l.id_autor = a.id_autor
+INNER JOIN solicitud_prestamo as sp 
+ON p.id_prestamo=sp.id_prestamo
+INNER JOIN alumno as al 
+ON sp.id_alumno = al.id_alumno
+WHERE  al.cod_alumno = _cod_alumno AND p.estado_prestamo = _estado_prestamo
+$$
 
 DELIMITER ;

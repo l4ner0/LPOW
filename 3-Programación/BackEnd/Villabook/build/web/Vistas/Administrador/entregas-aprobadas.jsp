@@ -36,6 +36,23 @@
               <div class="row">
                  <div class="card card-default col-md-12 card-catalogo">
                     <div class="card-body">
+                        <div class="herramientas-filtro">
+                             <div class="row">
+                               <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label for="">Condición de Entrega</label>
+                                         <select name="" id="filtro-origen" class="form-control form-control-sm">
+                                             <option value="">No entregados</option>
+                                             <option value="">Entregados</option>
+                                             <option value="">Todos</option>
+                                         </select>
+                                     </div>    
+                               </div>
+                                <div class="col-md-1">
+                                    <button class="btn btn-secondary btn-sm">Filtrar</button>
+                                </div>
+                             </div>
+                         </div>
                         <div class="tabla-entregas-pendientes">
                             <div class="row">
                                 <div class="col-md-12">
@@ -45,19 +62,18 @@
                                             <thead>
                                                 <tr>
                                                     <th>Alumno</th>
-                                                    <th>Código</th>
                                                     <th>ISBN</th>
                                                     <th>Titulo del libro</th>
                                                     <th>Autor</th>
                                                     <th>Hora</th>
                                                     <th>Fecha</th>
                                                     <th>Origen</th>
+                                                    <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <% for(prestamoBean objPrestamoBean:listaPrestamos){ %>
                                                 <tr class="tr-shadow">
-                                                    <td><%=objPrestamoBean.getApAlumno()+" "+objPrestamoBean.getAmAlumno()%></td>
                                                     <td>
                                                          <%=objPrestamoBean.getCodAlumno()%>
                                                     </td>
@@ -67,6 +83,13 @@
                                                     <td><%=objPrestamoBean.getHora_prestamo()%></td>
                                                     <td><%=objPrestamoBean.getFecha_prestamo()%></td>
                                                     <td><%=objPrestamoBean.getTipo_prestamo()%></td>
+                                                    <td>
+                                                        <div class="table-data-feature btn-entregas-pendientes">
+                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Entregar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                                <i class="fa fa-check"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                                 <%}%>
                                             </tbody>
