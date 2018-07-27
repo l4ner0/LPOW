@@ -129,3 +129,139 @@ Prestamo.prototype.infoNoAprobarEntrega = function(idPrestamo){
         }
     });
 }
+
+Prestamo.prototype.filtraPendiente = function(codAlumno){
+    $.ajax({
+        type: 'POST',
+        url: this.ruta+"/"+this.controlador,
+        data:{
+            op:this.op,
+            codAlumno:codAlumno
+        },
+        success: function (response) {
+             var listaPrestamo=$.parseJSON(response);
+            
+            if(response === "[]"){
+                swal({title:  'El Alumno '+codAlumno+' no existe', text: 'Asegurese de escribir bien el codigo por favor', icon: 
+                    'warning'}).then(function(){ 
+                       location.reload();
+                    }
+                );
+            }else{
+                swal(
+                    'Alumno encontrado',
+                    '',
+                    'success'
+                  )
+               var table = $('#tabla-entregas-pendientes').DataTable();
+               table.clear().draw();
+               
+                for(var i=0; i<listaPrestamo.length; i++){
+
+                 table
+                    .row.add( [ 
+                                i+1,
+                                listaPrestamo[i].apAlumno+" "+listaPrestamo[i].amAlumno, 
+                                listaPrestamo[i].codAlumno, 
+                                listaPrestamo[i].isbn,
+                                listaPrestamo[i].titulo,
+                                listaPrestamo[i].apellidosAutor+" "+listaPrestamo[i].nombresAutor,
+                                listaPrestamo[i].fecha_prestamo,  
+                                listaPrestamo[i].tipo_prestamo,
+                                ' <div class="table-data-feature btn-entregas-pendientes"> <button  class="item btn-tabla-editar" data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega" id="btn-ListarAprobarEntrega"><i class="fa fa-check"></i></button></div>',
+                                '<div class="table-data-feature btn-entregas-pendientes"><button  class="item  btn-tabla-eliminar" id="btn-ListarnoAprobarEntrega" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega"><i class="fa fa-close"></i></button></div>'
+                            ] )
+                    .draw()
+                    .node();
+                }
+                
+                $('#tabla-entregas-pendientes tbody').on( 'click', '#btn-ListarAprobarEntrega', function () {
+                    var data = table.row( $(this).parents('tr') ).data();
+                    var num=data[0]-1;
+                    $("p#aprobarEntregaId").text(listaPrestamo[num].id_prestamo);
+                    $("p#aprobarEntregaApellidos").text(listaPrestamo[num].apAlumno + " " + listaPrestamo[num].amAlumno);
+                    $("p#aprobarEntregaNombres").text(listaPrestamo[num].nombAlumno);
+                    $("p#aprobarEntregaCodigo").text(listaPrestamo[num].codAlumno);
+                    $("p#aprobarEntregaCarrera").text(listaPrestamo[num].escuelaAlumno);
+                    $("p#aprobarEntregaISBN").text(listaPrestamo[num].isbn);
+                    $("p#aprobarEntregaAutor").text(listaPrestamo[num].apellidosAutor + " "+ listaPrestamo[num].nombresAutor);
+                    $("p#aprobarEntregaTitulo").text(listaPrestamo[num].titulo);
+                    $("p#aprobarEntregaHora").text(listaPrestamo[num].hora_prestamo);
+                    $("p#aprobarEntregaFecha").text(listaPrestamo[num].fecha_prestamo);
+                    $("p#aprobarEntregaOrigen").text(listaPrestamo[num].tipo_prestamo);
+                } );
+                $('#tabla-entregas-pendientes tbody').on( 'click', '#btn-ListarnoAprobarEntrega', function () {
+                    var data = table.row( $(this).parents('tr') ).data();
+                    var num=data[0]-1;
+                     $("p#noAprobarEntregaId").text(listaPrestamo[num].id_prestamo);
+                } );
+            }
+        }
+    });
+}
+
+Prestamo.prototype.filtrarNoAprobada = function(codAlumno){
+    $.ajax({
+        type: 'POST',
+        url: this.ruta+"/"+this.controlador,
+        data:{
+            op:this.op,
+            codAlumno:codAlumno
+        },
+        success: function (response) {
+             var listaPrestamo=$.parseJSON(response);
+            
+            if(response === "[]"){
+               swal({title:  'El Alumno '+codAlumno+' no existe', text: 'Asegurese de escribir bien el codigo por favor', icon: 
+                    'warning'}).then(function(){ 
+                       location.reload();
+                    }
+                );
+            }else{
+                swal(
+                    'Alumno encontrado',
+                    '',
+                    'success'
+                  )
+               var table = $('#tabla-entregas-pendientes').DataTable();
+               table.clear().draw();
+               
+                for(var i=0; i<listaPrestamo.length; i++){
+
+                 table
+                    .row.add( [ 
+                                i+1,
+                                listaPrestamo[i].apAlumno+" "+listaPrestamo[i].amAlumno, 
+                                listaPrestamo[i].codAlumno, 
+                                listaPrestamo[i].isbn,
+                                listaPrestamo[i].titulo,
+                                listaPrestamo[i].apellidosAutor+" "+listaPrestamo[i].nombresAutor,
+                                listaPrestamo[i].fecha_prestamo,  
+                                listaPrestamo[i].tipo_prestamo,
+                                '<div class="table-data-feature btn-entregas-pendientes"><button id="btn-infoNoAprobada" class="item  btn-tabla-eliminar" data-toggle="modal" data-placement="top" title="Información" data-target="#infoCancelado"><i class="fa fa-info"></i></button></div>'
+                            ] )
+                    .draw()
+                    .node();
+                }
+                
+                $('#tabla-entregas-pendientes tbody').on( 'click', '#btn-infoNoAprobada', function () {
+                    var data = table.row( $(this).parents('tr') ).data();
+                    var num=data[0]-1;
+                    $("p#noAprobadaApAlumno").text(listaPrestamo[num].apAlumno + " " + listaPrestamo[num].amAlumno);
+                    $("p#noAprobadaNombAl").text(listaPrestamo[num].nombAlumno);
+                    $("p#noAprobadaCod").text(listaPrestamo[num].codAlumno);
+                    $("p#noAprobadaEscuela").text(listaPrestamo[num].escuelaAlumno);
+                    $("p#noAprobarISBN").text(listaPrestamo[num].isbn);
+                    $("p#noAprobarAutor").text(listaPrestamo[num].apellidosAutor + " "+ listaPrestamo[num].nombresAutor);
+                    $("p#noAprobarTitulo").text(listaPrestamo[num].titulo);
+                    $("p#noAprobarApEmp").text(listaPrestamo[num].apEmpleado+" "+listaPrestamo[num].amEmpleado);
+                    $("p#noAprobarNombEmp").text(listaPrestamo[num].nombEmpleado);
+                    $("p#noAprobarMotivoEmp").text(listaPrestamo[num].observa_prestamo);
+                    $("p#noAprobarHora").text(listaPrestamo[num].hora_prestamo);
+                    $("p#noAprobarFecha").text(listaPrestamo[num].fecha_prestamo);
+                    $("p#noAprobarOrigen").text(listaPrestamo[num].tipo_prestamo);
+                } );
+            }
+        }
+    });
+}

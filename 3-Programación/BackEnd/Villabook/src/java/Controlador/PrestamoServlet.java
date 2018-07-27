@@ -98,6 +98,28 @@ public class PrestamoServlet extends HttpServlet {
                 out.close();
                 break;
             }
+            
+            case 5:{
+                prestamo = new prestamoDAO();
+                ArrayList<prestamoBean> lista = new ArrayList<>();
+                String codAlumno = request.getParameter("codAlumno");
+                lista=prestamo.filtrarPendiente(codAlumno);
+                out.print(gson.toJson(lista));
+                out.flush();
+                out.close();
+                 break;
+            }
+            
+            case 6:{
+                prestamo = new prestamoDAO();
+                ArrayList<prestamoBean> lista = new ArrayList<>();
+                String codAlumno = request.getParameter("codAlumno");
+                lista=prestamo.filtrarNoAprobado(codAlumno);
+                out.print(gson.toJson(lista));
+                out.flush();
+                out.close();
+                 break;
+            }
         }
     }
 

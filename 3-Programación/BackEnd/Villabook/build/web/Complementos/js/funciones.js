@@ -135,3 +135,13 @@ var funcionInfoNoAprobarEntrega=function(ruta,controlador,op,idPrestamo){
     var prestamo = new Prestamo(ruta,controlador,op);
      prestamo.infoNoAprobarEntrega(idPrestamo);
 }
+
+var funcionFiltrarPendiente=function(ruta,controlador,op,codAlumno){
+    var prestamo = new Prestamo(ruta,controlador,op);
+    prestamo.filtraPendiente(codAlumno);
+}
+
+var funcionFiltrarNoAprobada=function(ruta,controlador,op,codAlumno){
+    var prestamo = new Prestamo(ruta,controlador,op);
+    prestamo.filtrarNoAprobada(codAlumno);
+}

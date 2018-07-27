@@ -46,11 +46,11 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icono-bucar-pendiente"><i class="fa fa-address-card-o"></i></span>
                                     </div>
-                                    <input type="text" class="form-control " placeholder="Codigo de alumno">
+                                    <input type="text" class="form-control " id="filtroCodAlumno" placeholder="Codigo de alumno">
                                 </div>
                              </div>
                              <div class="btn-buscar-pendiente">
-                                <button class="btn btn-primary "><i class="fa fa-search"></i> Buscar</button> 
+                                 <button class="btn btn-primary " id="btn-filtrarPendiente" ><i class="fa fa-search"></i> Buscar</button> 
                              </div>
                         </div>
                         <div class="tabla-entregas-pendientes">
@@ -61,20 +61,22 @@
                                         <table class="table table-data2" id="tabla-entregas-pendientes">
                                             <thead>
                                                 <tr>
+                                                    <th>N°</th>
                                                     <th>Alumno</th>
                                                     <th>Código</th>
                                                     <th>ISBN</th>
                                                     <th>Titulo del libro</th>
                                                     <th>Autor</th>
-                                                    <th>Hora</th>
                                                     <th>Fecha</th>
                                                     <th>Origen</th>
+                                                    <th></th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <%for(prestamoBean objPrestamoBean:listaPrestamos){%>
+                                                <%int i=1;for(prestamoBean objPrestamoBean:listaPrestamos){%>
                                                 <tr class="tr-shadow">
+                                                    <td><%=i++%></td>
                                                     <td><%=objPrestamoBean.getApAlumno()+" "+objPrestamoBean.getAmAlumno()%></td>
                                                     <td>
                                                         <%=objPrestamoBean.getCodAlumno()%>
@@ -82,19 +84,24 @@
                                                     <td><%=objPrestamoBean.getIsbn()%></td>
                                                     <td><%=objPrestamoBean.getTitulo()%></td>
                                                     <td><%=objPrestamoBean.getApellidosAutor()+" "+objPrestamoBean.getNombresAutor()%></td>
-                                                    <td><%=objPrestamoBean.getHora_prestamo()%></td>
                                                     <td><%=objPrestamoBean.getFecha_prestamo()%></td>
                                                     <td><%=objPrestamoBean.getTipo_prestamo()%></td>
+                                                    
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
                                                             <button class="item btn-tabla-editar" onclick="funcionVerAprobarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','1','<%=objPrestamoBean.getId_prestamo()%>')" data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
-                                                                <button class="item  btn-tabla-eliminar" onclick="funcionVerNoAprobarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','1','<%=objPrestamoBean.getId_prestamo()%>')" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
-                                                                <i class="fa fa-close"></i>
-                                                            </button>
                                                         </div>
                                                     </td>
+                                                    <td>  
+                                                         <div class="table-data-feature btn-entregas-pendientes">
+                                                            <button class="item  btn-tabla-eliminar" onclick="funcionVerNoAprobarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','1','<%=objPrestamoBean.getId_prestamo()%>')" data-toggle="modal" data-placement="top" title="Cancelar" data-target="#cancelarEntrega">
+                                                                <i class="fa fa-close"></i>
+                                                            </button>
+                                                         </div>
+                                                    </td>
+                                                    
                                                 </tr>
                                                 <%}%>
                                             </tbody>
@@ -352,6 +359,11 @@
         
         $("#btn-noAprobarPrestamo").click(function(){
             funcionNoAprobarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','3');
+        });
+        
+        $('#btn-filtrarPendiente').click(function(){
+            var codAlumno=$('#filtroCodAlumno').val();
+            funcionFiltrarPendiente('<%=request.getContextPath()%>','PrestamoServlet','5',codAlumno);
         });
 
     } );

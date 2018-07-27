@@ -43,11 +43,11 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icono-bucar-pendiente"><i class="fa fa-address-card-o"></i></span>
                                     </div>
-                                    <input type="text" class="form-control " placeholder="Codigo de alumno">
+                                    <input id="filtroCodAlumno" type="text" class="form-control " placeholder="Codigo de alumno">
                                 </div>
                              </div>
                              <div class="btn-buscar-pendiente">
-                                <button class="btn btn-primary "><i class="fa fa-search"></i> Buscar</button> 
+                                 <button class="btn btn-primary " id="btn-filtrarNoAprobada"><i class="fa fa-search"></i> Buscar</button> 
                              </div>
                         </div>
                         <div class="tabla-entregas-pendientes">
@@ -58,20 +58,21 @@
                                         <table class="table table-data2" id="tabla-entregas-pendientes">
                                             <thead>
                                                 <tr>
+                                                    <th>N°</th>
                                                     <th>Alumno</th>
                                                     <th>Código</th>
                                                     <th>ISBN</th>
                                                     <th>Titulo del libro</th>
                                                     <th>Autor</th>
-                                                    <th>Hora</th>
                                                     <th>Fecha</th>
                                                     <th>Origen</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <%for(prestamoBean objPrestamoBean:listaPrestamos){%>
+                                                <%int i=1;for(prestamoBean objPrestamoBean:listaPrestamos){%>
                                                 <tr class="tr-shadow">
+                                                    <td><%=i++%></td>
                                                     <td><%=objPrestamoBean.getApAlumno()+" "+objPrestamoBean.getAmAlumno()%></td>
                                                     <td>
                                                          <%=objPrestamoBean.getCodAlumno()%>
@@ -79,7 +80,6 @@
                                                     <td><%=objPrestamoBean.getIsbn()%></td>
                                                     <td><%=objPrestamoBean.getTitulo()%></td>
                                                     <td><%=objPrestamoBean.getApellidosAutor()+" "+objPrestamoBean.getNombresAutor()%></td>
-                                                    <td><%=objPrestamoBean.getHora_prestamo()%></td>
                                                     <td><%=objPrestamoBean.getFecha_prestamo()%></td>
                                                     <td><%=objPrestamoBean.getTipo_prestamo()%></td>
                                                     <td>
@@ -321,6 +321,11 @@
         });
         
         $( "#filtro-fecha" ).datepicker();
+        
+        $("#btn-filtrarNoAprobada").click(function(){
+            var codAlumno=$('#filtroCodAlumno').val();
+            funcionFiltrarNoAprobada('<%=request.getContextPath()%>','PrestamoServlet','6',codAlumno);
+        });
     } );
 </script>
 </body>

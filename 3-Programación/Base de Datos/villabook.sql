@@ -343,15 +343,18 @@ INSERT INTO `libro` (`id_libro`, `id_tipo_documento`, `id_escuela`, `id_autor`, 
 --
 
 INSERT INTO `alumno` (`id_alumno`, `id_escuela`, `id_base`, `foto`, `cod_alumno`, `ap_paterno`, `ap_materno`, `nombres`, `sexo`, `DNI`, `telefono`, `direccion`, `fecha_registro`, `estado`, `key_reg`) VALUES
-(1, 1, 1, NULL, '2015019637', 'Urbina', 'Sante', 'Diego Alejandro', 'M', '77344583', '941885678', 'Av. Santa Gertrudis 393', '2018-07-20', 1, '');
+(1, 1, 1, NULL, '2015019637', 'Urbina', 'Sante', 'Diego Alejandro', 'M', '77344583', '941885678', 'Av. Santa Gertrudis 393', '2018-07-20', 1, ''),
+(2, 3, 1, NULL, '2015015643', 'Ramirez', 'Guevara', 'Juan Manuel', 'M', '77344587', '5678765', 'Av. Santa Gertrudis 398', '2018/27/27', 0, '');
 
 -- --------------------------------------------------------
 --
 -- Volcado de datos para la tabla `prestamo`
 --
 
-INSERT INTO `prestamo` (`id_prestamo`, `id_libro`, `id_empleado`, `fecha_prestamo`, `hora_prestamo`, `tipo_prestamo`, `observa_prestamo`) VALUES
-(1, 4, 1, '2018/07/20', '11:33', 'Presencial', NULL);
+INSERT INTO `prestamo` (`id_prestamo`, `id_libro`, `id_empleado`, `fecha_prestamo`, `hora_prestamo`, `tipo_prestamo`, `estado_prestamo`, `observa_prestamo`, `condicion_entrega`) VALUES
+(1, 4, 1, '2018/07/20', '11:33', 'Presencial', 1, NULL, 0),
+(2, 2, 1, '2018/07/26', '3:46', 'Presencial', 1, NULL , 0),
+(3, 5, 1, '2018/07/26', '4:06', 'Presencial', 1, NULL, 0);
 
 -- --------------------------------------------------------
 --
@@ -359,7 +362,9 @@ INSERT INTO `prestamo` (`id_prestamo`, `id_libro`, `id_empleado`, `fecha_prestam
 --
 
 INSERT INTO `solicitud_prestamo` (`id_alumno`, `id_prestamo`) VALUES
-(1, 1);
+(1, 1),
+(1, 2),
+(2, 3);
 
 -- --------------------------------------------------------
 --
@@ -681,19 +686,24 @@ $$
 CREATE PROCEDURE filtrarPrestamoAlumno(_cod_alumno varchar(10), _estado_prestamo int)
 SELECT 
 	p.id_prestamo,
-	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.cod_alumno,
-	l.isbn,l.titulo,
+	al.foto AS fotoAlumno,al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.nombres AS nombAlumno,al.cod_alumno,e.nombre AS escuela,
+	l.portada,l.isbn,l.titulo,
 	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
+	emp.foto,emp.ap_paterno AS apEmpleado,emp.ap_materno AS amEmpleado,emp.nombres AS nombEmpleado,p.observa_prestamo,
 	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
 FROM prestamo as p
 INNER JOIN libro as l
-ON p.id_libro = l.id_libro
+ON l.id_libro = p.id_libro
 INNER JOIN autor as a 
-ON l.id_autor = a.id_autor
+ON a.id_autor = l.id_autor
 INNER JOIN solicitud_prestamo as sp 
-ON p.id_prestamo=sp.id_prestamo
+ON sp.id_prestamo=p.id_prestamo
 INNER JOIN alumno as al 
-ON sp.id_alumno = al.id_alumno
+ON al.id_alumno = sp.id_alumno
+INNER JOIN escuela as e
+ON e.id_escuela = al.id_escuela
+INNER JOIN empleado as emp
+ON emp.id_empleado=p.id_empleado
 WHERE  al.cod_alumno = _cod_alumno AND p.estado_prestamo = _estado_prestamo
 $$
 

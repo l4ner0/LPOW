@@ -275,16 +275,105 @@ public class prestamoDAO {
         return lista;
     }
     
-    /*
+    public ArrayList<prestamoBean> filtrarPendiente(String codAlumno){
+        ArrayList<prestamoBean> lista = new ArrayList<>();
+        prestamoBean objPrestamoBean=null;
+        
+        try {
+             Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call filtrarPrestamoAlumno(?,?)}");
+            cst.setString(1, codAlumno);
+            cst.setInt(2, 1);
+            rs = cst.executeQuery();
+            
+            while(rs.next()){
+                objPrestamoBean = new prestamoBean();
+            objPrestamoBean.setId_prestamo(rs.getInt(1));
+            objPrestamoBean.setFotoAlumno(rs.getString(2));
+            objPrestamoBean.setApAlumno(rs.getString(3));
+            objPrestamoBean.setAmAlumno(rs.getString(4));
+            objPrestamoBean.setNombAlumno(rs.getString(5));
+            objPrestamoBean.setCodAlumno(rs.getString(6));
+            objPrestamoBean.setEscuelaAlumno(rs.getString(7));
+            objPrestamoBean.setPortada(rs.getString(8));
+            objPrestamoBean.setIsbn(rs.getString(9));
+            objPrestamoBean.setTitulo(rs.getString(10));
+            objPrestamoBean.setApellidosAutor(rs.getString(11));
+            objPrestamoBean.setNombresAutor(rs.getString(12));
+            objPrestamoBean.setHora_prestamo(rs.getString(18));
+            objPrestamoBean.setFecha_prestamo(rs.getString(19));
+            objPrestamoBean.setTipo_prestamo(rs.getString(20));
+            objPrestamoBean.setEstado_prestamo(rs.getInt(21));
+                
+                lista.add(objPrestamoBean);    
+            }
+            rs.close();
+            cst.close();
+            cn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return lista;
+    }
+    
+    public ArrayList<prestamoBean> filtrarNoAprobado(String codAlumno){
+        ArrayList<prestamoBean> lista = new ArrayList<>();
+        prestamoBean objPrestamoBean=null;
+        
+        try {
+             Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call filtrarPrestamoAlumno(?,?)}");
+            cst.setString(1, codAlumno);
+            cst.setInt(2, 0);
+            rs = cst.executeQuery();
+            
+            while(rs.next()){
+                objPrestamoBean = new prestamoBean();
+                objPrestamoBean.setId_prestamo(rs.getInt(1));
+                objPrestamoBean.setFotoAlumno(rs.getString(2));
+                objPrestamoBean.setApAlumno(rs.getString(3));
+                objPrestamoBean.setAmAlumno(rs.getString(4));
+                objPrestamoBean.setNombAlumno(rs.getString(5));
+                objPrestamoBean.setCodAlumno(rs.getString(6));
+                objPrestamoBean.setEscuelaAlumno(rs.getString(7));
+                objPrestamoBean.setPortada(rs.getString(8));
+                objPrestamoBean.setIsbn(rs.getString(9));
+                objPrestamoBean.setTitulo(rs.getString(10));
+                objPrestamoBean.setApellidosAutor(rs.getString(11));
+                objPrestamoBean.setNombresAutor(rs.getString(12));
+                objPrestamoBean.setFotoEmpleado(rs.getString(13));
+                objPrestamoBean.setApEmpleado(rs.getString(14));
+                objPrestamoBean.setAmEmpleado(rs.getString(15));
+                objPrestamoBean.setNombEmpleado(rs.getString(16));
+                objPrestamoBean.setObserva_prestamo(rs.getString(17));
+                objPrestamoBean.setHora_prestamo(rs.getString(18));
+                objPrestamoBean.setFecha_prestamo(rs.getString(19));
+                objPrestamoBean.setTipo_prestamo(rs.getString(20));
+                objPrestamoBean.setEstado_prestamo(rs.getInt(21));
+                
+                lista.add(objPrestamoBean);    
+            }
+            rs.close();
+            cst.close();
+            cn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return lista;
+    }
+    
+/*
     public static void main(String[] args){
         int respuesta;
         prestamoDAO prestamo = new prestamoDAO();
         
         ArrayList<prestamoBean> lista = new ArrayList<>();
-        lista = prestamo.verNoAprobarEntrega(1);
+        lista = prestamo.filtrarPendiente("2015019637");
         for(prestamoBean obj:lista){
             System.out.println("Aepllido del alumno: "+obj.getApAlumno()+" "+obj.getAmAlumno());
-            System.out.println("Nombres del empleado: "+obj.getApEmpleado()+" "+obj.getAmEmpleado()+" "+obj.getNombEmpleado());
+            
         }
         
        
