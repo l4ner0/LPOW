@@ -634,7 +634,7 @@ SELECT
 	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.cod_alumno,
 	l.isbn,l.titulo,
 	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
-	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
+	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo,p.condicion_entrega 
 FROM prestamo as p
 INNER JOIN libro as l
 ON p.id_libro = l.id_libro
@@ -668,7 +668,7 @@ SELECT
 	al.ap_paterno AS apAlumno,al.ap_materno AS amAlumno,al.cod_alumno,
 	l.isbn,l.titulo,
 	a.apellidos AS apelidosAutor,a.nombres AS nombresAutor,
-	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo 
+	p.hora_prestamo,p.fecha_prestamo,p.tipo_prestamo,p.estado_prestamo,p.condicion_entrega 
 FROM prestamo as p
 INNER JOIN libro as l
 ON p.id_libro = l.id_libro

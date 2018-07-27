@@ -41,16 +41,13 @@
                                <div class="col-md-2">
                                     <div class="form-group">
                                         <label for="">Condición de Entrega</label>
-                                         <select name="" id="filtro-origen" class="form-control form-control-sm">
-                                             <option value="">No entregados</option>
-                                             <option value="">Entregados</option>
-                                             <option value="">Todos</option>
+                                        <select name="" id="filtro-origen" class="form-control form-control-sm" >
+                                             <option value="-1">Todos</option>
+                                             <option value="0">No entregados</option>
+                                             <option value="1">Entregados</option>
                                          </select>
                                      </div>    
                                </div>
-                                <div class="col-md-1">
-                                    <button class="btn btn-secondary btn-sm">Filtrar</button>
-                                </div>
                              </div>
                          </div>
                         <div class="tabla-entregas-pendientes">
@@ -61,10 +58,11 @@
                                         <table class="table table-data2" id="tabla-entregas-pendientes">
                                             <thead>
                                                 <tr>
-                                                    <th>Alumno</th>
+                                                    <th>N°</th>
                                                     <th>ISBN</th>
                                                     <th>Titulo del libro</th>
                                                     <th>Autor</th>
+                                                    <th>Alumno</th>
                                                     <th>Hora</th>
                                                     <th>Fecha</th>
                                                     <th>Origen</th>
@@ -72,23 +70,28 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <% for(prestamoBean objPrestamoBean:listaPrestamos){ %>
+                                                <% int i=1; for(prestamoBean objPrestamoBean:listaPrestamos){ %>
                                                 <tr class="tr-shadow">
-                                                    <td>
-                                                         <%=objPrestamoBean.getCodAlumno()%>
-                                                    </td>
+                                                    <td><%=i++%></td>
                                                     <td><%=objPrestamoBean.getIsbn()%></td>
                                                     <td><%=objPrestamoBean.getTitulo()%></td>
                                                     <td><%=objPrestamoBean.getApellidosAutor()+" "+objPrestamoBean.getNombresAutor()%></td>
+                                                    <td>
+                                                         <%=objPrestamoBean.getCodAlumno()%>
+                                                    </td>
                                                     <td><%=objPrestamoBean.getHora_prestamo()%></td>
                                                     <td><%=objPrestamoBean.getFecha_prestamo()%></td>
                                                     <td><%=objPrestamoBean.getTipo_prestamo()%></td>
                                                     <td>
+                                                        <%if(objPrestamoBean.getCodicionEntrega() == 0){%>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Entregar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                            <button class="item btn-tabla-editar" onclick="funcionEntregado('<%=request.getContextPath()%>','PrestamoServlet','8','<%=objPrestamoBean.getId_prestamo()%>')" data-placement="top" title="Entregar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
+                                                        <%}else if(objPrestamoBean.getCodicionEntrega() == 1){%>
+                                                            <span class="status--process">Entregado</span>
+                                                        <%}%>
                                                     </td>
                                                 </tr>
                                                 <%}%>
@@ -158,6 +161,7 @@
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/iCheck/icheck.min.js"></script>
+<script src="<%=request.getContextPath()%>/Complementos/js/Prestamo.js"  type="text/javascript"></script>
 <script>
     $(document).ready(function() {
             $('#tabla-entregas-pendientes').DataTable( {
@@ -195,6 +199,11 @@
         });
         
         $( "#filtro-fecha" ).datepicker();
+        
+        $('#filtro-origen').change(function(){
+            var opcion = $('#filtro-origen').val();
+            funcionFiltrarEntrega('<%=request.getContextPath()%>','PrestamoServlet','7',opcion);
+        });
     } );
 </script>
 </body>

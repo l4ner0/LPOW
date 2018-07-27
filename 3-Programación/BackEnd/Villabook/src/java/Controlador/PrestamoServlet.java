@@ -120,6 +120,29 @@ public class PrestamoServlet extends HttpServlet {
                 out.close();
                  break;
             }
+            
+            case 7:{
+                prestamo = new prestamoDAO();
+                ArrayList<prestamoBean> lista = new ArrayList<>();
+                int condicionEntrega = Integer.parseInt(request.getParameter("condicionEntrega"));
+                lista=prestamo.filtrarEntregas(condicionEntrega);
+                out.print(gson.toJson(lista));
+                out.flush();
+                out.close();
+                break;
+            }
+            
+            case 8:{
+                prestamo = new prestamoDAO();
+                int idPrestamo = Integer.parseInt(request.getParameter("idPrestamo"));
+                int resultado=prestamo.entregado(idPrestamo);
+                if(resultado==1){
+                    out.print("1");
+                }else{
+                     out.print("-1");
+                }
+                break;
+            }
         }
     }
 

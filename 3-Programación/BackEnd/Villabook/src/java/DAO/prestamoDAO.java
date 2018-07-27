@@ -140,6 +140,7 @@ public class prestamoDAO {
                 objPrestamoBean.setFecha_prestamo(rs.getString(10));
                 objPrestamoBean.setTipo_prestamo(rs.getString(11));
                 objPrestamoBean.setEstado_prestamo(rs.getInt(12));
+                objPrestamoBean.setCodicionEntrega(rs.getInt(13));
                 
                 lista.add(objPrestamoBean);    
             }
@@ -363,6 +364,62 @@ public class prestamoDAO {
         }
         return lista;
     }
+    
+     public ArrayList<prestamoBean> filtrarEntregas(int condicionEntrega){
+        ArrayList<prestamoBean> lista = new ArrayList<>();
+        prestamoBean objPrestamoBean=null;
+        
+        try {
+             Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call filtrarEntregas(?)}");
+            cst.setInt(1, condicionEntrega);
+            rs = cst.executeQuery();
+            
+            while(rs.next()){
+                objPrestamoBean = new prestamoBean();
+                objPrestamoBean.setId_prestamo(rs.getInt(1));
+                objPrestamoBean.setApAlumno(rs.getString(2));
+                objPrestamoBean.setAmAlumno(rs.getString(3));
+                objPrestamoBean.setCodAlumno(rs.getString(4));
+                objPrestamoBean.setIsbn(rs.getString(5));
+                objPrestamoBean.setTitulo(rs.getString(6));
+                objPrestamoBean.setApellidosAutor(rs.getString(7));
+                objPrestamoBean.setNombresAutor(rs.getString(8));
+                objPrestamoBean.setHora_prestamo(rs.getString(9));
+                objPrestamoBean.setFecha_prestamo(rs.getString(10));
+                objPrestamoBean.setTipo_prestamo(rs.getString(11));
+                objPrestamoBean.setEstado_prestamo(rs.getInt(12));
+                objPrestamoBean.setCodicionEntrega(rs.getInt(13));
+                
+                lista.add(objPrestamoBean);    
+            }
+            rs.close();
+            cst.close();
+            cn.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return lista;
+    }
+    
+    public int entregado(int idPrestamo){
+        int respuesta = -1;
+        
+        try {
+            Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call entregado(?)}");
+            cst.setInt(1, idPrestamo);
+            respuesta = cst.executeUpdate();
+            cst.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        
+        return respuesta;
+    } 
+     
     
 /*
     public static void main(String[] args){

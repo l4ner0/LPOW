@@ -265,3 +265,105 @@ Prestamo.prototype.filtrarNoAprobada = function(codAlumno){
         }
     });
 }
+
+Prestamo.prototype.filtrarEntrega = function(condicionEntrega){
+    $.ajax({
+        type: 'POST',
+        url: this.ruta+"/"+this.controlador,
+        data:{
+            op:this.op,
+            condicionEntrega:condicionEntrega
+        },
+        success: function (response) {
+             var listaPrestamo=$.parseJSON(response);
+            if(response === "[]"){
+                var table = $('#tabla-entregas-pendientes').DataTable();
+                table.clear().draw();
+                
+            }else{
+               var table = $('#tabla-entregas-pendientes').DataTable();
+               table.clear().draw();
+               
+                for(var i=0; i<listaPrestamo.length; i++){
+                    if(listaPrestamo[i].codicionEntrega === 0){
+                        table
+                            .row.add( [ 
+                                        i+1,
+                                        listaPrestamo[i].isbn,
+                                        listaPrestamo[i].titulo,
+                                        listaPrestamo[i].apellidosAutor+" "+listaPrestamo[i].nombresAutor,
+                                        listaPrestamo[i].codAlumno, 
+                                        listaPrestamo[i].hora_prestamo, 
+                                        listaPrestamo[i].fecha_prestamo,  
+                                        listaPrestamo[i].tipo_prestamo,
+                                        '<div class="table-data-feature btn-entregas-pendientes"><button class="item btn-tabla-editar" id="btn-entregar"  data-placement="top" title="Entregar"  data-toggle="modal" data-target="#aprobarEntrega"><i class="fa fa-check"></i></button></div>'
+                                    ] )
+                            .draw()
+                            .node();
+                    
+                    }else if(listaPrestamo[i].codicionEntrega === 1){
+                        table
+                            .row.add( [ 
+                                        i+1,
+                                        listaPrestamo[i].isbn,
+                                        listaPrestamo[i].titulo,
+                                        listaPrestamo[i].apellidosAutor+" "+listaPrestamo[i].nombresAutor,
+                                        listaPrestamo[i].codAlumno, 
+                                        listaPrestamo[i].hora_prestamo, 
+                                        listaPrestamo[i].fecha_prestamo,  
+                                        listaPrestamo[i].tipo_prestamo,
+                                        ' <span class="status--process">Entregado</span>'
+                                    ] )
+                            .draw()
+                            .node();
+                    }
+                }
+                
+                $('#tabla-entregas-pendientes tbody').on( 'click', '#btn-entregar', function () {
+                    var data = table.row( $(this).parents('tr') ).data();
+                    var num=data[0]-1;
+                    table
+                                .row( $(this).parents('tr') )
+                                .remove()
+                                .draw();
+                    $.ajax({
+                        type: 'POST',
+                        url: "/Villabook/PrestamoServlet",
+                        data:{
+                            op:8,
+                            idPrestamo:listaPrestamo[num].id_prestamo
+                        },
+                        success:function(response){
+                            if(response === "-1"){
+                                 swal({title: "Error", text: "No se  aprobo la entrega del libro", icon: 
+                                    "error"});
+                            }
+                        }
+                    });
+                } );
+            }
+        }
+    });
+}
+
+Prestamo.prototype.entregado=function(idPrestamo){
+    $.ajax({
+        type: 'POST',
+        url: this.ruta+"/"+this.controlador,
+        data:{
+            op:this.op,
+            idPrestamo:idPrestamo
+        },
+        success: function (response) {
+            if(response==="1"){
+                location.reload();
+            }else{
+                swal({title: "Error", text: "No se  aprobo la entrega del libro", icon: 
+                    "error"}).then(function(){ 
+                       location.reload();
+                    }
+                );
+            }
+        }
+    });
+}

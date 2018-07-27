@@ -145,3 +145,17 @@ var funcionFiltrarNoAprobada=function(ruta,controlador,op,codAlumno){
     var prestamo = new Prestamo(ruta,controlador,op);
     prestamo.filtrarNoAprobada(codAlumno);
 }
+
+var funcionFiltrarEntrega=function(ruta,controlador,op,condicionEntrega){
+    if(condicionEntrega==='-1'){
+        location.reload();
+    }else{
+        var prestamo = new Prestamo(ruta,controlador,op);
+        prestamo.filtrarEntrega(condicionEntrega);
+    }
+}
+
+var funcionEntregado=function(ruta,controlador,op,idPrestamo){
+     var prestamo = new Prestamo(ruta,controlador,op);
+        prestamo.entregado(idPrestamo);
+}

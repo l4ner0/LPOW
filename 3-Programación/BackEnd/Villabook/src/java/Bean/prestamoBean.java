@@ -36,6 +36,16 @@ public class prestamoBean {
     String apEmpleado;
     String amEmpleado;
     String nombEmpleado;
+    
+    int codicionEntrega;
+
+    public int getCodicionEntrega() {
+        return codicionEntrega;
+    }
+
+    public void setCodicionEntrega(int codicionEntrega) {
+        this.codicionEntrega = codicionEntrega;
+    }
 
     public String getFotoEmpleado() {
         return fotoEmpleado;
