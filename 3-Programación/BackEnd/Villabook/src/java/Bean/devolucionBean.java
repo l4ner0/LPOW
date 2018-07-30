@@ -16,7 +16,119 @@ public class devolucionBean {
     String hora_devolucion;
     String observa_devolucion;
     int estado_devolucion;
+    
+    String apAlumno;
+    String amAlumno;
+    String nombAlumno;
+    String fotoAlumno;
+    String portada;
+    String escuela;
+    
+    String codAlumno;
+    String isbn;
+    String titulo;
+    String apellidosAutor;
+    String nombresAutor;
+    String tipoPrestamo;
 
+    public String getEscuela() {
+        return escuela;
+    }
+
+    public void setEscuela(String escuela) {
+        this.escuela = escuela;
+    }
+
+    public String getFotoAlumno() {
+        return fotoAlumno;
+    }
+
+    public void setFotoAlumno(String fotoAlumno) {
+        this.fotoAlumno = fotoAlumno;
+    }
+
+    public String getPortada() {
+        return portada;
+    }
+
+    public void setPortada(String portada) {
+        this.portada = portada;
+    }
+
+    public String getNombAlumno() {
+        return nombAlumno;
+    }
+
+    public void setNombAlumno(String nombAlumno) {
+        this.nombAlumno = nombAlumno;
+    }
+ 
+
+    public String getApAlumno() {
+        return apAlumno;
+    }
+
+    public void setApAlumno(String apAlumno) {
+        this.apAlumno = apAlumno;
+    }
+
+    public String getAmAlumno() {
+        return amAlumno;
+    }
+
+    public void setAmAlumno(String amAlumno) {
+        this.amAlumno = amAlumno;
+    }
+
+    public String getCodAlumno() {
+        return codAlumno;
+    }
+
+    public void setCodAlumno(String codAlumno) {
+        this.codAlumno = codAlumno;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getApellidosAutor() {
+        return apellidosAutor;
+    }
+
+    public void setApellidosAutor(String apellidosAutor) {
+        this.apellidosAutor = apellidosAutor;
+    }
+
+    public String getNombresAutor() {
+        return nombresAutor;
+    }
+
+    public void setNombresAutor(String nombresAutor) {
+        this.nombresAutor = nombresAutor;
+    }
+
+    public String getTipoPrestamo() {
+        return tipoPrestamo;
+    }
+
+    public void setTipoPrestamo(String tipoPrestamo) {
+        this.tipoPrestamo = tipoPrestamo;
+    }
+    
+    
     public int getId_devolucion() {
         return id_devolucion;
     }

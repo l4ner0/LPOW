@@ -159,3 +159,23 @@ var funcionEntregado=function(ruta,controlador,op,idPrestamo){
      var prestamo = new Prestamo(ruta,controlador,op);
         prestamo.entregado(idPrestamo);
 }
+
+var funcionAprobarDevolucion=function(ruta,controlador,op,idDevolucion){
+    var devolucion = new Devolucion(ruta,controlador,op);
+    devolucion.aprobarDevolucion(idDevolucion);
+}
+
+var funcionVerAprobarDevolucion=function(ruta,controlador,op,idDevolucion){
+    var devolucion = new Devolucion(ruta,controlador,op);
+    devolucion.verAprobarDevolucion(idDevolucion);
+}
+
+var funcionFiltrarDevoPend=function(ruta,controlador,op,codAlumno){
+    var devolucion = new Devolucion(ruta,controlador,op);
+    devolucion.filtrarDevolucionPendiente(codAlumno);
+}
+
+var funcionFiltrarDevoApro=function(ruta,controlador,op,codAlumno){
+    var devolucion = new Devolucion(ruta,controlador,op);
+    devolucion.filtarDevolucionAprobada(codAlumno);
+}

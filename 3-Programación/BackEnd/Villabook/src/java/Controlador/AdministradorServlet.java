@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Bean.devolucionBean;
 import Bean.empleadoBean;
 import Bean.libroBean;
 import Bean.prestamoBean;
@@ -43,6 +44,7 @@ public class AdministradorServlet extends HttpServlet {
         HttpSession sesion = request.getSession(true);
         libroDAO objLibroDAO=null;
         prestamoDAO objPrestamoDAO = null;
+        devolucionDAO objDevolucionDAO = null;
         int op=Integer.parseInt(request.getParameter("op"));
         String pagina="";
         switch(op){
@@ -52,7 +54,7 @@ public class AdministradorServlet extends HttpServlet {
                     alumnoDAO objAlumnoDAO = new alumnoDAO();
                     objLibroDAO = new libroDAO();
                     objPrestamoDAO = new prestamoDAO();
-                    devolucionDAO objDevolucionDAO = new devolucionDAO();
+                    objDevolucionDAO = new devolucionDAO();
                     
                     int numEstudiantes=objAlumnoDAO.contarEstudiantes();
                     int numLibros = objLibroDAO.contarLibros();
@@ -145,6 +147,10 @@ public class AdministradorServlet extends HttpServlet {
                     objPrestamoDAO = new prestamoDAO();
                     int numPrestamosPendientes = objPrestamoDAO.contarPrestamosPendientes();
                     request.setAttribute("numPrestamosPendientes", numPrestamosPendientes);
+                    objDevolucionDAO = new devolucionDAO();
+                    ArrayList<devolucionBean> lista = new ArrayList<>();
+                    lista = objDevolucionDAO.verDevolucionesPendientes();
+                    request.setAttribute("listaDevolucionesPendientes", lista);
                     pagina="/Vistas/Administrador/devoluciones-pendientes.jsp";
                     break;
                 }else{
@@ -158,6 +164,10 @@ public class AdministradorServlet extends HttpServlet {
                     objPrestamoDAO = new prestamoDAO();
                     int numPrestamosPendientes = objPrestamoDAO.contarPrestamosPendientes();
                     request.setAttribute("numPrestamosPendientes", numPrestamosPendientes);
+                      objDevolucionDAO = new devolucionDAO();
+                    ArrayList<devolucionBean> lista = new ArrayList<>();
+                    lista = objDevolucionDAO.verDevolucionesAprobadas();
+                    request.setAttribute("listaDevolucionesAprobadas", lista);
                     pagina="/Vistas/Administrador/devoluciones-aprobadas.jsp";
                     break;
                 }else{
@@ -173,7 +183,7 @@ public class AdministradorServlet extends HttpServlet {
                 alumnoDAO objAlumnoDAO = new alumnoDAO();
                 objLibroDAO = new libroDAO();
                 objPrestamoDAO = new prestamoDAO();
-                devolucionDAO objDevolucionDAO = new devolucionDAO();
+                objDevolucionDAO = new devolucionDAO();
                 ArrayList<empleadoBean> objEmpleadoBean =null;
                 String md5=DigestUtils.md5Hex(clave);
                 int idEmpleado=objEmpleadoDAO.validarIngresoEmpleado(email, md5);

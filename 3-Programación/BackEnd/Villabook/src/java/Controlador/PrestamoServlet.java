@@ -41,7 +41,6 @@ public class PrestamoServlet extends HttpServlet {
         Gson gson = new Gson();
         PrintWriter out = response.getWriter();
         int op=Integer.parseInt(request.getParameter("op"));
-        System.out.println("El op es: "+op);
         
         switch(op){
             case 1:{

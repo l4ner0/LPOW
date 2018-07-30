@@ -707,4 +707,111 @@ ON emp.id_empleado=p.id_empleado
 WHERE  al.cod_alumno = _cod_alumno AND p.estado_prestamo = _estado_prestamo
 $$
 
+-- Procedimiento para mostrar las devoluciones pendientes
+
+CREATE PROCEDURE verDevolucionesPendientes()
+SELECT 
+	d.id_devolucion, d.id_prestamo,
+	al.ap_paterno,al.ap_materno,al.cod_alumno,
+	l.isbn,l.titulo,
+	a.apellidos,a.nombres,
+	d.hora_devolucion,d.fecha_devolucion,p.tipo_prestamo
+FROM devolucion as d 
+INNER JOIN prestamo as p 
+ON p.id_prestamo = d.id_prestamo
+INNER JOIN libro as l 
+ON l.id_libro = p.id_libro
+INNER JOIN autor as a 
+ON a.id_autor = l.id_autor
+INNER JOIN solicitud_prestamo as sp 
+ON sp.id_prestamo = p.id_prestamo
+INNER JOIN alumno as al
+ON al.id_alumno = sp.id_alumno
+WHERE d.estado_devolucion = 1
+$$  
+
+-- Procedimiento para mostrar las devoluciones aprobadas
+
+CREATE PROCEDURE verDevolucionesAprobadas()
+SELECT 
+	d.id_devolucion, d.id_prestamo,
+	al.ap_paterno,al.ap_materno,al.cod_alumno,
+	l.isbn,l.titulo,
+	a.apellidos,a.nombres,
+	d.hora_devolucion,d.fecha_devolucion,p.tipo_prestamo
+FROM devolucion as d 
+INNER JOIN prestamo as p 
+ON p.id_prestamo = d.id_prestamo
+INNER JOIN libro as l 
+ON l.id_libro = p.id_libro
+INNER JOIN autor as a 
+ON a.id_autor = l.id_autor
+INNER JOIN solicitud_prestamo as sp 
+ON sp.id_prestamo = p.id_prestamo
+INNER JOIN alumno as al
+ON al.id_alumno = sp.id_alumno
+WHERE d.estado_devolucion = 2
+$$  
+
+-- Procedimiento para ver datos de la devolucion a aprobar
+
+CREATE PROCEDURE verAprobarDevolucion(_id_devolucion int)
+SELECT 
+	d.id_devolucion, d.id_prestamo,
+	al.foto,al.ap_paterno,al.ap_materno,al.nombres,al.cod_alumno,
+	e.nombre,
+	l.portada,l.ISBN,l.titulo,
+	a.apellidos,a.nombres,
+	d.hora_devolucion,d.fecha_devolucion,p.tipo_prestamo
+FROM devolucion as d 
+INNER JOIN prestamo as p 
+ON p.id_prestamo = d.id_prestamo
+INNER JOIN libro as l 
+ON l.id_libro = p.id_libro
+INNER JOIN autor as a 
+ON a.id_autor = l.id_autor
+INNER JOIN solicitud_prestamo as sp 
+ON sp.id_prestamo = p.id_prestamo
+INNER JOIN alumno as al
+ON al.id_alumno = sp.id_alumno
+INNER JOIN escuela as e 
+ON e.id_escuela = al.id_escuela
+WHERE d.estado_devolucion = 1 AND d.id_devolucion = _id_devolucion
+$$  
+
+
+-- Procedimiento para aprobar devolucion
+
+CREATE PROCEDURE aprobarDevolucion(_id_devolucion int)
+UPDATE devolucion 
+SET estado_devolucion = 2 
+WHERE id_devolucion = _id_devolucion
+$$
+
+-- Procedimiento para filtrar los prestamos aprobados segun el alumno y el estado del prestamo
+
+CREATE PROCEDURE filtrarDevolucionAlumno(_cod_alumno varchar(10), _estado_devolucion int)
+SELECT 
+	d.id_devolucion, d.id_prestamo,
+	al.foto,al.ap_paterno,al.ap_materno,al.nombres,al.cod_alumno,
+	e.nombre,
+	l.portada,l.isbn,l.titulo,
+	a.apellidos,a.nombres,
+	d.hora_devolucion,d.fecha_devolucion,p.tipo_prestamo
+FROM devolucion as d 
+INNER JOIN prestamo as p 
+ON p.id_prestamo = d.id_prestamo
+INNER JOIN libro as l 
+ON l.id_libro = p.id_libro
+INNER JOIN autor as a 
+ON a.id_autor = l.id_autor
+INNER JOIN solicitud_prestamo as sp 
+ON sp.id_prestamo = p.id_prestamo
+INNER JOIN alumno as al
+ON al.id_alumno = sp.id_alumno
+INNER JOIN escuela as e 
+ON e.id_escuela = al.id_escuela
+WHERE al.cod_alumno = _cod_alumno AND d.estado_devolucion = _estado_devolucion 
+$$
+
 DELIMITER ;

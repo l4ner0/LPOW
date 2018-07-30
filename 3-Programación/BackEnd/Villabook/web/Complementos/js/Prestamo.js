@@ -44,13 +44,13 @@ Prestamo.prototype.aprobarPrestamo = function(){
         },
         success: function (response) {
             if(response==="1"){
-                swal({title: "Listo", text: "Se aprobo correctamente el libro", icon: 
+                swal({title: "Listo", text: "Se aprobo correctamente el prestamo", icon: 
                     "success"}).then(function(){ 
                        location.reload();
                     }
                 );
             }else{
-                swal({title: "Error", text: "No se  aprobo el libro", icon: 
+                swal({title: "Error", text: "No se  aprobo el prestamo", icon: 
                     "error"}).then(function(){ 
                        location.reload();
                     }

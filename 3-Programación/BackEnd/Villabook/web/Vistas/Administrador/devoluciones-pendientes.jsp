@@ -1,3 +1,12 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="Bean.devolucionBean"%>
+<%@page import="DAO.devolucionDAO"%>
+<%!
+    ArrayList<devolucionBean> listaDevoluciones;
+%>
+<%
+    listaDevoluciones=(ArrayList<devolucionBean>)request.getAttribute("listaDevolucionesPendientes");
+%>
 <!DOCTYPE html>
 <html>
 <%@ include file="General/Head.jsp" %>
@@ -36,11 +45,11 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text icono-bucar-pendiente"><i class="fa fa-address-card-o"></i></span>
                                     </div>
-                                    <input type="text" class="form-control " placeholder="Codigo de alumno">
+                                    <input type="text" class="form-control " id="txtCodDevoPend" placeholder="Codigo de alumno">
                                 </div>
                              </div>
                              <div class="btn-buscar-pendiente">
-                                <button class="btn btn-primary "><i class="fa fa-search"></i> Buscar</button> 
+                                 <button class="btn btn-primary " id="btn-alumnoDevoPend"><i class="fa fa-search"></i> Buscar</button> 
                              </div>
                         </div>
                         <div class="tabla-entregas-pendientes">
@@ -51,6 +60,7 @@
                                         <table class="table table-data2" id="tabla-entregas-pendientes">
                                             <thead>
                                                 <tr>
+                                                    <th>N°</th>
                                                     <th>Alumno</th>
                                                     <th>Código</th>
                                                     <th>ISBN</th>
@@ -63,292 +73,28 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                 <% int i=1; for(devolucionBean objDevolucionBean:listaDevoluciones){ %>
                                                 <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
+                                                    <td><%=i++%></td>
+                                                    <td><%=objDevolucionBean.getApAlumno()+" "+objDevolucionBean.getAmAlumno()%></td>
                                                     <td>
-                                                        2015019685
+                                                        <%=objDevolucionBean.getCodAlumno()%>
                                                     </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
+                                                    <td><%=objDevolucionBean.getIsbn()%></td>
+                                                    <td><%=objDevolucionBean.getTitulo()%></td>
+                                                    <td><%=objDevolucionBean.getApellidosAutor()+" "+objDevolucionBean.getNombresAutor()%></td>
+                                                    <td><%=objDevolucionBean.getHora_devolucion()%></td>
+                                                    <td><%=objDevolucionBean.getFecha_devolucion()%></td>
+                                                    <td><%=objDevolucionBean.getTipoPrestamo()%></td>
                                                     <td>
                                                         <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
+                                                            <button class="item btn-tabla-editar" onclick="funcionVerAprobarDevolucion('<%=request.getContextPath()%>','DevolucionServlet','2','<%=objDevolucionBean.getId_devolucion()%>')"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
                                                                 <i class="fa fa-check"></i>
                                                             </button>
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                   <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                   <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                   <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                               <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                               <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                   <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr class="tr-shadow">
-                                                    <td>Giacomo Guilizzaoni</td>
-                                                    <td>
-                                                        2015019685
-                                                    </td>
-                                                    <td>968-18-4527-7</td>
-                                                    <td>Administración de los SIstemas de Información</td>
-                                                    <td>Laudon Keneth</td>
-                                                    <td>14:45</td>
-                                                    <td>06/06/2018</td>
-                                                    <td>Presencial</td>
-                                                    <td>
-                                                        <div class="table-data-feature btn-entregas-pendientes">
-                                                            <button class="item btn-tabla-editar"  data-placement="top" title="Aprobar"  data-toggle="modal" data-target="#aprobarEntrega">
-                                                                <i class="fa fa-check"></i>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                
+                                                <%}%>
                                             </tbody>
                                         </table>
                                     </div>
@@ -369,7 +115,8 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                <h5 class="modal-title" id="aprobarEntregaoLabel">Aprobar Devolución</h5>
+                <h5 class="modal-title" id="aprobarEntregaoLabel">Aprobar Devolución 000-<p id="aprobarDevolucionId" style="display: inline-block;"></p></h5>
+               
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -386,19 +133,19 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <label for="">Apellidos: </label>
-                                    <p>Guilizzaoni Guilizzaoni</p>
+                                    <p id="aprobarDevolucionApellidos"></p>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Nombres: </label>
-                                    <p for="">Giacomo Giacomo</p>
+                                    <p id="aprobarDevolucionNombres"></p>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Código: </label>
-                                    <p for="">2015019685</p>
+                                    <p id="aprobarDevolucionCodigo"></p>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Carrera: </label>
-                                    <p for="">Ingeniería de Sistemas</p>
+                                    <p id="aprobarDevolucionCarrera"></p>
                                 </div>
                             </div>
                        </div>
@@ -411,16 +158,16 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="">ISBN: </label>
-                                    <p>968-18-4527-7</p>
+                                    <label >ISBN: </label>
+                                    <p id="aprobarDevolucionISBN"></p>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Autor: </label>
-                                    <p>Laudon Keneth</p>
+                                    <p id="aprobarDevolucionAutor"></p>
                                 </div>
                                 <div class="col-md-12">
                                     <label for="">Título: </label>
-                                    <p>Administración de los Sistemas de Información</p>
+                                    <p id="aprobarDevolucionTitulo"></p>
                                 </div>
                             </div>  
                        </div>
@@ -430,15 +177,15 @@
                                <div class="row">
                                    <div class="col-md-4">
                                        <label for="">Hora: </label>
-                                       14:45
+                                       <p id="aprobarDevolucionHora" style="display: inline-block;"></p>
                                    </div>
                                    <div class="col-md-5">
                                        <label for="">Fecha: </label>
-                                       06/06/2018
+                                       <p id="aprobarDevolucionFecha" style="display: inline-block;"></p>
                                    </div>
                                    <div class="col-md-3">
                                        <label for="">Origen: </label>
-                                       Presencial
+                                       <p id="aprobarPrestamoOrigen" style="display: inline-block;"></p>
                                    </div>
                                </div>
                            </fieldset>
@@ -448,65 +195,13 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Aprobar</button>
+                <button type="button" class="btn btn-primary"id="btn-aprobarDevolucion" ><i class="fa fa-check"></i> Aprobar</button>
                 <button type="button" class="btn btn-light"><i class="fa fa-print"></i> Imprimir</button>
                 </div>
             </div>
         </div>
     </div>
-    
-     <!-- Modal Cancelar Entrega -->
-    <div class="modal fade" id="cancelarEntrega" role="dialog" aria-labelledby="cancelarEntregaoLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="cancelarEntregaoLabel">Cancelar Entrega</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                <div class="modal-body">
-                   <div>
-                       <h4>¿Estas seguro de eliminar la solicitud de Giacomo Gulizzoni?</h4>
-                   </div>
-                   <div>
-                       <h5>Motivo de la cancelación (Obligatorio)</h5>
-                   </div>
-                   <div class="form-group">
-                       <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="A">
-                          <label class="form-check-label">Motivo A</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="B">
-                          <label class="form-check-label">Motivo B</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="C">
-                          <label class="form-check-label">Motivo C</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="D">
-                          <label class="form-check-label">Motivo D</label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="E">
-                          <label class="form-check-label">Motivo E</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                       <p>Otro Motivo</p>
-                        <textarea name="" id="" rows="4" class="form-control"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
-                <button type="button" class="btn btn-primary"><i class="fa fa-check"></i> Confirmar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-  
+
   <!-- /.content-wrapper -->
   <%@include file="General/Footer.jsp" %>
 
@@ -529,7 +224,7 @@
 <!-- Bootstrap 4 -->
 <script src="<%=request.getContextPath()%>/Complementos/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Morris.js charts -->
-<script src="<%=request.getContextPath()%>/Complementos/https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="<%=request.getContextPath()%>/Complementos/plugins/sparkline/jquery.sparkline.min.js"></script>
@@ -558,6 +253,7 @@
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/iCheck/icheck.min.js"></script>
+<script src="<%=request.getContextPath()%>/Complementos/js/Devolucion.js"  type="text/javascript"></script>
 <script>
     $(document).ready(function() {
             $('#tabla-entregas-pendientes').DataTable( {
@@ -595,6 +291,16 @@
         });
         
         $( "#filtro-fecha" ).datepicker();
+        
+        $("#btn-aprobarDevolucion").click(function(){
+            var idDevolucion = $("#aprobarDevolucionId").text();
+            funcionAprobarDevolucion('<%=request.getContextPath()%>','DevolucionServlet','1',idDevolucion);
+        });
+        
+        $("#btn-alumnoDevoPend").click(function(){
+            var codAlumno = $("#txtCodDevoPend").val();
+            funcionFiltrarDevoPend('<%=request.getContextPath()%>','DevolucionServlet','3',codAlumno);
+        });
     } );
 </script>
 </body>
