@@ -110,13 +110,13 @@ if(  session.getAttribute("idEmpleado") ==null)
               <div class="card-header d-flex p-0">
                 <h3 class="card-title p-3">
                   <i class="fa fa-pie-chart mr-1"></i>
-                  Tasa de Préstamos
+                  Seguimiento de Entregas
                 </h3>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart"
+                  <div id="area-example"
                        style="position: relative; height: 340px;"></div>
                 </div>
               </div><!-- /.card-body -->
@@ -124,8 +124,27 @@ if(  session.getAttribute("idEmpleado") ==null)
             <!-- /.card -->
           </section>
           <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-5 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card"> 
+              <div class="card-header d-flex p-0">
+                <h3 class="card-title p-3">
+                  <i class="fa fa-pie-chart mr-1"></i>
+                  Entregas
+                </h3>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content p-0">
+                  <!-- Morris chart - Sales -->
+                  <div id="donut-example"
+                       style="position: relative; height: 340px;"></div>
+                </div>
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </section>
+          <!-- right col (We are only adding the ID to make the widgets sortable)-->
+          <section class="col-lg-12 connectedSortable">
             <!-- Calendar -->
             <div class="card bg-success-gradient">
               <div class="card-header no-border">
@@ -214,6 +233,75 @@ if(  session.getAttribute("idEmpleado") ==null)
 <script src="<%=request.getContextPath()%>/Complementos/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<%=request.getContextPath()%>/Complementos/dist/js/demo.js"></script>
+<script>
+    $(document).ready(function(){
+        Morris.Donut({
+        element: 'donut-example',
+        data: [
+          {label: "Presencial", value: 12},
+          {label: "Virtual", value: 30},
+        ]
+      });
+      
+    var months = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+
+    Morris.Area({
+      element: 'area-example',
+      data: [{
+        m: '2015-03',
+        a: 3,
+        b: 5
+      }, {
+        m: '2015-04',
+        a: 2,
+        b: 3
+      }, {
+        m: '2015-05',
+        a: 5,
+        b: 8
+      }, {
+        m: '2015-06',
+        a: 3,
+        b: 1
+      }, {
+        m: '2015-07',
+        a: 7,
+        b: 9
+      }, {
+        m: '2015-08',
+        a: 12,
+        b: 4
+      }, {
+        m: '2015-09',
+        a: 7,
+        b: 6
+      }, {
+        m: '2015-10',
+        a: 8,
+        b: 2
+      }, {
+        m: '2015-11',
+        a: 12,
+        b: 2
+      }, {
+        m: '2015-12',
+        a: 5,
+        b: 2
+      }, ],
+      xkey: 'm',
+      ykeys: ['a', 'b'],
+      labels: ['Presencial', 'Virtual'],
+      xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
+        var month = months[x.getMonth()];
+        return month;
+      },
+      dateFormat: function(x) {
+        var month = months[new Date(x).getMonth()];
+        return month;
+      },
+    });
+    });
+</script>
 </body>
 </html>
 

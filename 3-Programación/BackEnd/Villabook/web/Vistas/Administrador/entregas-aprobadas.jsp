@@ -172,9 +172,17 @@
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
 <script>
+    $(document).ready(function() {
     var table = $('#tabla-entregas-pendientes').DataTable( {
             dom: 'Bfrtip',
             buttons: [
+                {
+                     text: "<i class='fa fa-refresh'></i>",
+                     titleAttr: "Actualizar",
+                     action: function(){
+                         location.reload();
+                     }
+                },
                 'excel', 'pdf', 'print'
             ],
             "lengthMenu":[[5,10,15,-1],[5,10,15,"Todos"]],

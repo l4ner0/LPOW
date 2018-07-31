@@ -169,6 +169,13 @@
             var table = $('#tabla-entregas-pendientes').DataTable( {
             dom: 'Bfrtip',
             buttons: [
+                {
+                     text: "<i class='fa fa-refresh'></i>",
+                     titleAttr: "Actualizar",
+                     action: function(){
+                         location.reload();
+                     }
+                },
                 'excel', 'pdf', 'print'
             ],
             "lengthMenu":[[5,10,15,-1],[5,10,15,"Todos"]],
