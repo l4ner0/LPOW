@@ -117,8 +117,7 @@ if(  session.getAttribute("idEmpleado") ==null)
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
                   <div class="chart tab-pane active" id="revenue-chart"
-                       style="position: relative; height: 300px;"></div>
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
+                       style="position: relative; height: 340px;"></div>
                 </div>
               </div><!-- /.card-body -->
             </div>

@@ -311,17 +311,31 @@
 <script src="<%=request.getContextPath()%>/Complementos/dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="<%=request.getContextPath()%>/Complementos/dist/js/pages/dashboard.js"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="<%=request.getContextPath()%>/Complementos/dist/js/demo.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/jquery.dataTables.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/datatables/dataTables.bootstrap4.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/plugins/iCheck/icheck.min.js"></script>
 <script src="<%=request.getContextPath()%>/Complementos/js/Prestamo.js"  type="text/javascript"></script>
+<!-- Datatable -->
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
 <script>
     $(document).ready(function() {
-            $('#tabla-entregas-pendientes').DataTable( {
-                "lengthMenu":[[5,10,15,-1],[5,10,15,"Todos"]],
-                "language": {
+        var table = $('#tabla-entregas-pendientes').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'excel', 'pdf', 'print'
+            ],
+            "lengthMenu":[[5,10,15,-1],[5,10,15,"Todos"]],
+            "language": {
                     "sProcessing":     "Procesando...",
                     "sLengthMenu":     "Mostrar _MENU_ registros",
                     "sZeroRecords":    "No se encontraron resultados",
@@ -344,8 +358,11 @@
                         "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
-                }
-            } );
+            }
+        } );
+        table.buttons().container()
+        .appendTo( '#tabla-entregas-pendientes_wrapper .col-sm-6:eq(0)' );
+
         
         $('input').iCheck({
             checkboxClass: 'icheckbox_square-blue',

@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Complementos/js/Prestamo.js</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/devoluciones-pendientes.jsp</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/DAO/devolucionDAO.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/Controlador/PrestamoServlet.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Complementos/js/Devolucion.js</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Complementos/js/funciones.js</file>
-            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/src/java/Bean/devolucionBean.java</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/entregas-noAprobadas.jsp</file>
+            <file>file:/C:/Users/Usuario/Documents/Repositorios/LPOW/3-Programación/BackEnd/Villabook/web/Vistas/Administrador/entregas-pendientes.jsp</file>
         </group>
     </open-files>
 </project-private>

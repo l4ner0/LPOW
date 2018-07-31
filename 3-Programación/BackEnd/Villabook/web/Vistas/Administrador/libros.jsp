@@ -348,7 +348,15 @@
 <script src="<%=request.getContextPath()%>/Complementos/js/Tipo_Documento.js"  type="text/javascript" ></script>
 <script src="<%=request.getContextPath()%>/Complementos/js/Escuela.js"  type="text/javascript" ></script>
 <script src="<%=request.getContextPath()%>/Complementos/js/Libro.js"  type="text/javascript"></script>
-    
+<!-- Datatable -->
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>   
 <script>
     $(document).ready(function() {
         var autores= new Autor('<%=request.getContextPath()%>','AutorServlet','1');
@@ -357,7 +365,11 @@
         autores.listarAutor();
         tipoDocumento.listarTipoDocumento();
         escuela.listarEscuelas();
-            $('#tabla-libros').DataTable( {
+            var table = $('#tabla-libros').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excel', 'pdf', 'print'
+                ],
                 "lengthMenu":[[5,10,15,-1],[5,10,15,"Todos"]],
                 "language": {
                     "sProcessing":     "Procesando...",
@@ -384,6 +396,9 @@
                     }
                 }
             } );
+            
+            table.buttons().container()
+            .appendTo( '#tabla-libros_wrapper .col-sm-6:eq(0)' );
             
             $('#btn-cancelarAutor').click(function (){
                 funcionCancelarAutor();
