@@ -22,8 +22,13 @@ public class Conexion {
             cn=DriverManager.getConnection("jdbc:mysql://localhost/bd_villabook","root","");
             System.out.println("Se conectó :-)");
         } catch (Exception e) {
-            System.out.println("No se conectó :-(");
+            System.out.println("No se conectó :-("+e);
         }
         return cn;
+    }
+    
+    public static void main(String[] args){
+        Conexion conexion = new Conexion();
+        conexion.getConexion();
     }
 }

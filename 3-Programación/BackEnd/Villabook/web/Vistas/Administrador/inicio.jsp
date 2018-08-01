@@ -104,7 +104,7 @@ if(  session.getAttribute("idEmpleado") ==null)
         <br>
         <div class="row">
           <!-- Left col -->
-          <section class="col-lg-7 connectedSortable">
+          <section class="col-lg-12 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card"> 
               <div class="card-header d-flex p-0">
@@ -124,7 +124,7 @@ if(  session.getAttribute("idEmpleado") ==null)
             <!-- /.card -->
           </section>
           <!-- /.Left col -->
-          <section class="col-lg-5 connectedSortable">
+          <section class="col-lg-6 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card"> 
               <div class="card-header d-flex p-0">
@@ -144,7 +144,7 @@ if(  session.getAttribute("idEmpleado") ==null)
             <!-- /.card -->
           </section>
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          <section class="col-lg-12 connectedSortable">
+          <section class="col-lg-6 connectedSortable">
             <!-- Calendar -->
             <div class="card bg-success-gradient">
               <div class="card-header no-border">
@@ -248,6 +248,14 @@ if(  session.getAttribute("idEmpleado") ==null)
     Morris.Area({
       element: 'area-example',
       data: [{
+        m: '2015-01',
+        a: 3,
+        b: 5
+       }, {
+        m: '2015-02',
+        a: 3,
+        b: 5
+      }, {
         m: '2015-03',
         a: 3,
         b: 5

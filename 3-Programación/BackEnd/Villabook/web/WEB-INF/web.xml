@@ -32,6 +32,10 @@
         <servlet-name>DevolucionServlet</servlet-name>
         <servlet-class>Controlador.DevolucionServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VillabookServlet</servlet-name>
+        <servlet-class>Controlador.VillabookServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdministradorServlet</servlet-name>
         <url-pattern>/AdministradorServlet</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>DevolucionServlet</servlet-name>
         <url-pattern>/DevolucionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VillabookServlet</servlet-name>
+        <url-pattern>/VillabookServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
