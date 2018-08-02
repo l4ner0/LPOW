@@ -1,0 +1,75 @@
+body{
+   /* background-image: url(../images/login.jpg);*/
+    background: #E1E1E1;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
+
+.titulo-compucatalogo h1{
+    font-family: helvetica;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.contenedor-login{
+    border: 1px solid #818181;
+    background-color: white;
+     
+     /*background-image: url(../images/login-difuminado.jpg);*/
+    
+    background-attachment: fixed;
+     background-size: cover;
+    border-radius: 0px;
+   width: 700px;
+}
+.login-logo{
+    color: white;
+    font-size: 50px; 
+    margin-top: 30px;
+}
+.card-body{
+    padding-top: 1px;
+}
+.login-box-msg{
+    color: white;
+}
+.has-feedback input{
+    border-radius: 0px;
+    padding-left: 40px;
+}
+.has-feedback{
+    position: relative;
+}
+.has-feedback i{
+    position: absolute;
+    left: 0;
+    top:0px;
+    padding: 0px 8px;
+    color: #aaa;
+}
+.fa-envelope{
+    font-size: 23px;
+}
+.fa-lock{
+    font-size: 30px;
+}
+.checkbox{
+    color: white;
+}
+.btn-ingresar{
+    background-color: #1F6095;
+    color: white;
+    font-size: 20px;
+    
+}
+
+.btn-entrar{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.fa-user{
+    font-size: 30px;
+}

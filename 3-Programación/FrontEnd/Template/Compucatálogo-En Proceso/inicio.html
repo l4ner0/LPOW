@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Login</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="css/adminlte.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos-login.css">
+</head>
+<body class="hold-transition">
+<div class="login-box contenedor-login">
+  <!-- /.login-logo -->
+  <div class=" contenedor-login">
+      <div class="titulo-compucatalogo">
+          <h1>Compucatalogo N°1</h1>
+      </div>
+   <div class="login-logo">
+    <img src="images/login-carnet.gif" alt="" width=300>
+  </div>
+    <div class="card-body login-card-body">
+     <br>
+
+      <form action="inicio.html" method="">
+        <div class="form-group">
+            <div class="input-group buscar-pendientes">
+                <div class="input-group-prepend">
+                    <span class="input-group-text icono-bucar-pendiente"><i class="fa fa-user"></i></span>
+                </div>
+                <input type="text" class="form-control form-control-lg" placeholder="Codigo de alumno">
+            </div>
+        </div>
+        <div class="row btn-entrar">
+          <!-- /.col -->
+          <div class=" col-12">
+            <button type="submit" class="btn btn-block btn-flat btn-ingresar">Ingresar</button>
+          </div>
+          <br>
+          <!-- /.col -->
+        </div>
+      </form>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- iCheck -->
+<script src="plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass   : 'iradio_square-blue',
+      increaseArea : '20%' // optional
+    })
+  })
+</script>
+</body>
+</html>

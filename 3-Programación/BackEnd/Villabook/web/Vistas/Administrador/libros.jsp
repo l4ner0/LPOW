@@ -108,6 +108,7 @@
   </div>
   <!-- Modals -->
    <!-- Modal Añadir Libro -->
+   <form method="POST" enctype="multipart/form-data">
     <div class="modal fade" id="añadirLibro" role="dialog" aria-labelledby="añadirLibroLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -118,7 +119,7 @@
                 </button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
+                        <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Tipo de Documento :</label>
@@ -167,10 +168,11 @@
                                <label for="">Portada : </label>
                                <br>
                                <img width="80" alt="Imagen" id="imgPortadaAddLibro" />
-                               <input type="file" title="Portada del Libro" id="filePortadaAddLibro">
+                               <input type="file" title="Portada del Libro" id="filePortadaAddLibro" name="filePortadaAddLibro">
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-noGrabarLibro"><i class="fa fa-times"></i> Cancelar</button>
@@ -179,7 +181,7 @@
             </div>
         </div>
     </div>
-    
+    </form>
     <!-- Modal Editar datos del libro -->
         <div class="modal fade" id="editarLibro" role="dialog" aria-labelledby="editarLibroLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

@@ -35,6 +35,15 @@ var funcionCancelarAutor=function(){
     document.getElementById("textDetalleAutor").value="";
 }
 
+function cargarArchivo(elemento){
+    var file = elemento.files[0];
+    var objHidden = document.form.nombre;
+    objHidden.value = file.name;
+    document.form.method = "POST";
+    document.form.action ="ProcesarServlet";
+    document.form.submit();
+}
+
 var funcionGrabarLibro=function(ruta,controlador,op){
     var tipoDocumento=$("#cbTipoDocumentoAddLibro").val();
     var escuela=$("#cbEscuelaAddLibro").val();
@@ -43,7 +52,7 @@ var funcionGrabarLibro=function(ruta,controlador,op){
     var titulo=$("#txtTituloAddLibro").val();
     var stock=$("#txtStockAddLibro").val();
     var datosPubli=$("#txtDatosPubliAddLibro").val();
-    var portada=$("#filePortadaAddLibro").val();
+    var portada=document.getElementById('filePortadaAddLibro').files[0].name;
     var libro=new Libro(ruta,controlador,op);
     libro.addLibro(tipoDocumento,escuela,autor,isbn,portada,titulo,datosPubli,stock);
     

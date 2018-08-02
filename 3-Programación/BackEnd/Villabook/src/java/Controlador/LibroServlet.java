@@ -6,12 +6,14 @@
 package Controlador;
 
 import Bean.libroBean;
+import Controlador.Funciones.Archivo;
 import DAO.libroDAO;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -63,7 +65,7 @@ public class LibroServlet extends HttpServlet {
                 String titulo=request.getParameter("titulo");
                 String datosPubli=request.getParameter("datosPubli");
                 int stockInicial=Integer.parseInt(request.getParameter("stockInicial"));
-                
+
                 objLibroBean.setId_tipo_documento(tipoDocumento);
                 objLibroBean.setId_escuela(escuela);
                 objLibroBean.setId_autor(autor);
