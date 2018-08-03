@@ -47,7 +47,7 @@ public class VillabookServlet extends HttpServlet {
                 break;
             }
             case 4:{
-                pagina="/Vistas/Villabook/inicio.jsp";
+                pagina="/Vistas/Compucatalogo/inicio.jsp";
                 break;
             }
             case 5:{

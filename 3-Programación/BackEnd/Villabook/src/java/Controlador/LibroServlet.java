@@ -139,6 +139,47 @@ public class LibroServlet extends HttpServlet {
                 }
                 break;
             }
+            
+            case 6:{
+                int tipoDocumento = Integer.parseInt(request.getParameter("tipoDocumento"));
+                if(tipoDocumento == -1){
+                    objLibroDAO = new libroDAO();
+                    ArrayList<libroBean> lista = new ArrayList<>();
+                    lista = objLibroDAO.getLibrosTabla();
+                    out.print(gson.toJson(lista));
+                    out.flush();
+                    out.close();
+                }else{
+                    objLibroDAO = new libroDAO();
+                    ArrayList<libroBean> lista = new ArrayList<>();
+                    lista=objLibroDAO.filtrarLibroTipoDocumento(tipoDocumento);
+                    out.print(gson.toJson(lista));
+                    out.flush();
+                    out.close();
+                }  
+                break;
+            }
+            
+            case 7:{
+                
+                int idEscuela = Integer.parseInt(request.getParameter("idEscuela"));
+                if(idEscuela == -1){
+                    objLibroDAO = new libroDAO();
+                    ArrayList<libroBean> lista = new ArrayList<>();
+                    lista = objLibroDAO.getLibrosTabla();
+                    out.print(gson.toJson(lista));
+                    out.flush();
+                    out.close();
+                }else{
+                    objLibroDAO = new libroDAO();
+                    ArrayList<libroBean> lista = new ArrayList<>();
+                    lista=objLibroDAO.filtrarLibroEscuela(idEscuela);
+                    out.print(gson.toJson(lista));
+                    out.flush();
+                    out.close();
+                }  
+                break;
+            }
         }
     }
 

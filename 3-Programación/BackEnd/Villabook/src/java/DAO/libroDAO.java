@@ -185,18 +185,76 @@ public class libroDAO {
         return resultado;
     }
     
-    /*
+    public ArrayList<libroBean> filtrarLibroTipoDocumento(int tipoDocumento){
+        ArrayList<libroBean> lista=new ArrayList<libroBean>();
+        libroBean objLibroBean=null;
+        try {
+            Conexion conexion=new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call filtrarLibroTipoDocumento(?)}");
+            cst.setInt(1, tipoDocumento);
+            rs = cst.executeQuery();
+            
+            while(rs.next()){
+                objLibroBean=new libroBean();
+                objLibroBean.setId_libro(rs.getInt(1));
+                objLibroBean.setTipo_documento(rs.getString(2));
+                objLibroBean.setEscuela(rs.getString(3));
+                objLibroBean.setAutor(rs.getString(4)+" "+rs.getString(5));
+                objLibroBean.setISBN(rs.getString(6));
+                objLibroBean.setPortada(rs.getString(7));
+                objLibroBean.setTitulo(rs.getString(8));
+                objLibroBean.setDatos_publi(rs.getString(9));
+                objLibroBean.setStock_inicial(rs.getInt(10));
+                objLibroBean.setStock_final(rs.getInt(11));
+                lista.add(objLibroBean);
+            }
+            
+            rs.close();
+            ps.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        return lista;
+    }
+    
+    public ArrayList<libroBean> filtrarLibroEscuela(int idEscuela){
+        ArrayList<libroBean> lista=new ArrayList<libroBean>();
+        libroBean objLibroBean=null;
+        try {
+            Conexion conexion=new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call filtrarLibroEscuela(?)}");
+            cst.setInt(1, idEscuela);
+            rs = cst.executeQuery();
+            
+            while(rs.next()){
+                objLibroBean=new libroBean();
+                objLibroBean.setId_libro(rs.getInt(1));
+                objLibroBean.setTipo_documento(rs.getString(2));
+                objLibroBean.setEscuela(rs.getString(3));
+                objLibroBean.setAutor(rs.getString(4)+" "+rs.getString(5));
+                objLibroBean.setISBN(rs.getString(6));
+                objLibroBean.setPortada(rs.getString(7));
+                objLibroBean.setTitulo(rs.getString(8));
+                objLibroBean.setDatos_publi(rs.getString(9));
+                objLibroBean.setStock_inicial(rs.getInt(10));
+                objLibroBean.setStock_final(rs.getInt(11));
+                lista.add(objLibroBean);
+            }
+            
+            rs.close();
+            ps.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        return lista;
+    }
+     
+    
+       /*
     public static void main(String [] args){
-        
-       libroBean libro=new libroBean();
-        libro.setId_tipo_documento(1);
-        libro.setId_escuela(1);
-        libro.setId_autor(2);
-        libro.setISBN("0999M8L-45N");
-        libro.setPortada("fakePath/imagen.png");
-        libro.setTitulo("Administración de Sistemas de Información Ed9");
-        libro.setDatos_publi("Ningun dato de publiación");
-        libro.setStock_inicial(3);
+
         
         libroDAO objLibroDao=new libroDAO();
         int resultado=objLibroDao.addLibro(libro);
@@ -204,40 +262,14 @@ public class libroDAO {
 
         ArrayList<libroBean> lista=new ArrayList<libroBean>();
         libroDAO libro = new libroDAO();
-        lista=libro.getLibro("45544");
+        lista=libro.filtrarLibroTipoDocumento(1);
         
         for(libroBean obj:lista){
-            System.out.println(obj.getId_libro());
-            System.out.println(obj.getId_tipo_documento());
-            System.out.println(obj.getId_escuela());
-            System.out.println(obj.getId_autor());
-            System.out.println(obj.getISBN());
-            System.out.println(obj.getPortada());
-            System.out.println(obj.getTitulo());
-            System.out.println(obj.getDatos_publi());
-            System.out.println(obj.getStock_inicial());
-            System.out.println(obj.getStock_final());
+            System.out.println("idLibro: "+obj.getId_libro());
             System.out.println("");
         }
          
-         
-        libroBean libro=new libroBean();
-        libro.setId_tipo_documento(1);
-        libro.setId_escuela(1);
-        libro.setId_autor(2);
-        libro.setISBN("111222");
-        libro.setPortada("fakePath/imagen.png");
-        libro.setTitulo("Administración 10");
-        libro.setDatos_publi("Ningun dato de publiación");
-        
-        libroDAO objLibroDao=new libroDAO();
-        int resultado=objLibroDao.updateLibro(libro);
-        System.out.println("El resultado es: "+resultado);
 
-        
-        libroDAO objLibroDao=new libroDAO();
-        int resultado=objLibroDao.deleteLibro("454-MP0");
-        System.out.println("El resultado es: "+resultado);
-    }
-      */
+    }*/
+      
 }

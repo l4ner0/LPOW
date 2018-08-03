@@ -45,7 +45,7 @@
         $('#btn-empleado').click(function(){
             cambiarPagina('<%=request.getContextPath()%>','VillabookServlet','?op=3');
         });
-        $('#btn-alumno').click(function(){
+        $('#btn-compucatalogo').click(function(){
             cambiarPagina('<%=request.getContextPath()%>','VillabookServlet','?op=4');
         });
         $('#btn-contact').click(function(){

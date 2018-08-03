@@ -1,3 +1,24 @@
+<%@page session="true" %>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Bean.libroBean"%>
+<%@page import="DAO.escuelaDAO"%>
+<% 
+
+    
+if(  session.getAttribute("idAlumno") == null)
+  {
+      response.sendRedirect(request.getContextPath()+"/Vistas/Seguridad/loginAdministrador.jsp");
+
+
+   }
+
+%>
+<%!
+    ArrayList<libroBean> listaLibros;
+%>
+<%
+    listaLibros=(ArrayList<libroBean>)request.getAttribute("listaLibros");
+%>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -6,934 +27,338 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
 <html>
-<head>
-<title>Pakhi an E-Commerce online Shopping Category Flat Bootstarp responsive Website Template| Products :: w3layouts</title>
-<link href="<%=request.getContextPath()%>/Complementos-Compucatalogo/css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/jquery.min.js"></script>
-<!-- Custom Theme files -->
-<link href="<%=request.getContextPath()%>/Complementos-Compucatalogo/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="<%=request.getContextPath()%>/Complementos-Compucatalogo/css/form.css" rel="stylesheet" type="text/css" media="all" />
-<!-- Custom Theme files -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Pakhi Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--webfont-->
-<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
-<!-- dropdown -->
-<script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/jquery.easydropdown.js"></script>
-<link href="<%=request.getContextPath()%>/Complementos-Compucatalogo/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
-<script type="text/javascript" src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/hover_pack.js"></script>
-		  <script type="text/javascript">
-		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){		
-				event.preventDefault();
-				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
-			});
-		});
-	</script>
-</head>
-<body>
-	<!-- header-section-starts -->
-	<div class="c-header" id="home">
-		<div class="top-header">
-			<div class="container">
-			<div class="logo">
-				<a href="index.html"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/logo.png" alt="" /></a>
-			</div>
-				<div class="header-top-right">
-				<!-- start search-->
-				    <div class="search-box">
-					    <div id="sb-search" class="sb-search">
-							<form>
-								<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-								<input class="sb-search-submit" type="submit" value="">
-								<span class="sb-icon-search"> </span>
-							</form>
-						</div>
-				    </div>
-					<!-- search-scripts -->
-					<script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/classie.js"></script>
-					<script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/uisearch.js"></script>
-						<script>
-							new UISearch( document.getElementById( 'sb-search' ) );
-						</script>
-					<!-- //search-scripts -->
+  <head>
+    <title>Villabook</title>
+    <link href="<%=request.getContextPath()%>/Complementos-Compucatalogo/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="<%=request.getContextPath()%>/Complementos-Compucatalogo/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="<%=request.getContextPath()%>/Complementos-Compucatalogo/css/form.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Pakhi Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+    Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfont-->
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'/>
+    <!-- dropdown -->
+    <script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/jquery.easydropdown.js"></script>
+    <link href="<%=request.getContextPath()%>/Complementos-Compucatalogo/css/nav.css" rel="stylesheet" type="text/css" media="all"/>
+  		<script type="text/javascript">
+  		  jQuery(document).ready(function($) {
+  			   $(".scroll").click(function(event){		
+  				    event.preventDefault();
+  				    $('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+  			   });
+  		  });
+      </script>
+  	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  	<!-- iCheck -->
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/Complementos-Compucatalogo/plugins/iCheck/square/blue.css">
+  	<link rel="stylesheet" href="<%=request.getContextPath()%>/Complementos-Compucatalogo/css/font-awesome.min.css">
+  	<link rel="stylesheet" href="<%=request.getContextPath()%>/Complementos-Compucatalogo/css/estilos-catalogo.css">
+  </head>
+  <body>
+      <form name="form">
+    <!-- header-section-starts -->
+  	<div class="c-header" id="home">
+  		<div class="top-header">
+  			<div class="container">
+  			  <div class="logo">
+  				  <a href="?op=1"><h1 style="color: white;">Compucatalogo N° 1</h1></a>
+  	 		  </div>
+                <div class="header-top-right">
+                    
+                        <div class="salir">
+                            <a id="btn-salir" href="#">SALIR</a>
+                        </div>
+                   
+                </div>
+  	 		  <!--
+  			  <div class="header-top-right">
+  				  <div class="search-box">
+  					  <div id="sb-search" class="sb-search">
+  				  		<form>
+  								<input class="sb-search-input" placeholder="Ingrese el libro a buscar" type="search" name="search" id="search">
+  								<input class="sb-search-submit" type="submit" value="">
+  								<span class="sb-icon-search"> </span>
+  							</form>
+  						</div>
+  				  </div>
 
-					<a href="cart.html"><i class="cart"></i></a>
-				</div>
-			<div class="navigation">	
-			<div>
-              <label class="mobile_menu" for="mobile_menu">
-              <span>Menu</span>
-              </label>
-              <input id="mobile_menu" type="checkbox">
-				<ul class="nav">
-              <li class="active"><a href="index.html">Home</a></li>                       
-              <li class="dropdown1"><a href="#">Dresses</a>
-                <ul class="dropdown2">
-                  <li><a href="products.html">Dress Materials</a></li>
-                  <li><a href="products.html">Kurta & Kurti</a></li>
-				  <li><a href="products.html">Sarees</a></li>
-				  <li><a href="products.html">Chudidars</a></li>
-                </ul>
-              </li>             
-              <li class="dropdown1"><a href="#">Bags</a>
-              	<ul class="dropdown2">
-                  <li><a href="products.html">Latest</a></li>
-                  <li><a href="products.html">Leather Bags</a></li>
-				  <li><a href="products.html">Hand Bags</a></li>
-                </ul>
-              </li>
-           </li>           
-           <li class="dropdown1"><a href="#">Shoes</a>
-           	<ul class="dropdown2">
-                  <li><a href="products.html">Sports Shoes</a></li>
-                  <li><a href="products.html">Casual Shoes</a></li>
-				  <li><a href="products.html">Formal Shoes</a></li>
-                </ul>
-           </li>        
-            <li><a href="contact.html">Contact US</a></li>
-            <div class="clearfix"></div>
-          </ul>
-		</div>			
-	 </div>
-			</div>
-		</div>
-		</div>
-		<!-- start Dresses-page -->
-	<!-- content-section-starts -->
-	<div class="container">
-	<div class="dreamcrub">
-			   	 <ul class="breadcrumbs">
-				 
-                    <li class="home">
-                       <a href="index.html" title="Go to Home Page"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/home.png" alt=""/></a>&nbsp;
-                       <span>&gt;</span>
-                    </li>
-                    <li>
-                       Dresses
-					    <span>&gt;</span>
-                    </li><li>
-         <span class="red">&nbsp;Clothes&nbsp;</span>
-     </li>
-                </ul>
-                <ul class="previous">
-                	<li><a href="index.html">Back to Previous Page</a></li>
-                </ul>
-                <div class="clearfix"></div>
-			   </div>
-			   </div>
-			   <div class="container">
-	   <div class="ft-ball">
-		<div class="cont span_2_of_3">
-		  <div class="mens-toolbar">
-              <div class="sort">
-               	<div class="sort-by">
-		            <label>Sort By</label>
-		            <select>
-		                            <option value="">
-		                    Popularity               </option>
-		                            <option value="">
-		                    Price : High to Low               </option>
-		                            <option value="">
-		                    Price : Low to High               </option>
-		            </select>
-		            <a href=""><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/arrow2.gif" alt="" class="v-middle"></a>
-               </div>
-    		</div>
-	          <div class="pager">   
-	           <div class="limiter visible-desktop">
-	            <label>Show</label>
-	            <select>
-	                            <option value="" selected="selected">
-	                    9                </option>
-	                            <option value="">
-	                    15                </option>
-	                            <option value="">
-	                    30                </option>
-	                        </select> per page        
-	             </div>
-	       		<ul class="dc_pagination dc_paginationA dc_paginationA06">
-				    <li><a href="#" class="previous">Pages</a></li>
-				    <li><a href="#">1</a></li>
-				    <li><a href="#">2</a></li>
-			  	</ul>
-		   		<div class="clearfix"></div>
-	    	</div>
-     	    <div class="clearfix"></div>
-	       </div>
-			    <div class="box1">
-				   <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic-5.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-						<div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clear"></div>
-			    	</div>
-				    <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic-3.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-					   <div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clear"></div>
-			    	</div>
-				   <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic-9.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-					   <div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clearfix"></div>
-			    	</div>
-				  <div class="clearfix"></div>
-			  </div>
-			  <div class="box1">
-				 <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic-10.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-					   <div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clearfix"></div>
-			    	</div>
-				    <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic-4.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-						<div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clear"></div>
-			    	</div>
-				    <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic-11.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-					   <div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clearfix"></div>
-			    	</div>
-				  <div class="clearfix"></div>
-			  </div>
-			  <div class="box1">
-				    <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic-6.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-					   <div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clearfix"></div>
-			    	</div>
-				    <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic-7.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-					   <div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clearfix"></div>
-			    	</div>
-				    <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic-8.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-					   <div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clearfix"></div>
-			    	</div>
-				  <div class="clearfix"></div>
-			  </div>
-			  <div class="box1">
-				   <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic-2.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-					   <div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clearfix"></div>
-			    	</div>
-				    <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic-1.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-					   <div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clearfix"></div>
-			    	</div>
-				   <div class="col_1_of_single1 span_1_of_single1">
-				     <div class="view1 view-fifth1">
-				  	  <div class="top_box">
-					  	<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-					  	<p class="m_2">Lorem ipsum</p>
-						<a href="single.html">
-				         <div class="grid_img">
-						   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/pic.jpg" alt=""/></div>
-					          <div class="mask1">
-	                       		<div class="info">Quick View</div>
-			                  </div>
-	                    </div>
-                       <div class="price">$ 510</div>
-					   </div>
-					    </div></a>
-					   <div class="rtng">
-					    <form action="" class="sky-form">
-						     <fieldset>					
-							   <section>
-							     <div class="rating">
-									<input type="radio" name="stars-rating" id="stars-rating-5">
-									<label for="stars-rating-5"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-4">
-									<label for="stars-rating-4"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-3">
-									<label for="stars-rating-3"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-2">
-									<label for="stars-rating-2"><i class="icon-star"></i></label>
-									<input type="radio" name="stars-rating" id="stars-rating-1">
-									<label for="stars-rating-1"><i class="icon-star"></i></label><span class="rtng">(5)<span>
-									<div class="clearfix"></div>
-								 </div>
-							  </section>
-						    </fieldset>
-						  </form>
-						  </div>
-						 <ul class="list2">
-						  <li>
-						  	<img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
-						  	<ul class="icon1 sub-icon1 profile_img">
-							  <li><a class="active-icon c1" href="single.html">Add To Bag </a>
-								<ul class="sub-icon1 list">
-									<li><h3>sed diam nonummy</h3><a href=""></a></li>
-									<li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
-								</ul>
-							  </li>
-							 </ul>
-						   </li>
-					     </ul>
-			    	    <div class="clearfix"></div>
-			    	</div>
-				  <div class="clearfix"></div>
-			  </div>
-			  </div>
-     	    <div class="rsidebar span_1_of_left">
-				   <section  class="sky-form">
-				   <div class="product_right">
-     			<h3 class="m_2">Categories</h3>
-     			    <select class="dropdown" tabindex="10" data-settings='{"wrapperClass":"metro"}'>
-            			<option value="0">New</option>	
-						<option value="1">tempor</option>
-						<option value="2">congue</option>
-						<option value="3">mazim </option>
-						<option value="4">mutationem</option>
-						<option value="5">hendrerit </option>
-		           </select>
-				   <select class="dropdown" tabindex="50" data-settings='{"wrapperClass":"metro"}'>
-						<option value="1">Designers</option>
-						<option value="2">Sub Category1</option>
-						<option value="3">Sub Category2</option>
-						<option value="4">Sub Category3</option>
-			       </select>
-				   <select class="dropdown" tabindex="8" data-settings='{"wrapperClass":"metro"}'>
-						<option value="1">Women</option>
-						<option value="2">Sub Category1</option>
-						<option value="3">Sub Category2</option>
-						<option value="4">Sub Category3</option>
-			       </select>
-			       <select class="dropdown" tabindex="8" data-settings='{"wrapperClass":"metro"}'>
-						<option value="1">Men</option>
-						<option value="2">Sub Category1</option>
-						<option value="3">Sub Category2</option>
-						<option value="4">Sub Category3</option>
-			       </select>
-			       <select class="dropdown" tabindex="8" data-settings='{"wrapperClass":"metro"}'>
-						<option value="1">Clearance</option>
-						<option value="2">Sub Category1</option>
-						<option value="3">Sub Category2</option>
-						<option value="4">Sub Category3</option>
-			       </select>
-</div>
-                   	  <h4>Occasion</h4>
-						<div class="row row1 scroll-pane">
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Athletic (20)</label>
-							</div>
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Athletic Shoes (48)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Casual (45)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Casual (45)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Other (1)</label>
-						    </div>
-						 </div>
-					 <h4>Styles</h4>
-						<div class="row row1 scroll-pane">
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Athletic (20)</label>
-							</div>
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Ballerina (5)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Pumps (7)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>High Tops (2)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Other (1)</label>
-						    </div>
-						</div>
-				</section>
-		        <section  class="sky-form">
-					<h4>Brand</h4>
-						<div class="row row1 scroll-pane">
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Adidas by Stella McCartney</label>
-							</div>
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Asics</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Bloch</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Bloch Kids</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Capezio</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>Capezio Kids</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Nike</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Zumba</label>
-							</div>
-						</div>
-		       </section>
-		       <section  class="sky-form">
-					<h4>Heel Height</h4>
-						<div class="row row1 scroll-pane">
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Flat (20)</label>
-							</div>
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Under 1in(5)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>1in - 1 3/4 in(5)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>2in - 2 3/4 in(3)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>3in - 3 3/4 in(2)</label>
-							</div>
-						</div>
-		       </section>
-		       <section  class="sky-form">
-					<h4>Price</h4>
-						<div class="row row1 scroll-pane">
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>$50.00 and Under (30)</label>
-							</div>
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>$100.00 and Under (30)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>$200.00 and Under (30)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>$300.00 and Under (30)</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>$400.00 and Under (30)</label>
-							</div>
-						</div>
-		       </section>
-		       <section  class="sky-form">
-					<h4>Colors</h4>
-						<div class="row row1 scroll-pane">
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Red</label>
-							</div>
-							<div class="col col-4">
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Green</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Black</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Yellow</label>
-								<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Orange</label>
-							</div>
-						</div>
-		       </section>
-		</div>
-			  <div class="clearfix"></div>
-		   </div>
-	</div>
-	<!-- content-section-ends -->
+  					<script src="js/classie.js"></script>
+  					<script src="js/uisearch.js"></script>
+  					<script>
+  						new UISearch( document.getElementById( 'sb-search' ) );
+  					</script>
 
+  					<a href="cart.html"><i class="cart"></i></a>
+  				</div>
+  				-->
+  			</div>
+  		</div>
+  	</div>
 
-		<div class="footer">
-		<div class="up-arrow">
-			<a class="scroll" href="#home"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/up.png" alt="" /></a>
-		</div>
-			<div class="container">
-				<div class="copyrights">
-					<p>Copyright &copy; 2015 All rights reserved | Template by  <a href="http://w3layouts.com">  W3layouts</a></p>
-				</div>
-				<div class="footer-social-icons">
-					<a href="#"><i class="fb"></i></a>
-					<a href="#"><i class="tw"></i></a>
-					<a href="#"><i class="in"></i></a>
-					<a href="#"><i class="pt"></i></a>
-				</div>
-				  <div class="clearfix"></div>
-			</div>
-		</div>
-</body>
+  	<!-- start Dresses-page -->
+  	<!-- content-section-starts -->
+    <br>
+    <div class="container">
+  	  <div class="ft-ball">
+  		  <div class="cont span_2_of_3">
+          <div class="herramientas-filtro">
+            <div class="row">
+              <div class="col-md-3 buscarPor">
+                  <label for="">Buscar por: &nbsp;</label>
+                  <select name="" id="filtro-origen" class="">
+                    <option value="">..........</option>
+                    <option value="">ISBN</option>
+                    <option value="">Titulo</option>
+                    <option value="">Autor</option>
+                  </select>   
+              </div>
+              <div class="col-md-3">
+                <div class="inputBuscarLibro">
+                    <input type="text" id="filtro-fecha">
+                </div>
+              </div>
+              <div class="col-md-1">
+                <button class="btn btn-secondary btn-sm btnFiltrar">Filtrar</button>
+              </div>
+            </div>
+          </div>
+          <table class="catalogo" id="catalogo">
+            <thead>
+              <tr>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody class="row">
+                <%for(libroBean obj:listaLibros){%>
+                    <tr class="col-sm-4 col-md-4">
+                      <td>
+                           <div class="box1">
+                        <div class="col_1_of_single1 span_1_of_single1">
+                          <div class="view1 view-fifth1">
+                            <div class="top_box">
+                                <h3 class="m_1"><%=obj.getTitulo()%></h3>
+                              <p class="m_2"><%=obj.getAutor()%></p>
+                              <a href="#">
+                                <div class="grid_img">
+                                  <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/portada-libro.png" alt=""/></div>
+                                  <div class="mask1">
+                                      <div class="info" onclick="FuncionSolicitarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','9','<%=obj.getId_libro()%>','1','<%=session.getAttribute("idAlumno")%>')">Solicitar</div>
+                                  </div>
+                                </div>
+                              </a>
+                              <div class="price">Disponible</div>
+                            </div>
+                          </div>
+                          <ul class="list2" style="list-style: none;">
+                            <li>
+                              <img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
+                              <ul class="icon1 sub-icon1 profile_img">
+                                <li><a class="active-icon c1" href="single.html">Solicitar </a>
+                                    <ul class="sub-icon1 list">
+                                      <li><h3>Descripción del Libro</h3><a href=""></a></li>
+                                      <li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
+                                    </ul>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                          <div class="clear"></div>
+                        </div>
+                              <div class="clearfix"></div>
+                              </div>
+                      </td>
+                  </tr>
+              <%}%>
+            </tbody>
+          </table>
+  			</div>
+              
+       	<div class="rsidebar span_1_of_left">
+  				<section  class="sky-form menu">
+            <h4>Escuela</h4>
+  					<div class="row row1 scroll-pane">
+  						<div class="col col-4">
+                                                    <div class="radioButton" >
+  						    <label class="radiobutton">
+                                <input type="radio" name="escuela" id="Etodos" value="-1" checked>
+                                <span class="label-text">Todas</span>
+  						    </label>
+  						</div>
+  						<div class="radioButton">
+                            <label class="radiobutton">
+                                <input type="radio" name="escuela" id="Esist" value="1">
+                                <span>Sistemas </span>
+                            </label>
+  						</div>
+  						<div class="radioButton">
+                            <label class="radiobutton">
+                                <input type="radio" name="escuela" id="Eindus" value="2">
+                                <span>Industrial </span>
+                            </label>
+  						</div>
+  						<div class="radioButton">
+                            <label class="radiobutton">
+                                <input type="radio" name="escuela" id="Etrans" value="3">
+                                <span>Transportes </span>
+                            </label>
+  						</div>
+  						<div class="radioButton">
+                            <label class="radiobutton">
+                                <input type="radio" name="escuela" id="Eagro" value="4">
+                                <span>Agroindustrial </span>
+                            </label>
+  						</div>
+  					  </div>
+  					</div>
+  					<h4>Tipo de Documento</h4>
+  					<div class="row row1 scroll-pane">
+  						<div class="col col-4">
+                            <div class="radioButton"  >
+                               <label class="radiobutton">
+                                    <input type="radio" name="checkbox" value="-1" id="TDtodos" checked>
+                                    <span>Todos </span>
+                                </label>
+                            </div>
+                            <div class="radioButton">
+                                <label class="radiobutton">
+                                    <input type="radio" name="checkbox" id="TDlibros" value="1">
+                                    <span>Libros </span>
+                                </label>
+                            </div>
+                            <div class="radioButton">
+                                <label class="radiobutton">
+                                    <input type="radio" name="checkbox" id="TDtesis" value="2">
+                                    <span>Tesis </span>
+                                </label>
+                            </div>
+                            <div class="radioButton">
+                                <label class="radiobutton">
+                                    <input type="radio" name="checkbox" id="TDmonografia" value="3">
+                                    <span>Monografías </span>
+                                </label>
+                            </div>
+                            <div class="radioButton">
+                                <label class="radiobutton">
+                                    <input type="radio" name="checkbox" id="TDrevistas" value="4">
+                                    <span>Revistas </span>
+                                </label>
+                            </div>
+  						</div>
+  					</div>
+  				</section>
+  		  </div>
+  			<div class="clearfix"></div>
+  		</div>
+  	</div>
+  	<!-- content-section-ends -->
+
+  	<div class="footer">
+  		<div class="up-arrow">
+  			<a class="scroll" href="#home"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/up.png" alt="" /></a>
+  		</div>
+  		<div class="container">
+  			<div class="copyrights">
+  				<p>Copyright &copy; 2018 Todos los derechos reservados | Template by  <b>  Villabook</b></p>
+  			</div>
+  			<div class="footer-social-icons">
+  				<a href="#"><i class="fb"></i></a>
+  				<a href="#"><i class="tw"></i></a>
+  				<a href="#"><i class="in"></i></a>
+  				<a href="#"><i class="pt"></i></a>
+  			</div>
+  			<div class="clearfix"></div>
+  		</div>
+  	</div>
+    </form>
+  	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+        <script src="<%=request.getContextPath()%>/Complementos/plugins/sweetalert/sweetalert.min.js"></script>
+     <!-- iCheck -->
+    <script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/plugins/iCheck/icheck.min.js"></script>
+    <script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/LibroCatalogo.js" type="text/javascript"></script>
+    <script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/Funciones.js" type="text/javascript"></script>
+    <script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/PrestamoCatalogo.js" type="text/javascript"></script>
+      <script>
+          $(document).ready(function(){
+              $('#catalogo').DataTable( {
+                  "responsive": true,
+                  "searching": false,
+                  "lengthMenu":[[6,12,18,-1],[6,12,18,"Todos"]],
+                  "language": {
+                      "sProcessing":     "Procesando...",
+                      "sLengthMenu":     "Mostrar _MENU_ registros",
+                      "sZeroRecords":    "No se encontraron resultados",
+                      "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                      "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                      "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                      "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                      "sInfoPostFix":    "",
+                      "sSearch":         "Buscar:",
+                      "sUrl":            "",
+                      "sInfoThousands":  ",",
+                      "sLoadingRecords": "Cargando...",
+                      "oPaginate": {
+                          "sFirst":    "Primero",
+                          "sLast":     "Último",
+                          "sNext":     "Siguiente",
+                          "sPrevious": "Anterior"
+                      },
+                      "oAria": {
+                          "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                          "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                      }
+                }
+              } );
+              
+             
+              
+              $('#btn-salir').click(function(){
+                 
+                  funcionLogout('<%=request.getContextPath()%>','CompucatalogoServlet','?op=2');
+              });
+              
+                           
+              $('input#TDtodos').on('change', this, function(){
+                 FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDtodos').val());
+              });
+              $('input#TDlibros').on('change', this, function(){
+                 FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDlibros').val());
+              });
+              $('input#TDtesis').on('change', this, function(){
+                 FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDtesis').val());
+              });
+              $('input#TDmonografia').on('change', this, function(){
+                FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDmonografia').val());
+              });
+              $('input#TDrevistas').on('change', this, function(){
+                FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDrevistas').val());
+              });
+              
+              
+              $('input#Etodos').on('change', this, function(){
+                 FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Etodos').val());
+              });
+              $('input#Esist').on('change', this, function(){
+                  FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Esist').val());
+              });
+              $('input#Eindus').on('change', this, function(){
+                  FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Eindus').val());
+              });
+              $('input#Etrans').on('change', this, function(){
+                 FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Etrans').val());
+              });
+              $('input#Eagro').on('change', this, function(){
+                 FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Eagro').val());
+              });
+              
+              
+          });
+        
+    </script>
+  </body>
 </html>

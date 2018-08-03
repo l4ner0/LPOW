@@ -4,7 +4,7 @@
     
 if(  session.getAttribute("idEmpleado") ==null)
   {
-      response.sendRedirect(request.getContextPath()+"/Vistas/Seguridad/loginAdministrador.jsp");
+      response.sendRedirect(request.getContextPath()+"/Vistas/Compucatalogo/catalogo.jsp");
 
 
    }

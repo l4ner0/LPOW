@@ -214,6 +214,7 @@ public class AdministradorServlet extends HttpServlet {
             case 9:{
                 sesion.invalidate();
                 pagina="/Vistas/Seguridad/loginAdministrador.jsp";
+                break;
             }
         }
          getServletContext().getRequestDispatcher(pagina).forward(request, response);

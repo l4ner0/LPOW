@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,7 +38,9 @@ public class PrestamoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+       HttpSession session = request.getSession(false);
         prestamoDAO prestamo = null;
+        prestamoBean objPrestamoBean=null;
         Gson gson = new Gson();
         PrintWriter out = response.getWriter();
         int op=Integer.parseInt(request.getParameter("op"));
@@ -140,6 +143,36 @@ public class PrestamoServlet extends HttpServlet {
                 }else{
                      out.print("-1");
                 }
+                break;
+            }
+            
+            case 9:{
+                if(session.getAttribute("idAlumno") != null){
+                    prestamo = new prestamoDAO();
+                    int idLibro = Integer.parseInt(request.getParameter("idLibro"));
+                    int idEmpleado= Integer.parseInt(request.getParameter("idEmpleado"));
+                    String fechaPrestamo="";
+                    String horaPrestamo="";
+                    String tipoPrestamo="";
+                    int idAlumno= Integer.parseInt(request.getParameter("idAlumno"));
+                    objPrestamoBean = new prestamoBean();
+                    objPrestamoBean.setId_libro(idLibro);
+                    objPrestamoBean.setId_empleado(idEmpleado);
+                    objPrestamoBean.setFecha_prestamo(fechaPrestamo);
+                    objPrestamoBean.setHora_prestamo(horaPrestamo);
+                    objPrestamoBean.setTipo_prestamo(tipoPrestamo);
+                    int resultado=prestamo.solicitarPrestamo(objPrestamoBean, idAlumno);
+
+                    if(resultado==1){
+                        session.invalidate();
+                        out.print("1");
+                    }else{
+                         out.print("-1");
+                    }
+                }else{
+                     out.print("-1");
+                }
+                
                 break;
             }
         }

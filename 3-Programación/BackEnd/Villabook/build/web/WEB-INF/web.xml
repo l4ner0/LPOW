@@ -36,6 +36,10 @@
         <servlet-name>VillabookServlet</servlet-name>
         <servlet-class>Controlador.VillabookServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CompucatalogoServlet</servlet-name>
+        <servlet-class>Controlador.CompucatalogoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AdministradorServlet</servlet-name>
         <url-pattern>/AdministradorServlet</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>VillabookServlet</servlet-name>
         <url-pattern>/VillabookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CompucatalogoServlet</servlet-name>
+        <url-pattern>/CompucatalogoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

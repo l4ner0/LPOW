@@ -36,8 +36,30 @@ public class alumnoDAO {
         } catch (Exception e) {
             System.out.println(e);
         }
-    return resultado;
+        return resultado;
     } 
+    
+    public int validarAlumno(String codAlumno){
+        int idAlumno=-1;
+        
+        try {
+            Conexion conexion=new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call validarIngresoAlumno(?)}");
+            cst.setString(1, codAlumno);
+            rs=cst.executeQuery();
+            rs.next();
+            idAlumno=rs.getInt(1);
+            
+            rs.close();
+            cst.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        
+        return idAlumno;
+    }
+    
 }
 
 

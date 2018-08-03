@@ -22,6 +22,28 @@ public class prestamoDAO {
     PreparedStatement ps=null;
     ResultSet rs=null;
     
+    public int solicitarPrestamo(prestamoBean prestamo, int idAlumno){
+        int respuesta = -1;
+        
+        try {
+            Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call solicitarPrestamo(?,?,?,?,?,?)}");
+            cst.setInt(1, prestamo.getId_libro());
+            cst.setInt(2, prestamo.getId_empleado());
+            cst.setString(3, prestamo.getFecha_prestamo());
+            cst.setString(4, prestamo.getHora_prestamo());
+            cst.setString(5, prestamo.getTipo_prestamo());
+            cst.setInt(6, idAlumno);
+            respuesta = cst.executeUpdate();
+            cst.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        
+        return respuesta;
+    }
+    
     public int contarPrestamosPendientes(){
         int resultado=0;
         try {
@@ -425,15 +447,12 @@ public class prestamoDAO {
     public static void main(String[] args){
         int respuesta;
         prestamoDAO prestamo = new prestamoDAO();
-        
-        ArrayList<prestamoBean> lista = new ArrayList<>();
-        lista = prestamo.filtrarPendiente("2015019637");
-        for(prestamoBean obj:lista){
-            System.out.println("Aepllido del alumno: "+obj.getApAlumno()+" "+obj.getAmAlumno());
-            
-        }
+       
+        respuesta = prestamo.solicitarPrestamo(1, 1, "2018/08/03", "02:30", "Presencial", 1);
+            System.out.println(respuesta);
+
         
        
     }
- */
+*/
 }

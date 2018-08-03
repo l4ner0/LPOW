@@ -1,0 +1,44 @@
+.logo{
+    width: 400px;
+}
+.col_1_of_single1{
+    width: 100%;
+}
+
+.catalogo td{
+    padding-left:35px;
+}
+
+.menu h4{
+    background-color: #F44848;
+}
+
+.info{
+    background-color: #F44848;
+}
+
+.buscarPor select{
+    height: 27px;
+}
+
+
+.herramientas-filtro{
+    margin-bottom: 45px;
+}
+
+.btnFiltrar{
+    border-radius: 0px;
+}
+
+.salir{
+        margin-top: 14px;
+}
+
+.salir a{
+    color: white;
+    font-size: 20px;
+}
+
+.radioButton{
+    margin-bottom: 7px;
+}

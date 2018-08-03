@@ -116,6 +116,11 @@ CREATE TABLE IF NOT EXISTS `compucatalogo`(
 	`clave` varchar(100) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1;
 
+CREATE TABLE IF NOT EXISTS `empleado_compucatalogo`(
+	`id_empleado` int(11) NOT NULL,
+	`id_compu` int(11) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 -- ---------------------------------------------------------------------------
 
 -- #######################################
@@ -164,6 +169,9 @@ ADD PRIMARY KEY (`id_base`);
 
 ALTER TABLE `compucatalogo`
 ADD PRIMARY KEY (`id_compu`); 
+
+ALTER TABLE `empleado_compucatalogo`
+ADD KEY  (`id_empleado`), ADD KEY  (`id_compu`); 
 
 -- ---------------------------------------------------------------------------
 
@@ -275,6 +283,11 @@ ALTER TABLE `usuario_alumno`
 ADD CONSTRAINT `usuario_alumnoFk_id_alumno`
 FOREIGN KEY (`id_alumno`) REFERENCES `alumno` (`id_alumno`);
 
+ALTER TABLE `empleado_compucatalogo`
+ADD CONSTRAINT `empleado_compucatalogoFk_id_empleado`
+FOREIGN KEY (`id_empleado`) REFERENCES `empleado` (`id_empleado`),
+ADD CONSTRAINT `empleado_compucatalogoFk_id_compu`
+FOREIGN KEY (`id_compu`) REFERENCES `compucatalogo` (`id_compu`);
 
 --
 -- Volcado de datos para la tabla `autor`
@@ -814,4 +827,61 @@ ON e.id_escuela = al.id_escuela
 WHERE al.cod_alumno = _cod_alumno AND d.estado_devolucion = _estado_devolucion 
 $$
 
+-- Procedimiento para validar la entrada al compucatalogo
+
+CREATE PROCEDURE validarIngresoAlumno(_cod_alumno varchar(10))
+SELECT id_alumno FROM alumno WHERE cod_alumno = _cod_alumno
+$$
+
+-- Procedimiento filtrar por tipo documento
+
+CREATE PROCEDURE filtrarLibroTipoDocumento(_id_tipo_documento int)
+SELECT 
+	l.id_libro,tp.tipo, e.nombre, a.apellidos,a.nombres,l.ISBN,l.portada,l.titulo,l.datos_publi,l.stock_inicial,l.stock_final
+FROM libro as l
+INNER JOIN tipo_documento as tp
+ON l.id_tipo_documento=tp.id_tipo_documento
+INNER JOIN escuela as e
+ON l.id_escuela=e.id_escuela
+INNER JOIN autor as a
+ON l.id_autor=a.id_autor
+WHERE estado=1 AND l.id_tipo_documento = _id_tipo_documento
+$$
+
+-- Procedimiento filtrar por tipo documento
+
+CREATE PROCEDURE filtrarLibroEscuela(_id_escuela int)
+SELECT 
+	l.id_libro,tp.tipo, e.nombre, a.apellidos,a.nombres,l.ISBN,l.portada,l.titulo,l.datos_publi,l.stock_inicial,l.stock_final
+FROM libro as l
+INNER JOIN tipo_documento as tp
+ON l.id_tipo_documento=tp.id_tipo_documento
+INNER JOIN escuela as e
+ON l.id_escuela=e.id_escuela
+INNER JOIN autor as a
+ON l.id_autor=a.id_autor
+WHERE estado=1 AND l.id_escuela = _id_escuela
+$$
+
+DELIMITER ;
+
+
+-- Procedimiento para crear una solicitud de prestamo
+
+DELIMITER $$
+CREATE PROCEDURE solicitarPrestamo(
+	_id_libro int, 
+	_id_empleado int, 
+	_fecha_prestamo varchar(10), 
+	_hora_prestamo varchar(8), 
+	_tipo_prestamo varchar(20),
+	_id_alumno int
+	)
+BEGIN
+INSERT INTO prestamo (id_libro, id_empleado, fecha_prestamo, hora_prestamo, tipo_prestamo)
+VALUES (_id_libro, _id_empleado, _fecha_prestamo, _hora_prestamo, _tipo_prestamo);
+SET @IDPRESTAMO = LAST_INSERT_ID();
+INSERT INTO solicitud_prestamo (id_alumno, id_prestamo)
+VALUES (_id_alumno, @IDPRESTAMO);
+END$$
 DELIMITER ;
