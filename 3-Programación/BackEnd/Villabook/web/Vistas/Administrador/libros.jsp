@@ -154,7 +154,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Stock :</label>
-                                <input type="text" class="form-control form-control-sm" id="txtStockAddLibro">
+                                <input type="number" value="1" class="form-control form-control-sm" id="txtStockAddLibro">
                             </div>
                         </div>
                         <div class="col-md-12">

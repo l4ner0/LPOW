@@ -18,10 +18,7 @@
                 <a class="nav-link" href="#" id="btn-empleado">Empleado</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" id="btn-compucatalogo">Compucatalogo</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" id="btn-contact">Contactanos</a>
+                <a class="nav-link" href="#" onclick="compuCatalogo()">Compucatalogo</a>
             </li>
           </ul>
         </div>

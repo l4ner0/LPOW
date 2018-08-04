@@ -50,10 +50,6 @@ public class VillabookServlet extends HttpServlet {
                 pagina="/Vistas/Compucatalogo/inicio.jsp";
                 break;
             }
-            case 5:{
-                pagina="/Vistas/Villabook/contact.jsp";
-                break;
-            }
         }
         
          getServletContext().getRequestDispatcher(pagina).forward(request, response);

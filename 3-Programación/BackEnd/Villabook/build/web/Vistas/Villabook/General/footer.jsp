@@ -20,7 +20,7 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+                  <a href="https://github.com/l4ner0/LPOW" target="_blank">
                   <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -33,8 +33,10 @@
         </div>
       </div>
 </footer>
-
 <script>
+    function compuCatalogo(){
+        window.open('<%=request.getContextPath()%>/Vistas/Compucatalogo/inicio.jsp','1024x768','toolbar=no,status=no,scrollbars=no,location=no,menubar=no,directories=no,width=1024,height=768')
+    }
     $(document).ready(function(){
         $('#btn-inicio').click(function(){
             cambiarPagina('<%=request.getContextPath()%>','VillabookServlet','?op=1');
@@ -44,12 +46,6 @@
         });
         $('#btn-empleado').click(function(){
             cambiarPagina('<%=request.getContextPath()%>','VillabookServlet','?op=3');
-        });
-        $('#btn-compucatalogo').click(function(){
-            cambiarPagina('<%=request.getContextPath()%>','VillabookServlet','?op=4');
-        });
-        $('#btn-contact').click(function(){
-            cambiarPagina('<%=request.getContextPath()%>','VillabookServlet','?op=5');
         });
     });
 </script>

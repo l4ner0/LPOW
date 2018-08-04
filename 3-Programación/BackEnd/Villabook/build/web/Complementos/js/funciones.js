@@ -1,3 +1,14 @@
+function validaVacio(valor) {
+        valor = valor.replace("&nbsp;", "");
+        valor = valor === undefined ? "" : valor;
+        if (!valor || 0 === valor.trim().length) {
+            return false;
+        }
+        else {
+            return true;
+        }
+}
+
 function funcionLogin(ruta,controlador,parametro){
     document.form.action=ruta+"/"+controlador+parametro;
     document.form.loginEmail.value=document.getElementById("loginEmail").value;
@@ -22,6 +33,14 @@ var funcionGrabaAutor=function(ruta,controlador,op){
     var apellidos=document.getElementById("txtApellidosAutor").value;
     var nombres=document.getElementById("txtNombresAutor").value;
     var detalle=document.getElementById("textDetalleAutor").value;
+    if(validaVacio(apellidos)===false){
+        swal({title: "Aviso", text: "Hay campos vacios", icon: "warning"});
+        return true;
+    }
+    if(validaVacio(nombres)===false){
+        swal({title: "Aviso", text: "Hay campos vacios", icon: "warning"});
+        return true;
+    }
     var autor= new Autor(ruta,controlador,op);
     autor.grabarAutor(apellidos,nombres,detalle);
     document.getElementById("txtApellidosAutor").value="";
@@ -53,6 +72,32 @@ var funcionGrabarLibro=function(ruta,controlador,op){
     var stock=$("#txtStockAddLibro").val();
     var datosPubli=$("#txtDatosPubliAddLibro").val();
     var portada=$('#filePortadaAddLibro').val();
+    
+    if(tipoDocumento==="-1"){
+        swal({title: "Aviso", text: "Hay campos vacios", icon: "warning"});
+        return true;
+    }
+    if(escuela==="-1"){
+        swal({title: "Aviso", text: "Hay campos vacios", icon: "warning"});
+        return true;
+    }
+     if(autor==="-1"){
+        swal({title: "Aviso", text: "Hay campos vacios", icon: "warning"});
+        return true;
+    }
+    if(validaVacio(isbn)===false){
+        swal({title: "Aviso", text: "Hay campos vacios", icon: "warning"});
+        return true;
+    }
+    if(validaVacio(titulo)===false){
+        swal({title: "Aviso", text: "Hay campos vacios", icon: "warning"});
+        return true;
+    }
+    
+    if(stock < 0){
+        swal({title: "Aviso", text: "El stock no puede ser menor a 1", icon: "warning"});
+        return true;
+    }
     var libro=new Libro(ruta,controlador,op);
     libro.addLibro(tipoDocumento,escuela,autor,isbn,portada,titulo,datosPubli,stock);
     
@@ -89,6 +134,23 @@ var funcionActualizarLibro=function(ruta,controlador,op){
     var titulo=$("#txtTituloEditLibro").val();
     var datosPubli=$("#txtDatosPubliEditLibro").val();
     var portada=$("#filePortadaEditLibro").val();
+    
+    if(tipoDocumento==="-1"){
+        swal({title: "Aviso", text: "Hay campos vacios", icon: "warning"});
+        return true;
+    }
+    if(escuela==="-1"){
+        swal({title: "Aviso", text: "Hay campos vacios", icon: "warning"});
+        return true;
+    }
+     if(autor==="-1"){
+        swal({title: "Aviso", text: "Hay campos vacios", icon: "warning"});
+        return true;
+    }
+    if(validaVacio(titulo)===false){
+        swal({title: "Aviso", text: "Hay campos vacios", icon: "warning"});
+        return true;
+    }
     
     var libro= new Libro(ruta,controlador,op);
     libro.editarLibro(tipoDocumento,escuela,autor,isbn,portada,titulo,datosPubli);
