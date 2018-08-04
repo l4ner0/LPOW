@@ -930,3 +930,12 @@ WHERE id_devolucion = _id_devolucion;
 UPDATE libro SET stock_final = stock_final+1 WHERE ISBN = _isbn;
 END$$
 DELIMITER ;
+
+-- Procedimiento para contar los tipos de prestamos presenciales
+
+DELIMITER $$
+CREATE PROCEDURE contarTipoPrestamo( _tipo_prestamo varchar(20) )
+BEGIN
+SELECT COUNT(*) AS tipo_prestamos FROM prestamo WHERE tipo_prestamo = _tipo_prestamo;
+END$$
+DELIMITER ;

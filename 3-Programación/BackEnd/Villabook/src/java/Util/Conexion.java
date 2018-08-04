@@ -19,8 +19,8 @@ public class Conexion {
        Connection cn=null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            //cn=DriverManager.getConnection("jdbc:mysql://localhost/bd_villabook","root","");
-            cn=DriverManager.getConnection("jdbc:mysql://node74812-villabook.whelastic.net/bd_villabook","root","QMIone41492");
+           cn=DriverManager.getConnection("jdbc:mysql://localhost/bd_villabook","root","");
+             //cn=DriverManager.getConnection("jdbc:mysql://node74812-villabook.whelastic.net/bd_villabook","root","QMIone41492");
             System.out.println("Se conectó :-)");
         } catch (Exception e) {
             System.out.println("No se conectó :-("+e);

@@ -442,6 +442,26 @@ public class prestamoDAO {
         
         return respuesta;
     } 
+    
+    public int contarTipoPrestamo(String tipoPrestamo){
+        int resultado=0;
+        try {
+            Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call contarTipoPrestamo(?)}");
+            cst.setString(1, tipoPrestamo);
+            ResultSet rs = cst.executeQuery();
+            rs.next();
+            resultado = rs.getInt(1);
+            
+            cst.close();
+            rs.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        
+        return resultado;
+    }
      
     
 /*
@@ -449,8 +469,8 @@ public class prestamoDAO {
         int respuesta;
         prestamoDAO prestamo = new prestamoDAO();
        
-        respuesta = prestamo.solicitarPrestamo(1, 1, "2018/08/03", "02:30", "Presencial", 1);
-            System.out.println(respuesta);
+       int valor = prestamo.contarTipoPrestamo("Virtual");
+            System.out.println(valor);
 
         
        

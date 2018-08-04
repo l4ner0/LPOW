@@ -177,6 +177,19 @@ public class PrestamoServlet extends HttpServlet {
                 
                 break;
             }
+            
+            case 10:{
+                prestamo = new prestamoDAO();
+                int presenciales=prestamo.contarTipoPrestamo("Presencial");
+                int virtuales=prestamo.contarTipoPrestamo("Virtual");
+                int[] prestamos = new int[2];
+                prestamos[0]=presenciales;
+                prestamos[1]=virtuales;
+                out.print(gson.toJson(prestamos));
+                out.flush();
+                out.close();
+                break;
+            }
         }
     }
 
