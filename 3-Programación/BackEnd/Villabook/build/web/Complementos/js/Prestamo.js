@@ -176,7 +176,7 @@ Prestamo.prototype.filtraPendiente = function(codAlumno){
                     .draw()
                     .node();
                 }
-                
+                $('#tabla-entregas-pendientes tbody').off('click', '#btn-ListarAprobarEntrega');
                 $('#tabla-entregas-pendientes tbody').on( 'click', '#btn-ListarAprobarEntrega', function () {
                     var data = table.row( $(this).parents('tr') ).data();
                     var num=data[0]-1;
@@ -192,6 +192,8 @@ Prestamo.prototype.filtraPendiente = function(codAlumno){
                     $("p#aprobarEntregaFecha").text(listaPrestamo[num].fecha_prestamo);
                     $("p#aprobarEntregaOrigen").text(listaPrestamo[num].tipo_prestamo);
                 } );
+                
+                 $('#tabla-entregas-pendientes tbody').off('click', '#btn-ListarnoAprobarEntrega');
                 $('#tabla-entregas-pendientes tbody').on( 'click', '#btn-ListarnoAprobarEntrega', function () {
                     var data = table.row( $(this).parents('tr') ).data();
                     var num=data[0]-1;
@@ -246,7 +248,7 @@ Prestamo.prototype.filtrarNoAprobada = function(codAlumno){
                     .draw()
                     .node();
                 }
-                
+                $('#tabla-entregas-pendientes tbody').off('click', '#btn-infoNoAprobada');
                 $('#tabla-entregas-pendientes tbody').on( 'click', '#btn-infoNoAprobada', function () {
                     var data = table.row( $(this).parents('tr') ).data();
                     var num=data[0]-1;
@@ -269,7 +271,7 @@ Prestamo.prototype.filtrarNoAprobada = function(codAlumno){
     });
 }
 
-Prestamo.prototype.filtrarEntrega = function(condicionEntrega){
+Prestamo.prototype.filtrarEntrega = function(condicionEntrega,ruta){
     $.ajax({
         type: 'POST',
         url: this.ruta+"/"+this.controlador,
@@ -322,6 +324,7 @@ Prestamo.prototype.filtrarEntrega = function(condicionEntrega){
                     }
                 }
                 
+                $('#tabla-entregas-pendientes tbody').off('click', '#btn-entregar');
                 $('#tabla-entregas-pendientes tbody').on( 'click', '#btn-entregar', function () {
                     var data = table.row( $(this).parents('tr') ).data();
                     var num=data[0]-1;
@@ -331,7 +334,7 @@ Prestamo.prototype.filtrarEntrega = function(condicionEntrega){
                                 .draw();
                     $.ajax({
                         type: 'POST',
-                        url: "/Villabook/PrestamoServlet",
+                        url: ruta+"/PrestamoServlet",
                         data:{
                             op:8,
                             idPrestamo:listaPrestamo[num].id_prestamo

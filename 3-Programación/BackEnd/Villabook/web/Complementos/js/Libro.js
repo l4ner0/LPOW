@@ -37,7 +37,7 @@ Libro.prototype.addLibro=function(tipoDocumento,escuela,autor,isbn,portada,titul
     });
 }
 
-Libro.prototype.listarLibros=function(){
+Libro.prototype.listarLibros=function(ruta){
     $.ajax({
         type: "POST",
         url:this.ruta+"/"+this.controlador,
@@ -56,7 +56,7 @@ Libro.prototype.listarLibros=function(){
                     '<td>'+listarLibros[i].autor+'</td>',
                     '<td>'+listarLibros[i].datos_publi+'</td>',
                     '<td><span class="status--process">'+listarLibros[i].escuela+'</span></td>',
-                    '<td><img src="/Villabook/Complementos/dist/img/portada-libro.png" width="45"></td>',
+                    '<td><img src="'+ruta+'/Complementos/dist/img/portada-libro.png" width="45"></td>',
                     '<td><div class="table-data-feature">'+
                             '<button class="item btn-tabla-editar" onclick="funcionListarLibro()" data-placement="top" title="Editar"  data-toggle="modal" data-target="#editarLibro" ><i class="fa fa-edit"></i></button>'+
                             '<button class="item btn-tabla-eliminar" onclick="funcionEliminarLibro()" data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="fa fa-trash"></i></button>'

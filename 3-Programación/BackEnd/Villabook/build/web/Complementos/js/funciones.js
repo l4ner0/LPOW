@@ -161,7 +161,7 @@ var funcionFiltrarEntrega=function(ruta,controlador,op,condicionEntrega){
         location.reload();
     }else{
         var prestamo = new Prestamo(ruta,controlador,op);
-        prestamo.filtrarEntrega(condicionEntrega);
+        prestamo.filtrarEntrega(condicionEntrega,ruta);
     }
 }
 

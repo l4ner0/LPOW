@@ -30,13 +30,13 @@ function funcionLogout(ruta,controlador,parametro){
 
 function FuncionFiltrarTipoDocumento(ruta,controlador,parametro,tipoDocumento,idAlumno,idEmpleado){
     var libroCatalogo = new LibroCatalogo(ruta,controlador,parametro);
-    libroCatalogo.filtrarLibroTipoDocumento(tipoDocumento,idAlumno,idEmpleado);
+    libroCatalogo.filtrarLibroTipoDocumento(tipoDocumento,idAlumno,idEmpleado,ruta);
     
 }
 
 function FuncionFiltrarEscuela(ruta,controlador,parametro,idEscuela,idAlumno,idEmpleado){
     var libroCatalogo = new LibroCatalogo(ruta,controlador,parametro);
-    libroCatalogo.filtrarLibroEscuela(idEscuela,idAlumno,idEmpleado);
+    libroCatalogo.filtrarLibroEscuela(idEscuela,idAlumno,idEmpleado,ruta);
     
 }
 
@@ -53,7 +53,7 @@ function FuncionSolicitarPrestamo(ruta,controlador,parametro,idLibro, idEmpleado
         .then((willDelete) => {
             if (willDelete) {
                 var prestamo = new PrestamoCatalogo(ruta, controlador, parametro);
-                prestamo.solicitarPrestamo(idLibro, idEmpleado, idAlumno);
+                prestamo.solicitarPrestamo(idLibro, idEmpleado, idAlumno,ruta);
             }
         });
     }
@@ -66,10 +66,10 @@ function FuncionBuscarLibro(ruta,controlador,idAlumno,idEmpleado){
         swal("Error","Elija un tipo de busqueda", "error");
     }else if(tipoBusqueda === "1"){
          var libroCatalogo = new LibroCatalogo(ruta,controlador,8);
-         libroCatalogo.filtrarLibroIsbn(busqueda,idAlumno,idEmpleado);
+         libroCatalogo.filtrarLibroIsbn(busqueda,idAlumno,idEmpleado,ruta);
     }else if(tipoBusqueda === "2"){
         var libroCatalogo = new LibroCatalogo(ruta,controlador,9);
-        libroCatalogo.filtrarLibroTitulo(busqueda,idAlumno,idEmpleado);
+        libroCatalogo.filtrarLibroTitulo(busqueda,idAlumno,idEmpleado,ruta);
     }
 
 }

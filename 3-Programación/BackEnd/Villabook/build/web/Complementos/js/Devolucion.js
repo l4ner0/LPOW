@@ -101,6 +101,7 @@ Devolucion.prototype.filtrarDevolucionPendiente=function(codAlumno){
                     .node();
                 }
                 
+                $('#tabla-entregas-pendientes tbody').off('click', '#btn-infoAprobadaDevo');
                 $('#tabla-entregas-pendientes tbody').on( 'click', '#btn-infoAprobadaDevo', function () {
                     var data = table.row( $(this).parents('tr') ).data();
                     var num=data[0]-1;

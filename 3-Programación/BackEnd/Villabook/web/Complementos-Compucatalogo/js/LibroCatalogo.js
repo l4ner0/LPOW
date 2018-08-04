@@ -4,7 +4,7 @@ function LibroCatalogo(ruta, controlador, op){
     this.op = op;
 }
 
-LibroCatalogo.prototype.filtrarLibroTipoDocumento = function(tipoDocumento,idAlumno,idEmpleado){
+LibroCatalogo.prototype.filtrarLibroTipoDocumento = function(tipoDocumento,idAlumno,idEmpleado,ruta){
     $.ajax({
         type: 'POST',
         url: this.ruta+"/"+this.controlador,
@@ -39,7 +39,7 @@ LibroCatalogo.prototype.filtrarLibroTipoDocumento = function(tipoDocumento,idAlu
                                               '<p id="autor'+i+'" class="m_2">'+listaLibros[i].autor+'</p>'+
                                               '<a href="#">'+
                                                 '<div class="grid_img">'+
-                                                  '<div class="css3"><img src="/Villabook/Complementos-Compucatalogo/images/portada-libro.png" alt=""/></div>'+
+                                                  '<div class="css3"><img src="'+ruta+'/Complementos-Compucatalogo/images/portada-libro.png" alt=""/></div>'+
                                                   '<div class="mask1">'+
                                                     '<div class="info" id="btn-solicitar">Solicitar</div>'+
                                                   '</div>'+
@@ -50,7 +50,7 @@ LibroCatalogo.prototype.filtrarLibroTipoDocumento = function(tipoDocumento,idAlu
                                           '</div>'+
                                           '<ul class="list2" style="list-style: none;">'+
                                             '<li>'+
-                                              '<img src="/Villabook/Complementos-Compucatalogo/images/plus.png" alt=""/>'+
+                                              '<img src="'+ruta+'/Complementos-Compucatalogo/images/plus.png" alt=""/>'+
                                               '<ul class="icon1 sub-icon1 profile_img">'+
                                                 '<li><a class="active-icon c1" href="#" id="btn-solicitar">Solicitar </a>'+
                                                     '<ul class="sub-icon1 list">'+
@@ -90,7 +90,7 @@ LibroCatalogo.prototype.filtrarLibroTipoDocumento = function(tipoDocumento,idAlu
                             if(willDelete){
                                 $.ajax({
                                     type: 'POST',
-                                    url: "/Villabook/PrestamoServlet",
+                                    url: ruta+"/PrestamoServlet",
                                     data:{
                                         op: 9,
                                         idLibro: listaLibros[num].id_libro,
@@ -102,7 +102,7 @@ LibroCatalogo.prototype.filtrarLibroTipoDocumento = function(tipoDocumento,idAlu
                                         if(response==="1"){
                                             swal({title: "Listo", text: "Se aprobo correctamente el prestamo", icon: 
                                                 "success"}).then(function(){ 
-                                                   location.href="../../Villabook/Vistas/Compucatalogo/inicio.jsp";
+                                                   location.href=ruta+"/Vistas/Compucatalogo/inicio.jsp";
 
                                                 }
                                             );
@@ -125,7 +125,7 @@ LibroCatalogo.prototype.filtrarLibroTipoDocumento = function(tipoDocumento,idAlu
     });
 }
 
-LibroCatalogo.prototype.filtrarLibroEscuela= function(idEscuela, idAlumno,idEmpleado){
+LibroCatalogo.prototype.filtrarLibroEscuela= function(idEscuela, idAlumno,idEmpleado,ruta){
     $.ajax({
         type: 'POST',
         url: this.ruta+"/"+this.controlador,
@@ -160,7 +160,7 @@ LibroCatalogo.prototype.filtrarLibroEscuela= function(idEscuela, idAlumno,idEmpl
                                               '<p class="m_2">'+listaLibros[i].autor+'</p>'+
                                               '<a href="#">'+
                                                 '<div class="grid_img">'+
-                                                  '<div class="css3"><img src="/Villabook/Complementos-Compucatalogo/images/portada-libro.png" alt=""/></div>'+
+                                                  '<div class="css3"><img src="'+ruta+'/Complementos-Compucatalogo/images/portada-libro.png" alt=""/></div>'+
                                                   '<div class="mask1">'+
                                                     '<div class="info" id="btn-solicitar">Solicitar</div>'+
                                                   '</div>'+
@@ -171,7 +171,7 @@ LibroCatalogo.prototype.filtrarLibroEscuela= function(idEscuela, idAlumno,idEmpl
                                           '</div>'+
                                           '<ul class="list2" style="list-style: none;">'+
                                             '<li>'+
-                                              '<img src="/Villabook/Complementos-Compucatalogo/images/plus.png" alt=""/>'+
+                                              '<img src="'+ruta+'/Complementos-Compucatalogo/images/plus.png" alt=""/>'+
                                               '<ul class="icon1 sub-icon1 profile_img">'+
                                                 '<li><a class="active-icon c1" href="#" id="btn-solicitar">Solicitar </a>'+
                                                     '<ul class="sub-icon1 list">'+
@@ -210,7 +210,7 @@ LibroCatalogo.prototype.filtrarLibroEscuela= function(idEscuela, idAlumno,idEmpl
                             if(willDelete){
                                 $.ajax({
                                     type: 'POST',
-                                    url: "/Villabook/PrestamoServlet",
+                                    url: ruta+"/PrestamoServlet",
                                     data:{
                                         op: 9,
                                         idLibro: listaLibros[num].id_libro,
@@ -222,7 +222,7 @@ LibroCatalogo.prototype.filtrarLibroEscuela= function(idEscuela, idAlumno,idEmpl
                                         if(response==="1"){
                                             swal({title: "Listo", text: "Se aprobo correctamente el prestamo", icon: 
                                                 "success"}).then(function(){ 
-                                                   location.href="../../Villabook/Vistas/Compucatalogo/inicio.jsp";
+                                                   location.href=ruta+"/Vistas/Compucatalogo/inicio.jsp";
 
                                                 }
                                             );
@@ -244,7 +244,7 @@ LibroCatalogo.prototype.filtrarLibroEscuela= function(idEscuela, idAlumno,idEmpl
     });
 }
 
-LibroCatalogo.prototype.filtrarLibroIsbn = function(isbn,idAlumno,idEmpleado){
+LibroCatalogo.prototype.filtrarLibroIsbn = function(isbn,idAlumno,idEmpleado,ruta){
     $.ajax({
         type: 'POST',
         url: this.ruta+"/"+this.controlador,
@@ -279,7 +279,7 @@ LibroCatalogo.prototype.filtrarLibroIsbn = function(isbn,idAlumno,idEmpleado){
                                               '<p id="autor'+i+'" class="m_2">'+listaLibros[i].autor+'</p>'+
                                               '<a href="#">'+
                                                 '<div class="grid_img">'+
-                                                  '<div class="css3"><img src="/Villabook/Complementos-Compucatalogo/images/portada-libro.png" alt=""/></div>'+
+                                                  '<div class="css3"><img src="'+ruta+'/Complementos-Compucatalogo/images/portada-libro.png" alt=""/></div>'+
                                                   '<div class="mask1">'+
                                                     '<div class="info" id="btn-solicitar">Solicitar</div>'+
                                                   '</div>'+
@@ -290,7 +290,7 @@ LibroCatalogo.prototype.filtrarLibroIsbn = function(isbn,idAlumno,idEmpleado){
                                           '</div>'+
                                           '<ul class="list2" style="list-style: none;">'+
                                             '<li>'+
-                                              '<img src="/Villabook/Complementos-Compucatalogo/images/plus.png" alt=""/>'+
+                                              '<img src="'+ruta+'/Complementos-Compucatalogo/images/plus.png" alt=""/>'+
                                               '<ul class="icon1 sub-icon1 profile_img">'+
                                                 '<li><a class="active-icon c1" href="#" id="btn-solicitar">Solicitar </a>'+
                                                     '<ul class="sub-icon1 list">'+
@@ -330,7 +330,7 @@ LibroCatalogo.prototype.filtrarLibroIsbn = function(isbn,idAlumno,idEmpleado){
                             if(willDelete){
                                 $.ajax({
                                     type: 'POST',
-                                    url: "/Villabook/PrestamoServlet",
+                                    url: ruta+"/PrestamoServlet",
                                     data:{
                                         op: 9,
                                         idLibro: listaLibros[num].id_libro,
@@ -342,7 +342,7 @@ LibroCatalogo.prototype.filtrarLibroIsbn = function(isbn,idAlumno,idEmpleado){
                                         if(response==="1"){
                                             swal({title: "Listo", text: "Se aprobo correctamente el prestamo", icon: 
                                                 "success"}).then(function(){ 
-                                                   location.href="../../Villabook/Vistas/Compucatalogo/inicio.jsp";
+                                                   location.href=ruta+"/Vistas/Compucatalogo/inicio.jsp";
 
                                                 }
                                             );
@@ -364,7 +364,7 @@ LibroCatalogo.prototype.filtrarLibroIsbn = function(isbn,idAlumno,idEmpleado){
     });
 }
 
-LibroCatalogo.prototype.filtrarLibroTitulo = function(titulo,idAlumno,idEmpleado){
+LibroCatalogo.prototype.filtrarLibroTitulo = function(titulo,idAlumno,idEmpleado,ruta){
     $.ajax({
         type: 'POST',
         url: this.ruta+"/"+this.controlador,
@@ -399,7 +399,7 @@ LibroCatalogo.prototype.filtrarLibroTitulo = function(titulo,idAlumno,idEmpleado
                                               '<p id="autor'+i+'" class="m_2">'+listaLibros[i].autor+'</p>'+
                                               '<a href="#">'+
                                                 '<div class="grid_img">'+
-                                                  '<div class="css3"><img src="/Villabook/Complementos-Compucatalogo/images/portada-libro.png" alt=""/></div>'+
+                                                  '<div class="css3"><img src="'+ruta+'/Complementos-Compucatalogo/images/portada-libro.png" alt=""/></div>'+
                                                   '<div class="mask1">'+
                                                     '<div class="info" id="btn-solicitar">Solicitar</div>'+
                                                   '</div>'+
@@ -410,7 +410,7 @@ LibroCatalogo.prototype.filtrarLibroTitulo = function(titulo,idAlumno,idEmpleado
                                           '</div>'+
                                           '<ul class="list2" style="list-style: none;">'+
                                             '<li>'+
-                                              '<img src="/Villabook/Complementos-Compucatalogo/images/plus.png" alt=""/>'+
+                                              '<img src="'+ruta+'/Complementos-Compucatalogo/images/plus.png" alt=""/>'+
                                               '<ul class="icon1 sub-icon1 profile_img">'+
                                                 '<li><a class="active-icon c1" href="#" id="btn-solicitar">Solicitar </a>'+
                                                     '<ul class="sub-icon1 list">'+
@@ -450,7 +450,7 @@ LibroCatalogo.prototype.filtrarLibroTitulo = function(titulo,idAlumno,idEmpleado
                             if(willDelete){
                                 $.ajax({
                                     type: 'POST',
-                                    url: "/Villabook/PrestamoServlet",
+                                    url: ruta+"/PrestamoServlet",
                                     data:{
                                         op: 9,
                                         idLibro: listaLibros[num].id_libro,
@@ -462,7 +462,7 @@ LibroCatalogo.prototype.filtrarLibroTitulo = function(titulo,idAlumno,idEmpleado
                                         if(response==="1"){
                                             swal({title: "Listo", text: "Se aprobo correctamente el prestamo", icon: 
                                                 "success"}).then(function(){ 
-                                                   location.href="../../Villabook/Vistas/Compucatalogo/inicio.jsp";
+                                                   location.href=ruta+"/Vistas/Compucatalogo/inicio.jsp";
 
                                                 }
                                             );

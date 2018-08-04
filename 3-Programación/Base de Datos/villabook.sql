@@ -379,6 +379,13 @@ INSERT INTO `solicitud_prestamo` (`id_alumno`, `id_prestamo`) VALUES
 
 -- --------------------------------------------------------
 --
+-- Volcado de datos para la tabla `usuario_empleado`
+--
+
+INSERT INTO `usuario_empleado` (`id_usuario`, `id_empleado`, `correo`, `clave`) VALUES (NULL, '1', 'root@gmail.com', MD5('1234'));
+
+-- --------------------------------------------------------
+--
 -- Procedimientos Almacenados
 --
 --

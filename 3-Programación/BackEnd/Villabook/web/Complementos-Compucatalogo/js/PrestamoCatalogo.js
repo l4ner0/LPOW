@@ -4,7 +4,7 @@ function PrestamoCatalogo(ruta, controlador, op){
     this.op = op;
 }
 
-PrestamoCatalogo.prototype.solicitarPrestamo = function(idLibro, idEmpleado,idAlumno){
+PrestamoCatalogo.prototype.solicitarPrestamo = function(idLibro, idEmpleado,idAlumno,ruta){
     $.ajax({
         type: 'POST',
         url: this.ruta+"/"+this.controlador,
@@ -19,7 +19,7 @@ PrestamoCatalogo.prototype.solicitarPrestamo = function(idLibro, idEmpleado,idAl
             if(response==="1"){
                 swal({title: "Listo", text: "Se aprobo correctamente el prestamo", icon: 
                     "success"}).then(function(){ 
-                       location.href="../../Villabook/Vistas/Compucatalogo/inicio.jsp";
+                       location.href=ruta+"/Vistas/Compucatalogo/inicio.jsp";
                        
                     }
                 );
