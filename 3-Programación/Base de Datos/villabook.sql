@@ -224,8 +224,6 @@ MODIFY `id_compu` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `usuario_empleado`
 ADD UNIQUE KEY `correo` (`correo`);
 
-ALTER TABLE `libro`
-ADD UNIQUE KEY `ISBN` (`ISBN`);
 
 ALTER TABLE `alumno`
 ADD UNIQUE KEY `cod_alumno` (`cod_alumno`),
@@ -343,10 +341,10 @@ INSERT INTO `tipo_documento` (`id_tipo_documento`, `tipo`) VALUES
 
 INSERT INTO `libro` (`id_libro`, `id_tipo_documento`, `id_escuela`, `id_autor`, `ISBN`, `portada`, `titulo`, `datos_publi`, `stock_inicial`, `stock_final`, `estado`) VALUES
 (1, 1, 1, 1, '454-MP0', '', 'Fisica III', 'Libros prestados por el gobierno del Perú', 4, 4, 1),
-(2, 1, 1, 1, '4444-PM', '', 'Dibujo Técnico III', 'Nada xD', 2, 2, 1),
+(2, 1, 1, 1, '4444-PM', '', 'Dibujo Técnico III', 'Nada xD', 2, 1, 1),
 (3, 1, 1, 2, '532PP-0', '', 'Mate I', '', 3, 3, 1),
-(4, 1, 1, 1, '000-3333', '', 'Quimica I', '', 3, 3, 1),
-(5, 1, 1, 1, '233333', '', 'Quimica II', '', 4, 4, 1),
+(4, 1, 1, 1, '000-3333', '', 'Quimica I', '', 3, 2, 1),
+(5, 1, 1, 1, '233333', '', 'Quimica II', '', 4, 3, 1),
 (6, 1, 1, 2, '56667-099N', '', 'Administración III', 'Libro prestado', 3, 3, 1),
 (7, 1, 1, 6, '333333-999', '', 'Inteligencia Artificial 2', '', 4, 4, 1);
 
@@ -583,13 +581,6 @@ CALL agregarDevolucion(_id_prestamo,_fecha_devolucion,_hora_devolucion);
 END$$
 
 
--- Procedimiento para cancelar una entrega
-
-CREATE PROCEDURE noAprobarEntrega( _id_prestamo int, _motivo text )
-UPDATE prestamo SET estado_prestamo = 0, observa_prestamo = _motivo WHERE id_prestamo = _id_prestamo
-$$
-
-
 -- Procedimiento para ver entregas no aprobadas
 
 CREATE PROCEDURE verEntregasNoAprobadas()
@@ -793,14 +784,6 @@ WHERE d.estado_devolucion = 1 AND d.id_devolucion = _id_devolucion
 $$  
 
 
--- Procedimiento para aprobar devolucion
-
-CREATE PROCEDURE aprobarDevolucion(_id_devolucion int)
-UPDATE devolucion 
-SET estado_devolucion = 2 
-WHERE id_devolucion = _id_devolucion
-$$
-
 -- Procedimiento para filtrar los prestamos aprobados segun el alumno y el estado del prestamo
 
 CREATE PROCEDURE filtrarDevolucionAlumno(_cod_alumno varchar(10), _estado_devolucion int)
@@ -863,6 +846,37 @@ ON l.id_autor=a.id_autor
 WHERE estado=1 AND l.id_escuela = _id_escuela
 $$
 
+
+-- Procedimiento buscar un libro por isbn
+
+CREATE PROCEDURE filtrarLibroIsbn( _ISBN varchar(50))
+SELECT 
+	l.id_libro,tp.tipo, e.nombre, a.apellidos,a.nombres,l.ISBN,l.portada,l.titulo,l.datos_publi,l.stock_inicial,l.stock_final
+FROM libro as l
+INNER JOIN tipo_documento as tp
+ON l.id_tipo_documento=tp.id_tipo_documento
+INNER JOIN escuela as e
+ON l.id_escuela=e.id_escuela
+INNER JOIN autor as a
+ON l.id_autor=a.id_autor
+WHERE estado=1 AND l.ISBN = _ISBN
+$$
+
+-- Procedimiento buscar un libro por titulo 
+
+CREATE PROCEDURE filtrarLibroTitulo( _titulo varchar(50))
+SELECT 
+	l.id_libro,tp.tipo, e.nombre, a.apellidos,a.nombres,l.ISBN,l.portada,l.titulo,l.datos_publi,l.stock_inicial,l.stock_final
+FROM libro as l
+INNER JOIN tipo_documento as tp
+ON l.id_tipo_documento=tp.id_tipo_documento
+INNER JOIN escuela as e
+ON l.id_escuela=e.id_escuela
+INNER JOIN autor as a
+ON l.id_autor=a.id_autor
+WHERE estado=1 AND l.titulo = _titulo
+$$
+
 DELIMITER ;
 
 
@@ -883,5 +897,29 @@ VALUES (_id_libro, _id_empleado, _fecha_prestamo, _hora_prestamo, _tipo_prestamo
 SET @IDPRESTAMO = LAST_INSERT_ID();
 INSERT INTO solicitud_prestamo (id_alumno, id_prestamo)
 VALUES (_id_alumno, @IDPRESTAMO);
+UPDATE libro SET stock_final = stock_final-1 WHERE id_libro = _id_libro;
+END$$
+DELIMITER ;
+
+
+-- Procedimiento para no aprobar una solicitud de prestamo
+
+DELIMITER $$
+CREATE PROCEDURE noAprobarEntrega( _id_prestamo int, _motivo text, _isbn varchar(50) )
+BEGIN
+UPDATE prestamo SET estado_prestamo = 0, observa_prestamo = _motivo WHERE id_prestamo = _id_prestamo;
+UPDATE libro SET stock_final = stock_final+1 WHERE ISBN = _isbn;
+END$$
+DELIMITER ;
+
+-- Procedimiento para aprobar devolucion
+
+DELIMITER $$
+CREATE PROCEDURE aprobarDevolucion(_id_devolucion int, _isbn varchar(50))
+BEGIN
+UPDATE devolucion 
+SET estado_devolucion = 2 
+WHERE id_devolucion = _id_devolucion;
+UPDATE libro SET stock_final = stock_final+1 WHERE ISBN = _isbn;
 END$$
 DELIMITER ;

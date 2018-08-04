@@ -76,27 +76,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>
                    
                 </div>
-  	 		  <!--
-  			  <div class="header-top-right">
-  				  <div class="search-box">
-  					  <div id="sb-search" class="sb-search">
-  				  		<form>
-  								<input class="sb-search-input" placeholder="Ingrese el libro a buscar" type="search" name="search" id="search">
-  								<input class="sb-search-submit" type="submit" value="">
-  								<span class="sb-icon-search"> </span>
-  							</form>
-  						</div>
-  				  </div>
-
-  					<script src="js/classie.js"></script>
-  					<script src="js/uisearch.js"></script>
-  					<script>
-  						new UISearch( document.getElementById( 'sb-search' ) );
-  					</script>
-
-  					<a href="cart.html"><i class="cart"></i></a>
-  				</div>
-  				-->
   			</div>
   		</div>
   	</div>
@@ -111,20 +90,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="row">
               <div class="col-md-3 buscarPor">
                   <label for="">Buscar por: &nbsp;</label>
-                  <select name="" id="filtro-origen" class="">
-                    <option value="">..........</option>
-                    <option value="">ISBN</option>
-                    <option value="">Titulo</option>
-                    <option value="">Autor</option>
+                  <select name="" id="tipoBusqueda" class="">
+                    <option value="-1">..........</option>
+                    <option value="1">ISBN</option>
+                    <option value="2">Titulo</option>
                   </select>   
               </div>
               <div class="col-md-3">
                 <div class="inputBuscarLibro">
-                    <input type="text" id="filtro-fecha">
+                    <input type="text" id="txtBusqueda">
                 </div>
               </div>
               <div class="col-md-1">
-                <button class="btn btn-secondary btn-sm btnFiltrar">Filtrar</button>
+                  <button id="btn-buscar" type="button" class="btn btn-secondary btn-sm btnFiltrar">Filtrar</button>
               </div>
             </div>
           </div>
@@ -142,27 +120,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <div class="col_1_of_single1 span_1_of_single1">
                           <div class="view1 view-fifth1">
                             <div class="top_box">
-                                <h3 class="m_1"><%=obj.getTitulo()%></h3>
+                                <h3><%=obj.getTitulo()%></h3>
                               <p class="m_2"><%=obj.getAutor()%></p>
                               <a href="#">
                                 <div class="grid_img">
                                   <div class="css3"><img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/portada-libro.png" alt=""/></div>
                                   <div class="mask1">
-                                      <div class="info" onclick="FuncionSolicitarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','9','<%=obj.getId_libro()%>','1','<%=session.getAttribute("idAlumno")%>')">Solicitar</div>
+                                      <div class="info" onclick="FuncionSolicitarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','9','<%=obj.getId_libro()%>','1','<%=session.getAttribute("idAlumno")%>','<%=obj.getStock_final()%>')">Solicitar</div>
                                   </div>
                                 </div>
                               </a>
-                              <div class="price">Disponible</div>
+                              <%if(obj.getStock_final() > 0){ %> <div class="price">Disponible</div><%}else{%><div class="price">No Disponible</div><%}%>
                             </div>
                           </div>
                           <ul class="list2" style="list-style: none;">
                             <li>
                               <img src="<%=request.getContextPath()%>/Complementos-Compucatalogo/images/plus.png" alt=""/>
                               <ul class="icon1 sub-icon1 profile_img">
-                                <li><a class="active-icon c1" href="single.html">Solicitar </a>
+                                <li><a class="active-icon c1" href="#"onclick="FuncionSolicitarPrestamo('<%=request.getContextPath()%>','PrestamoServlet','9','<%=obj.getId_libro()%>','1','<%=session.getAttribute("idAlumno")%>','<%=obj.getStock_final()%>')" >Solicitar </a>
                                     <ul class="sub-icon1 list">
                                       <li><h3>Descripción del Libro</h3><a href=""></a></li>
-                                      <li><p>Lorem ipsum dolor sit amet, consectetuer  <a href="">adipiscing elit, sed diam</a></p></li>
+                                      <li><p><%=obj.getDatos_publi()%></p></li>
                                     </ul>
                                 </li>
                               </ul>
@@ -322,38 +300,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                   funcionLogout('<%=request.getContextPath()%>','CompucatalogoServlet','?op=2');
               });
               
+              $('#btn-buscar').click(function(){
+                  FuncionBuscarLibro('<%=request.getContextPath()%>','LibroServlet','<%=session.getAttribute("idAlumno")%>','1');
+              });
                            
               $('input#TDtodos').on('change', this, function(){
-                 FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDtodos').val());
+                 FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDtodos').val(),'<%=session.getAttribute("idAlumno")%>','1');
               });
               $('input#TDlibros').on('change', this, function(){
-                 FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDlibros').val());
+                 FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDlibros').val(),'<%=session.getAttribute("idAlumno")%>','1');
               });
               $('input#TDtesis').on('change', this, function(){
-                 FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDtesis').val());
+                 FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDtesis').val(),'<%=session.getAttribute("idAlumno")%>','1');
               });
               $('input#TDmonografia').on('change', this, function(){
-                FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDmonografia').val());
+                FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDmonografia').val(),'<%=session.getAttribute("idAlumno")%>','1');
               });
               $('input#TDrevistas').on('change', this, function(){
-                FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDrevistas').val());
+                FuncionFiltrarTipoDocumento('<%=request.getContextPath()%>','LibroServlet','6',$('#TDrevistas').val(),'<%=session.getAttribute("idAlumno")%>','1');
               });
               
               
               $('input#Etodos').on('change', this, function(){
-                 FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Etodos').val());
+                 FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Etodos').val(),'<%=session.getAttribute("idAlumno")%>','1');
               });
               $('input#Esist').on('change', this, function(){
-                  FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Esist').val());
+                  FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Esist').val(),'<%=session.getAttribute("idAlumno")%>','1');
               });
               $('input#Eindus').on('change', this, function(){
-                  FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Eindus').val());
+                  FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Eindus').val(),'<%=session.getAttribute("idAlumno")%>','1');
               });
               $('input#Etrans').on('change', this, function(){
-                 FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Etrans').val());
+                 FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Etrans').val(),'<%=session.getAttribute("idAlumno")%>','1');
               });
               $('input#Eagro').on('change', this, function(){
-                 FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Eagro').val());
+                 FuncionFiltrarEscuela('<%=request.getContextPath()%>','LibroServlet','7',$('#Eagro').val(),'<%=session.getAttribute("idAlumno")%>','1');
               });
               
               

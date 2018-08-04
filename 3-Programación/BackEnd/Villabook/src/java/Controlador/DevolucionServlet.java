@@ -44,7 +44,8 @@ public class DevolucionServlet extends HttpServlet {
             case 1:{
                 devolucion = new devolucionDAO();
                 int idDevolucion = Integer.parseInt(request.getParameter("idDevolucion"));
-                int resultado=devolucion.aprobarDevolucion(idDevolucion);
+                String isbn = request.getParameter("isbn");
+                int resultado=devolucion.aprobarDevolucion(idDevolucion,isbn);
                 if(resultado==1){
                     out.print("1");
                 }else{

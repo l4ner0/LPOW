@@ -237,15 +237,16 @@ public class prestamoDAO {
         return respuesta;
     }
     
-    public int noAprobarEnrega(int idEntregaPendiente, String motivo){
+    public int noAprobarEnrega(int idEntregaPendiente, String motivo, String isbn){
         int respuesta = -1;
         
         try {
             Conexion conexion = new Conexion();
             cn=conexion.getConexion();
-            CallableStatement cst = cn.prepareCall("{call noAprobarEntrega(?,?)}");
+            CallableStatement cst = cn.prepareCall("{call noAprobarEntrega(?,?,?)}");
             cst.setInt(1, idEntregaPendiente);
             cst.setString(2, motivo);
+            cst.setString(3, isbn);
             respuesta = cst.executeUpdate();
             cst.close();
             cn.close();

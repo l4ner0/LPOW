@@ -67,7 +67,7 @@ public class CompucatalogoServlet extends HttpServlet {
                      break;
                  }
                 case 2:{
-                    sesion.invalidate();
+                    sesion.setAttribute("idAlumno", null);
                     pagina="/Vistas/Compucatalogo/inicio.jsp";
                     break;
                 }

@@ -29,13 +29,14 @@ Devolucion.prototype.verAprobarDevolucion=function(idDevolucion){
     });
 }
 
-Devolucion.prototype.aprobarDevolucion=function(idDevolucion){
+Devolucion.prototype.aprobarDevolucion=function(idDevolucion,isbn){
     $.ajax({
         type: 'POST',
         url:this.ruta+"/"+this.controlador,
         data:{
             op:this.op,
-            idDevolucion:idDevolucion
+            idDevolucion:idDevolucion,
+            isbn:isbn
         },
         success: function (response) {
             if(response==="1"){

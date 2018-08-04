@@ -147,13 +147,14 @@ public class devolucionDAO {
         return lista;
     }
     
-    public int aprobarDevolucion(int idDevolucion){
+    public int aprobarDevolucion(int idDevolucion, String isbn){
         int respuesta = -1;
         try {
             Conexion conexion = new Conexion();
             cn=conexion.getConexion();
-            CallableStatement cst = cn.prepareCall("{call aprobarDevolucion(?)}");
+            CallableStatement cst = cn.prepareCall("{call aprobarDevolucion(?,?)}");
             cst.setInt(1, idDevolucion);
+            cst.setString(2, isbn);
             respuesta = cst.executeUpdate();
             cst.close();
             cn.close();

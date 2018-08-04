@@ -28,29 +28,48 @@ function funcionLogout(ruta,controlador,parametro){
     document.form.submit();
 }
 
-function FuncionFiltrarTipoDocumento(ruta,controlador,parametro,tipoDocumento){
+function FuncionFiltrarTipoDocumento(ruta,controlador,parametro,tipoDocumento,idAlumno,idEmpleado){
     var libroCatalogo = new LibroCatalogo(ruta,controlador,parametro);
-    libroCatalogo.filtrarLibroTipoDocumento(tipoDocumento);
+    libroCatalogo.filtrarLibroTipoDocumento(tipoDocumento,idAlumno,idEmpleado);
     
 }
 
-function FuncionFiltrarEscuela(ruta,controlador,parametro,idEscuela){
+function FuncionFiltrarEscuela(ruta,controlador,parametro,idEscuela,idAlumno,idEmpleado){
     var libroCatalogo = new LibroCatalogo(ruta,controlador,parametro);
-    libroCatalogo.filtrarLibroEscuela(idEscuela);
+    libroCatalogo.filtrarLibroEscuela(idEscuela,idAlumno,idEmpleado);
     
 }
 
-function FuncionSolicitarPrestamo(ruta,controlador,parametro,idLibro, idEmpleado,idAlumno){
-    swal({
-        title: "Estas seguro solicitar este libro?",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    })
-    .then((willDelete) => {
-        if (willDelete) {
-            var prestamo = new PrestamoCatalogo(ruta, controlador, parametro);
-            prestamo.solicitarPrestamo(idLibro, idEmpleado, idAlumno);
-        }
-    });
+function FuncionSolicitarPrestamo(ruta,controlador,parametro,idLibro, idEmpleado,idAlumno,stockFinal){
+    if(stockFinal <= 0){
+        swal("Error","No hay unidades disponibles", "error");
+    }else{
+        swal({
+            title: "Estas seguro solicitar este libro?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                var prestamo = new PrestamoCatalogo(ruta, controlador, parametro);
+                prestamo.solicitarPrestamo(idLibro, idEmpleado, idAlumno);
+            }
+        });
+    }
+}
+
+function FuncionBuscarLibro(ruta,controlador,idAlumno,idEmpleado){
+    var tipoBusqueda=$('#tipoBusqueda').val();
+    var busqueda=$('#txtBusqueda').val();
+    if(tipoBusqueda === "-1"){
+        swal("Error","Elija un tipo de busqueda", "error");
+    }else if(tipoBusqueda === "1"){
+         var libroCatalogo = new LibroCatalogo(ruta,controlador,8);
+         libroCatalogo.filtrarLibroIsbn(busqueda,idAlumno,idEmpleado);
+    }else if(tipoBusqueda === "2"){
+        var libroCatalogo = new LibroCatalogo(ruta,controlador,9);
+        libroCatalogo.filtrarLibroTitulo(busqueda,idAlumno,idEmpleado);
+    }
+
 }

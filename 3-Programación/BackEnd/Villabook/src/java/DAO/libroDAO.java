@@ -250,26 +250,73 @@ public class libroDAO {
         }
         return lista;
     }
-     
     
-       /*
-    public static void main(String [] args){
-
-        
-        libroDAO objLibroDao=new libroDAO();
-        int resultado=objLibroDao.addLibro(libro);
-        System.out.println("El resultado es: "+resultado);
-
+    public ArrayList<libroBean> filtrarLibroIsbn(String isbn){
         ArrayList<libroBean> lista=new ArrayList<libroBean>();
-        libroDAO libro = new libroDAO();
-        lista=libro.filtrarLibroTipoDocumento(1);
-        
-        for(libroBean obj:lista){
-            System.out.println("idLibro: "+obj.getId_libro());
-            System.out.println("");
+        libroBean objLibroBean=null;
+        try {
+            Conexion conexion=new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call filtrarLibroIsbn(?)}");
+            cst.setString(1, isbn);
+            rs = cst.executeQuery();
+            
+            while(rs.next()){
+                objLibroBean=new libroBean();
+                objLibroBean.setId_libro(rs.getInt(1));
+                objLibroBean.setTipo_documento(rs.getString(2));
+                objLibroBean.setEscuela(rs.getString(3));
+                objLibroBean.setAutor(rs.getString(4)+" "+rs.getString(5));
+                objLibroBean.setISBN(rs.getString(6));
+                objLibroBean.setPortada(rs.getString(7));
+                objLibroBean.setTitulo(rs.getString(8));
+                objLibroBean.setDatos_publi(rs.getString(9));
+                objLibroBean.setStock_inicial(rs.getInt(10));
+                objLibroBean.setStock_final(rs.getInt(11));
+                lista.add(objLibroBean);
+            }
+            
+            rs.close();
+            ps.close();
+            cn.close();
+        } catch (Exception e) {
         }
-         
-
-    }*/
+        return lista;
+    }
+     
+    public ArrayList<libroBean> filtrarLibroTitulo(String titulo){
+        ArrayList<libroBean> lista=new ArrayList<libroBean>();
+        libroBean objLibroBean=null;
+        try {
+            Conexion conexion=new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call filtrarLibroTitulo(?)}");
+            cst.setString(1, titulo);
+            rs = cst.executeQuery();
+            
+            while(rs.next()){
+                objLibroBean=new libroBean();
+                objLibroBean.setId_libro(rs.getInt(1));
+                objLibroBean.setTipo_documento(rs.getString(2));
+                objLibroBean.setEscuela(rs.getString(3));
+                objLibroBean.setAutor(rs.getString(4)+" "+rs.getString(5));
+                objLibroBean.setISBN(rs.getString(6));
+                objLibroBean.setPortada(rs.getString(7));
+                objLibroBean.setTitulo(rs.getString(8));
+                objLibroBean.setDatos_publi(rs.getString(9));
+                objLibroBean.setStock_inicial(rs.getInt(10));
+                objLibroBean.setStock_final(rs.getInt(11));
+                lista.add(objLibroBean);
+            }
+            
+            rs.close();
+            ps.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        return lista;
+    }
+    
+ 
       
 }

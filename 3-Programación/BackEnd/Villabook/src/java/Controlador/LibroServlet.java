@@ -180,6 +180,28 @@ public class LibroServlet extends HttpServlet {
                 }  
                 break;
             }
+            
+            case 8:{
+                String isbn =request.getParameter("isbn");
+                objLibroDAO = new libroDAO();
+                ArrayList<libroBean> lista = new ArrayList<>();
+                lista = objLibroDAO.filtrarLibroIsbn(isbn);
+                out.print(gson.toJson(lista));
+                out.flush();
+                out.close();
+                break;
+            }
+            
+            case 9:{
+                String titulo =request.getParameter("titulo");
+                objLibroDAO = new libroDAO();
+                ArrayList<libroBean> lista = new ArrayList<>();
+                lista = objLibroDAO.filtrarLibroTitulo(titulo);
+                out.print(gson.toJson(lista));
+                out.flush();
+                out.close();
+                break;
+            }
         }
     }
 

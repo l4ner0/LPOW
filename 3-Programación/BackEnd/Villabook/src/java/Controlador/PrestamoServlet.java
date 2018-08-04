@@ -81,7 +81,8 @@ public class PrestamoServlet extends HttpServlet {
                 prestamo = new prestamoDAO();
                 int idPrestamoPendiente = Integer.parseInt(request.getParameter("id_prestamo"));
                 String motivo = request.getParameter("motivo");
-                int resultado=prestamo.noAprobarEnrega(idPrestamoPendiente,motivo);
+                String isbn =request.getParameter("isbn");
+                int resultado=prestamo.noAprobarEnrega(idPrestamoPendiente,motivo,isbn);
                 if(resultado==1){
                     out.print("1");
                 }else{
@@ -148,12 +149,13 @@ public class PrestamoServlet extends HttpServlet {
             
             case 9:{
                 if(session.getAttribute("idAlumno") != null){
+                    Fecha fecha = new Fecha();
                     prestamo = new prestamoDAO();
                     int idLibro = Integer.parseInt(request.getParameter("idLibro"));
                     int idEmpleado= Integer.parseInt(request.getParameter("idEmpleado"));
-                    String fechaPrestamo="";
-                    String horaPrestamo="";
-                    String tipoPrestamo="";
+                    String fechaPrestamo=fecha.obtenerFechaActual();
+                    String horaPrestamo=fecha.obtenerHora();
+                    String tipoPrestamo=request.getParameter("tipoPrestamo");
                     int idAlumno= Integer.parseInt(request.getParameter("idAlumno"));
                     objPrestamoBean = new prestamoBean();
                     objPrestamoBean.setId_libro(idLibro);
@@ -164,7 +166,7 @@ public class PrestamoServlet extends HttpServlet {
                     int resultado=prestamo.solicitarPrestamo(objPrestamoBean, idAlumno);
 
                     if(resultado==1){
-                        session.invalidate();
+                         session.setAttribute("idAlumno", null);
                         out.print("1");
                     }else{
                          out.print("-1");

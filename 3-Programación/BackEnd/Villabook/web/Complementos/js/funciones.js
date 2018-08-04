@@ -52,7 +52,7 @@ var funcionGrabarLibro=function(ruta,controlador,op){
     var titulo=$("#txtTituloAddLibro").val();
     var stock=$("#txtStockAddLibro").val();
     var datosPubli=$("#txtDatosPubliAddLibro").val();
-    var portada=document.getElementById('filePortadaAddLibro').files[0].name;
+    var portada=$('#filePortadaAddLibro').val();
     var libro=new Libro(ruta,controlador,op);
     libro.addLibro(tipoDocumento,escuela,autor,isbn,portada,titulo,datosPubli,stock);
     
@@ -126,13 +126,14 @@ var funcionAprobarPrestamo=function(ruta,controlador,op){
 
 var funcionNoAprobarPrestamo=function(ruta,controlador,op){
     var idPrestamo = $('#noAprobarEntregaId').text();
+    var idIsbn = $('#noAprobarIsbnLibro').text();
     var motivo="";
     $("input:checkbox[name=checkMotivo]:checked").each(function() {
         motivo += $(this).val()+" ,";
     });
     motivo += " "+$('#txtMotivo').val();
     var prestamo = new Prestamo(ruta,controlador,op);
-    prestamo.noAprobarPrestamo(idPrestamo,motivo);
+    prestamo.noAprobarPrestamo(idPrestamo,motivo,idIsbn);
 }
 
 var funcionVerNoAprobarPrestamo=function(ruta,controlador,op,idPrestamo){
@@ -170,8 +171,9 @@ var funcionEntregado=function(ruta,controlador,op,idPrestamo){
 }
 
 var funcionAprobarDevolucion=function(ruta,controlador,op,idDevolucion){
+    var isbn=$('#aprobarDevolucionISBN').text();
     var devolucion = new Devolucion(ruta,controlador,op);
-    devolucion.aprobarDevolucion(idDevolucion);
+    devolucion.aprobarDevolucion(idDevolucion,isbn);
 }
 
 var funcionVerAprobarDevolucion=function(ruta,controlador,op,idDevolucion){

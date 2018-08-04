@@ -56,7 +56,6 @@
 </div>
 <!-- /.login-box -->
 <script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/jquery.min.js" type="text/javascript"></script>
-<script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/Alumno.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/Complementos-Compucatalogo/js/Funciones.js" type="text/javascript"></script>
 <script>
     $(document).ready(function(){

@@ -12,7 +12,8 @@ PrestamoCatalogo.prototype.solicitarPrestamo = function(idLibro, idEmpleado,idAl
             op: this.op,
             idLibro: idLibro,
             idEmpleado: idEmpleado,
-            idAlumno: idAlumno
+            idAlumno: idAlumno,
+            tipoPrestamo:"Presencial"
         },
         success:function(response){
             if(response==="1"){

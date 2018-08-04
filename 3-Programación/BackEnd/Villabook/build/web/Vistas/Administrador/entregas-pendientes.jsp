@@ -225,7 +225,7 @@
                 </div>
                 <div class="modal-body">
                    <div>
-                       <h4>¿Estas seguro de eliminar la solicitud de Giacomo Gulizzoni?</h4>
+                       <h4>¿Estas seguro de eliminar la solicitud del libro<p style="display: inline-block;" id="noAprobarIsbnLibro"></p>?</h4>
                    </div>
                    <div>
                        <h5>Motivo de la cancelación (Obligatorio)</h5>

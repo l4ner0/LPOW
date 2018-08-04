@@ -60,14 +60,15 @@ Prestamo.prototype.aprobarPrestamo = function(){
     });
 }
 
-Prestamo.prototype.noAprobarPrestamo=function(idPrestamo,motivo){
+Prestamo.prototype.noAprobarPrestamo=function(idPrestamo,motivo,isbn){
     $.ajax({
         type: "POST",
         url:this.ruta+"/"+this.controlador,
         data:{
             op:this.op,
             id_prestamo:idPrestamo,
-            motivo:motivo
+            motivo:motivo,
+            isbn:isbn
         },
         success:function(response){
             if(response==="1"){
@@ -99,6 +100,7 @@ Prestamo.prototype.verNoAprobarPrestamo = function(idPrestamo){
         success:function(response){
             var listaPrestamo=$.parseJSON(response);
             $("p#noAprobarEntregaId").text(listaPrestamo[0].id_prestamo);
+            $("p#noAprobarIsbnLibro").text(listaPrestamo[0].isbn);
         }
     });
 }
@@ -194,6 +196,7 @@ Prestamo.prototype.filtraPendiente = function(codAlumno){
                     var data = table.row( $(this).parents('tr') ).data();
                     var num=data[0]-1;
                      $("p#noAprobarEntregaId").text(listaPrestamo[num].id_prestamo);
+                     $("p#noAprobarIsbnLibro").text(listaPrestamo[0].isbn);
                 } );
             }
         }
