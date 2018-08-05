@@ -462,15 +462,41 @@ public class prestamoDAO {
         
         return resultado;
     }
-     
     
-/*
+    public ArrayList<prestamoBean> listarFechasPrestamos(String tipoPrestamo){
+         ArrayList<prestamoBean> lista = new ArrayList<>();
+        prestamoBean objPrestamoBean=null;
+        try {
+            Conexion conexion = new Conexion();
+            cn=conexion.getConexion();
+            CallableStatement cst = cn.prepareCall("{call listarFechasPrestamos(?)}");
+            cst.setString(1, tipoPrestamo);
+            ResultSet rs = cst.executeQuery();
+           while(rs.next()){
+                objPrestamoBean = new prestamoBean();
+                objPrestamoBean.setFecha_prestamo(rs.getString(1));
+                lista.add(objPrestamoBean);    
+            }
+            
+            cst.close();
+            rs.close();
+            cn.close();
+        } catch (Exception e) {
+        }
+        
+        return lista;
+    }
+     
+    /*
+
     public static void main(String[] args){
         int respuesta;
         prestamoDAO prestamo = new prestamoDAO();
-       
-       int valor = prestamo.contarTipoPrestamo("Virtual");
-            System.out.println(valor);
+       ArrayList<prestamoBean> lista = null;
+       lista = prestamo.listarFechasPrestamos("Presencial");
+            for(prestamoBean obj:lista){
+                System.out.println(obj.getFecha_prestamo());
+            }
 
         
        

@@ -177,36 +177,44 @@ public class AdministradorServlet extends HttpServlet {
             }
             
             case 8:{
-                String email=request.getParameter("loginEmail");
-                String clave=request.getParameter("loginPassword");
-                empleadoDAO objEmpleadoDAO= new empleadoDAO();
-                alumnoDAO objAlumnoDAO = new alumnoDAO();
-                objLibroDAO = new libroDAO();
-                objPrestamoDAO = new prestamoDAO();
-                objDevolucionDAO = new devolucionDAO();
-                ArrayList<empleadoBean> objEmpleadoBean =null;
-                String md5=DigestUtils.md5Hex(clave);
-                int idEmpleado=objEmpleadoDAO.validarIngresoEmpleado(email, md5);
-                if(idEmpleado != -1){
-                    objEmpleadoBean = objEmpleadoDAO.getEmpleado(idEmpleado);
-                    for(empleadoBean obj:objEmpleadoBean){
-                        sesion.setAttribute("idEmpleado", obj.getId_empleado());
-                        sesion.setAttribute("nombreEmpleado", obj.getNombres());
+                if(sesion.getAttribute("idEmpleado")==null){
+                    String email=request.getParameter("loginEmail");
+                    String clave=request.getParameter("loginPassword");
+                    if(email == null && clave == null){
+                        pagina="/Vistas/Seguridad/loginAdministrador.jsp";
+                    }else{
+                        empleadoDAO objEmpleadoDAO= new empleadoDAO();
+                        alumnoDAO objAlumnoDAO = new alumnoDAO();
+                        objLibroDAO = new libroDAO();
+                        objPrestamoDAO = new prestamoDAO();
+                        objDevolucionDAO = new devolucionDAO();
+                        ArrayList<empleadoBean> objEmpleadoBean =null;
+                        String md5=DigestUtils.md5Hex(clave);
+                        int idEmpleado=objEmpleadoDAO.validarIngresoEmpleado(email, md5);
+                        if(idEmpleado != -1){
+                            objEmpleadoBean = objEmpleadoDAO.getEmpleado(idEmpleado);
+                            for(empleadoBean obj:objEmpleadoBean){
+                                sesion.setAttribute("idEmpleado", obj.getId_empleado());
+                                sesion.setAttribute("nombreEmpleado", obj.getNombres());
+                            }
+
+                            int numEstudiantes=objAlumnoDAO.contarEstudiantes();
+                            int numLibros = objLibroDAO.contarLibros();
+                            int numPrestamosPendientes = objPrestamoDAO.contarPrestamosPendientes();
+                            int numDevolucionesPendientes = objDevolucionDAO.contarDevolucionesPendientes();
+
+                            request.setAttribute("numEstudiantes", numEstudiantes);
+                            request.setAttribute("numLibros", numLibros);
+                            request.setAttribute("numPrestamosPendientes", numPrestamosPendientes);
+                            request.setAttribute("numDevolucionesPendientes", numDevolucionesPendientes);
+
+                            pagina="/Vistas/Administrador/inicio.jsp";
+                        }else{
+                            pagina="/Vistas/Seguridad/loginAdministrador.jsp";
+                        }
                     }
-                    
-                    int numEstudiantes=objAlumnoDAO.contarEstudiantes();
-                    int numLibros = objLibroDAO.contarLibros();
-                    int numPrestamosPendientes = objPrestamoDAO.contarPrestamosPendientes();
-                    int numDevolucionesPendientes = objDevolucionDAO.contarDevolucionesPendientes();
-                    
-                    request.setAttribute("numEstudiantes", numEstudiantes);
-                    request.setAttribute("numLibros", numLibros);
-                    request.setAttribute("numPrestamosPendientes", numPrestamosPendientes);
-                    request.setAttribute("numDevolucionesPendientes", numDevolucionesPendientes);
-                    
-                    pagina="/Vistas/Administrador/inicio.jsp";
                 }else{
-                    pagina="/Vistas/Seguridad/loginAdministrador.jsp";
+                     pagina="/Vistas/Administrador/inicio.jsp";
                 }
                 break;
             }

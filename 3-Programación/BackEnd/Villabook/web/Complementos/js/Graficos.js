@@ -1,4 +1,4 @@
-function cargarGraficas(ruta,controlador,op){
+function cargarGraficasDonut(ruta,controlador,op){
     
     $.ajax({
         type: 'POST',
@@ -15,21 +15,36 @@ function cargarGraficas(ruta,controlador,op){
                   {label: "Virtual", value: valores[1]}
                 ]
               });
+        }
+    });
+}
 
+function cargarGraficasArea(ruta,controlador,op){
+
+    $.ajax({
+        type: 'POST',
+        url: ruta+"/"+controlador,
+        data:{
+            op:op
+        },
+        success:function(response){
+            alert(response);
+            var valores=$.parseJSON(response);
+            
             var months = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
 
             Morris.Area({
               element: 'area-example',
               data: [{
-                m: '2015-01-09',
+                m: '2015/01/09',
                 a: 3,
                 b: 5
                }, {
-                m: '2015-02-09',
+                m: '2015/02/09',
                 a: 3,
                 b: 5
               }, {
-                m: '2015-03',
+                m: '2015/03/03',
                 a: 3,
                 b: 5
               }, {

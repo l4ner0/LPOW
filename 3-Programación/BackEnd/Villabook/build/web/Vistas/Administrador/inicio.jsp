@@ -236,7 +236,8 @@ if(  session.getAttribute("idEmpleado") ==null)
 <script src="<%=request.getContextPath()%>/Complementos/js/Graficos.js" type="text/javascript"></script>
 <script>
     $(document).ready(function(){
-        cargarGraficas('<%=request.getContextPath()%>','PrestamoServlet','10');
+        cargarGraficasDonut('<%=request.getContextPath()%>','PrestamoServlet','10');
+        cargarGraficasArea('<%=request.getContextPath()%>','PrestamoServlet','11')
     });
 </script>
 </body>

@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Stream;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -186,6 +187,38 @@ public class PrestamoServlet extends HttpServlet {
                 prestamos[0]=presenciales;
                 prestamos[1]=virtuales;
                 out.print(gson.toJson(prestamos));
+                out.flush();
+                out.close();
+                break;
+            }
+            
+            case 11:{
+                prestamo = new prestamoDAO();
+                ArrayList<prestamoBean> prestamosVirtuales=null;
+                ArrayList<prestamoBean> prestamosPresenciales=null;
+                
+                prestamosVirtuales = prestamo.listarFechasPrestamos("Virtual");
+                prestamosPresenciales = prestamo.listarFechasPrestamos("Presencial");
+                int num;
+                if(prestamosVirtuales.size() > prestamosPresenciales.size()){
+                    num = prestamosVirtuales.size();
+                }else{
+                    num = prestamosPresenciales.size();
+                }
+                
+                String[][] fechas = new String[2][num];
+                int j=0;
+                for(prestamoBean objP:prestamosVirtuales){
+                    fechas[0][j] = objP.getFecha_prestamo();
+                    j++;
+                }
+                int i=0;
+                for(prestamoBean objP:prestamosPresenciales){
+                    fechas[1][i] = objP.getFecha_prestamo();
+                    i++;
+                }
+                
+                out.print(gson.toJson(fechas));
                 out.flush();
                 out.close();
                 break;

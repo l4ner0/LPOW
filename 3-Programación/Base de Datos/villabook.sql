@@ -939,3 +939,14 @@ BEGIN
 SELECT COUNT(*) AS tipo_prestamos FROM prestamo WHERE tipo_prestamo = _tipo_prestamo;
 END$$
 DELIMITER ;
+
+
+-- Procedimiento para seleccionar las fechas segun el tipo de prestamo
+
+DELIMITER $$
+CREATE PROCEDURE listarFechasPrestamos( _tipo_prestamo varchar(20) )
+BEGIN
+SELECT fecha_prestamo FROM prestamo WHERE tipo_prestamo = _tipo_prestamo;
+END$$
+DELIMITER ;
+
